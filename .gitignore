@@ -1,0 +1,40 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment & secrets
+.env
+*.env
+.env.*
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Node
+node_modules/
+
+# Logs & temp
+*.log
+logs/
+tmp/
+temp/
+
+# Large media (move to Cloudflare R2 later)
+*.mp4
+*.mov
+*.zip
+*.tar.gz
+
+# Hermes / local
+*.session
+*.session-journal
+hermes_state.db
+
+# IDE
+.vscode/
+.idea/

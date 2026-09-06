@@ -48,6 +48,8 @@
 - [x] Create Downloadable Lead Magnet: The HCA Resume & Executive Career Playbook (`business/hca-daily/assets/hca_resume_playbook.md`)
 - [x] Create Landing Page & Sales Copy (`business/hca-daily/landing_page_copy.md`)
 - [x] Build Ready-to-Deploy Static Landing Page (`business/hca-daily/web/index.html`) with live Stripe checkout buttons
+- [x] Host Landing Page on Cloudflare R2 bucket (`hca-daily-assets/index.html`)
+- [x] Prepare University Batch 1 Formal Outreach Package (`personal/relocation-china/university_batch_1_outreach.md`)
 - [x] Build Interactive HCA Career Navigator Prototype & Server (`business/hca-daily/web/server.py`)
 - [x] Build HCA Interview Coach Architecture & Question Banks (`business/hca-daily/interview_coach_prompt.md`)
 - [x] Document Monetization & Payment Setup Spec (`business/hca-daily/monetization_setup.md`)

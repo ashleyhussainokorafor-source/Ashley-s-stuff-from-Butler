@@ -38,7 +38,7 @@
 
 ## Next Priorities (Pending CEO Approval)
 
-- [ ] Set up model routing (DeepSeek primary)
+- [x] Set up model routing (DeepSeek primary + Gemini 3.8 Flash auxiliary vision)
 - [ ] Continue inbox cleanup (2024 and earlier)
 - [ ] Empty Promotions folder completely
 - [ ] Define pricing for HCA Daily products

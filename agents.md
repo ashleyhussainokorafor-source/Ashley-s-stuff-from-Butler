@@ -17,8 +17,8 @@
 - **Notes:** Placeholder created
 
 ### 3. Business: HCA Daily
-- **Status:** Role prompt defined
-- **Notes:** Business overview, product suite, and responsibilities documented
+- **Status:** Pricing defined & Career Navigator prompt architecture complete
+- **Notes:** Business overview, product suite, pricing matrix, and AI Advisor system prompt documented in `business/hca-daily/`
 
 ### 4. Business: Freedom Soapbox Records (FS Records)
 - **Status:** Logged but not started

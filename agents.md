@@ -48,6 +48,7 @@
 - [x] Create Downloadable Lead Magnet: The HCA Resume & Executive Career Playbook (`business/hca-daily/assets/hca_resume_playbook.md`)
 - [x] Create Landing Page & Sales Copy (`business/hca-daily/landing_page_copy.md`)
 - [x] Build HCA Interview Coach Architecture & Question Banks (`business/hca-daily/interview_coach_prompt.md`)
+- [x] Document Monetization & Payment Setup Spec (`business/hca-daily/monetization_setup.md`)
 - [x] Push latest commits to GitHub remote (Up to date on `main`)
 
 ---

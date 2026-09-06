@@ -30,9 +30,9 @@
 
 - **Gmail Accounts Connected:** 3 (main, family, business)
 - **Inbox Cleanup:** In progress (Promotions folder + 2024 and earlier)
-- **Model Optimization:** Not yet configured (DeepSeek primary + fallback + vision planned)
-- **Storage Management:** Goal = keep under 50%
-- **Version Control:** Repo initialized
+- **Model Optimization:** Configured (DeepSeek primary + Gemini 3.8 Flash auxiliary vision)
+- **Storage Management:** Cloudflare R2 configured (`hca-daily-assets` + `fs-records`), `storage_guard.py` active, current usage 11.7% (Goal: <50%)
+- **Version Control:** Repo initialized & synced to GitHub (`Ashley-s-stuff-from-Butler`)
 
 ---
 

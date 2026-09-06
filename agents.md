@@ -41,7 +41,7 @@
 - [x] Set up model routing (DeepSeek primary + Gemini 3.8 Flash auxiliary vision)
 - [ ] Continue inbox cleanup (2024 and earlier)
 - [ ] Empty Promotions folder completely
-- [ ] Define pricing for HCA Daily products
+- [x] Define pricing for HCA Daily products
 - [ ] Build first content assets for HCA Daily
 
 ---

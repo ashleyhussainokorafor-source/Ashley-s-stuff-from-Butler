@@ -42,7 +42,8 @@
 - [ ] Continue inbox cleanup (2024 and earlier)
 - [ ] Empty Promotions folder completely
 - [x] Define pricing for HCA Daily products
-- [ ] Build first content assets for HCA Daily
+- [x] Build first content assets for HCA Daily (Newsletter #001 + 5 LinkedIn posts)
+- [ ] Push latest commits to GitHub remote
 
 ---
 

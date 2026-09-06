@@ -59,6 +59,7 @@
 - [x] Prepare University Batch 2 Formal Outreach Package (`personal/relocation-china/university_batch_2_outreach.md`)
 - [x] Create St. Petersburg Household Liquidation Plan (`personal/relocation-china/household_liquidation_plan.md`)
 - [x] Analyze & Create YouTube Channel Optimization Strategy for @professorashley (`business/hca-daily/youtube_optimization_strategy.md`)
+- [x] Set up Content 360 Social Dispatcher (`automation/scripts/content360_dispatcher.py`) for Team `c5f7d2a6-829c-4d4c-938a-01e8d09c53f5`
 - [x] Build Interactive HCA Career Navigator Prototype & Server (`business/hca-daily/web/server.py`)
 - [x] Build HCA Interview Coach Architecture & Question Banks (`business/hca-daily/interview_coach_prompt.md`)
 - [x] Document Monetization & Payment Setup Spec (`business/hca-daily/monetization_setup.md`)

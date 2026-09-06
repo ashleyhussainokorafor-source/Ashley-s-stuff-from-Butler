@@ -45,6 +45,7 @@
 - [x] Build first content assets for HCA Daily (Newsletter #001 + 5 LinkedIn posts)
 - [x] Create 30-Day Multi-Channel Content Calendar (`business/hca-daily/content/30_day_calendar.md`)
 - [x] Build 5-Part Automated Welcome & Onboarding Sequence (`business/hca-daily/content/onboarding_email_sequence.md`)
+- [x] Create Downloadable Lead Magnet: The HCA Resume & Executive Career Playbook (`business/hca-daily/assets/hca_resume_playbook.md`)
 - [x] Create Landing Page & Sales Copy (`business/hca-daily/landing_page_copy.md`)
 - [x] Build HCA Interview Coach Architecture & Question Banks (`business/hca-daily/interview_coach_prompt.md`)
 - [x] Push latest commits to GitHub remote (Up to date on `main`)

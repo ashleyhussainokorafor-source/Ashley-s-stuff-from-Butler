@@ -60,6 +60,7 @@
 - [x] Create St. Petersburg Household Liquidation Plan (`personal/relocation-china/household_liquidation_plan.md`)
 - [x] Analyze & Create YouTube Channel Optimization Strategy for @professorashley (`business/hca-daily/youtube_optimization_strategy.md`)
 - [x] Set up Content 360 Social Dispatcher (`automation/scripts/content360_dispatcher.py`) for Team `c5f7d2a6-829c-4d4c-938a-01e8d09c53f5`
+- [x] Build Content 360 Inbound Lead Webhook Listener (`automation/scripts/content360_lead_listener.py`) on port 8086
 - [x] Queue Week 1 LinkedIn Production Posts (`automation/configs/content360_week_1_queue.json`)
 - [x] Build Multi-Platform Social Media Suite (`business/hca-daily/content/multi_platform_social_suite.md`) — Instagram, TikTok/Shorts, X (Twitter), Facebook
 - [x] Build Interactive HCA Career Navigator Prototype & Server (`business/hca-daily/web/server.py`)

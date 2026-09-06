@@ -1,0 +1,15 @@
+[Unit]
+Description=The HCA Daily Platform Server (Landing + Navigator + Interview Coach)
+After=network.target
+
+[Service]
+Type=simple
+User=u4s
+WorkingDirectory=/data/business/hca-daily/web
+ExecStart=/usr/bin/python3 /data/business/hca-daily/web/server.py
+Restart=always
+RestartSec=5
+Environment=PORT=8085
+
+[Install]
+WantedBy=multi-user.target

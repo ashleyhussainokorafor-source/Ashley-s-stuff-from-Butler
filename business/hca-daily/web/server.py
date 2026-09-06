@@ -1,6 +1,10 @@
 """
-The HCA Daily — Interactive Career Navigator Prototype Server
-Provides API endpoints & web chat interface for the Career Navigator LLM.
+The HCA Daily — Unified Web Platform & AI Engine Server
+Serves:
+1. Static High-Converting Landing Page (`/` or `/index.html`)
+2. AI Career Navigator Web Interface (`/navigator` or `/app`)
+3. Interactive HCA Interview Coach Simulator (`/coach`)
+4. AI API endpoints (`/api/chat` and `/api/coach`) backed by DeepSeek on OpenRouter.
 """
 
 import os
@@ -12,114 +16,39 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 MODEL_NAME = "deepseek/deepseek-v4-pro-0813"
 
-# Load the verified HCA Navigator System Prompt
-PROMPT_PATH = "/data/business/hca-daily/career_navigator_prompt.md"
-SYSTEM_PROMPT = ""
-if os.path.exists(PROMPT_PATH):
-    with open(PROMPT_PATH, "r", encoding="utf-8") as f:
-        SYSTEM_PROMPT = f.read()
+# Load Prompts
+NAVIGATOR_PROMPT_PATH = "/data/business/hca-daily/career_navigator_prompt.md"
+COACH_PROMPT_PATH = "/data/business/hca-daily/interview_coach_prompt.md"
 
-NAVIGATOR_HTML = """<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HCA Career Navigator — AI Advisor Demo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }</style>
-</head>
-<body class="bg-slate-950 text-slate-100 flex flex-col h-screen">
+NAVIGATOR_SYSTEM_PROMPT = ""
+if os.path.exists(NAVIGATOR_PROMPT_PATH):
+    with open(NAVIGATOR_PROMPT_PATH, "r", encoding="utf-8") as f:
+        NAVIGATOR_SYSTEM_PROMPT = f.read()
 
-  <!-- HEADER -->
-  <header class="p-4 border-b border-slate-800 bg-slate-900 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <span class="w-8 h-8 rounded-lg bg-teal-500 flex items-center justify-center font-extrabold text-slate-950 text-sm">H</span>
-      <div>
-        <h1 class="font-bold text-sm leading-tight text-white">HCA Career Navigator</h1>
-        <p class="text-xs text-teal-400">Executive Advisory AI • Powered by The HCA Daily</p>
-      </div>
-    </div>
-    <a href="https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00" target="_blank" class="px-3 py-1.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs">
-      Unlock Full Access ($29/mo)
-    </a>
-  </header>
+COACH_SYSTEM_PROMPT = ""
+if os.path.exists(COACH_PROMPT_PATH):
+    with open(COACH_PROMPT_PATH, "r", encoding="utf-8") as f:
+        COACH_SYSTEM_PROMPT = f.read()
 
-  <!-- CHAT WINDOW -->
-  <main id="chat-box" class="flex-1 overflow-y-auto p-4 space-y-4 max-w-3xl w-full mx-auto">
-    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-sm text-slate-300">
-      <p class="font-bold text-teal-400 mb-1">Welcome to the HCA Career Navigator.</p>
-      <p>I am your specialized healthcare operations and executive career advisor. How can I help you today?</p>
-      <div class="mt-3 flex flex-wrap gap-2 text-xs">
-        <button onclick="sendPrompt(this.innerText)" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">"Audit my resume for Clinic Manager roles"</button>
-        <button onclick="sendPrompt(this.innerText)" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">"How do I explain my RN experience on an admin CV?"</button>
-        <button onclick="sendPrompt(this.innerText)" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">"What is the MGMA median salary for Ops Directors?"</button>
-      </div>
-    </div>
-  </main>
+def call_openrouter(messages, system_prompt, temperature=0.4):
+    full_messages = [{"role": "system", "content": system_prompt}] + messages
+    api_url = "https://openrouter.ai/api/v1/chat/completions"
+    req_data = json.dumps({
+        "model": MODEL_NAME,
+        "messages": full_messages,
+        "temperature": temperature
+    }).encode("utf-8")
 
-  <!-- INPUT BAR -->
-  <footer class="p-4 border-t border-slate-800 bg-slate-900/50">
-    <div class="max-w-3xl mx-auto flex gap-2">
-      <input id="user-input" type="text" placeholder="Ask about compensation, resume makeovers, or operational metrics..." class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-teal-500">
-      <button onclick="handleSend()" class="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-sm transition-all">Send</button>
-    </div>
-  </footer>
+    req = urllib.request.Request(api_url, data=req_data, headers={
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Content-Type": "application/json"
+    })
 
-  <script>
-    const chatBox = document.getElementById('chat-box');
-    const userInput = document.getElementById('user-input');
-    const history = [];
+    with urllib.request.urlopen(req) as resp:
+        res_json = json.loads(resp.read().decode("utf-8"))
+        return res_json["choices"][0]["message"]["content"]
 
-    userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleSend();
-    });
-
-    function sendPrompt(text) {
-      userInput.value = text;
-      handleSend();
-    }
-
-    async function handleSend() {
-      const text = userInput.value.trim();
-      if (!text) return;
-      userInput.value = '';
-
-      // Append User message
-      chatBox.innerHTML += `<div class="flex justify-end"><div class="max-w-[80%] p-3.5 rounded-2xl bg-teal-600 text-white text-sm font-medium">${text}</div></div>`;
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-      history.push({ role: 'user', content: text });
-
-      // Loading bubble
-      const loadingId = 'loading-' + Date.now();
-      chatBox.innerHTML += `<div id="${loadingId}" class="flex justify-start"><div class="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 text-slate-400 text-sm animate-pulse">Consulting executive knowledge base...</div></div>`;
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-      try {
-        const resp = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: history })
-        });
-        const data = await resp.json();
-        document.getElementById(loadingId).remove();
-        
-        const reply = data.reply || "Error connecting to advisor.";
-        history.push({ role: 'assistant', content: reply });
-
-        chatBox.innerHTML += `<div class="flex justify-start"><div class="max-w-[85%] p-4 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200 text-sm leading-relaxed whitespace-pre-wrap">${reply}</div></div>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
-      } catch (err) {
-        document.getElementById(loadingId).remove();
-        chatBox.innerHTML += `<div class="text-xs text-red-400 p-2 text-center">Connection error. Please try again.</div>`;
-      }
-    }
-  </script>
-</body>
-</html>
-"""
-
-class NavigatorRequestHandler(SimpleHTTPRequestHandler):
+class UnifiedPlatformHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path in ("/", "/index.html", "/landing"):
             landing_path = "/data/business/hca-daily/web/index.html"
@@ -130,55 +59,70 @@ class NavigatorRequestHandler(SimpleHTTPRequestHandler):
                 with open(landing_path, "rb") as f:
                     self.wfile.write(f.read())
                 return
+
+        elif self.path in ("/coach", "/interview", "/simulator"):
+            coach_path = "/data/business/hca-daily/web/coach.html"
+            if os.path.exists(coach_path):
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.end_headers()
+                with open(coach_path, "rb") as f:
+                    self.wfile.write(f.read())
+                return
+
         elif self.path in ("/app", "/navigator", "/chat"):
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(NAVIGATOR_HTML.encode("utf-8"))
-            return
-        
+            nav_path = "/data/business/hca-daily/web/navigator.html"
+            if os.path.exists(nav_path):
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.end_headers()
+                with open(nav_path, "rb") as f:
+                    self.wfile.write(f.read())
+                return
+
         super().do_GET()
 
     def do_POST(self):
+        content_length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_length).decode("utf-8")
+        payload = json.loads(body) if body else {}
+
         if self.path == "/api/chat":
-            content_length = int(self.headers.get("Content-Length", 0))
-            body = self.rfile.read(content_length).decode("utf-8")
-            payload = json.loads(body)
             messages = payload.get("messages", [])
+            try:
+                reply = call_openrouter(messages, NAVIGATOR_SYSTEM_PROMPT, temperature=0.4)
+            except Exception as e:
+                reply = f"HCA Career Navigator Unavailable: {str(e)}"
+            
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"reply": reply}).encode("utf-8"))
+            return
 
-            # Inject HCA Navigator system prompt
-            full_messages = [{"role": "system", "content": SYSTEM_PROMPT}] + messages
-
-            # Call OpenRouter API with DeepSeek model
-            api_url = "https://openrouter.ai/api/v1/chat/completions"
-            req_data = json.dumps({
-                "model": MODEL_NAME,
-                "messages": full_messages,
-                "temperature": 0.4
-            }).encode("utf-8")
-
-            req = urllib.request.Request(api_url, data=req_data, headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json"
-            })
+        elif self.path == "/api/coach":
+            messages = payload.get("messages", [])
+            role = payload.get("role", "Ambulatory Clinic Manager")
+            scenario = payload.get("scenario", "General Operations")
+            
+            # Dynamic system instruction with specific track context
+            customized_coach_prompt = COACH_SYSTEM_PROMPT + f"\n\nCURRENT ACTIVE CANDIDATE TARGET:\n- Candidate Role: {role}\n- Focus Scenario: {scenario}\nConduct a probing, realistic executive simulation. Probe weak metrics and score using the 4-Pillar Executive Rubric."
 
             try:
-                with urllib.request.urlopen(req) as resp:
-                    res_json = json.loads(resp.read().decode("utf-8"))
-                    reply_text = res_json["choices"][0]["message"]["content"]
+                reply = call_openrouter(messages, customized_coach_prompt, temperature=0.5)
             except Exception as e:
-                reply_text = f"HCA Navigator Advisor Offline: {str(e)}"
+                reply = f"HCA Interview Coach Simulation Offline: {str(e)}"
 
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            self.wfile.write(json.dumps({"reply": reply_text}).encode("utf-8"))
+            self.wfile.write(json.dumps({"reply": reply}).encode("utf-8"))
             return
 
         self.send_error(404, "Endpoint not found")
 
 if __name__ == "__main__":
     port = 8085
-    server = HTTPServer(("0.0.0.0", port), NavigatorRequestHandler)
-    print(f"HCA Daily Platform Server running on port {port}...")
+    server = HTTPServer(("0.0.0.0", port), UnifiedPlatformHandler)
+    print(f"The HCA Daily Unified Platform Server running on port {port}...")
     server.serve_forever()

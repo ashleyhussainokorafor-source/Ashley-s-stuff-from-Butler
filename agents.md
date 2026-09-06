@@ -49,6 +49,12 @@
 - [x] Create Landing Page & Sales Copy (`business/hca-daily/landing_page_copy.md`)
 - [x] Build Ready-to-Deploy Static Landing Page (`business/hca-daily/web/index.html`) with live Stripe checkout buttons
 - [x] Host Landing Page on Cloudflare R2 bucket (`hca-daily-assets/index.html`)
+- [x] Build Interactive HCA Career Navigator Web Interface (`business/hca-daily/web/navigator.html`)
+- [x] Build Interactive HCA Interview Coach Web Simulator (`business/hca-daily/web/coach.html`)
+- [x] Build Unified Web Platform Server (`business/hca-daily/web/server.py`) serving Landing, Navigator, and Coach
+- [x] Write Week 1 Production Content Package (`business/hca-daily/content/week_1_content_package.md`) — Newsletter #002 + 4 LinkedIn Posts
+- [x] Create Lead Magnet #2: The Ambulatory KPI & MGMA Benchmark Cheat Sheet (`business/hca-daily/assets/ambulatory_kpi_cheatsheet.md`)
+- [x] Create Systemd Service Configuration (`automation/configs/hcadaily.service`)
 - [x] Prepare University Batch 1 Formal Outreach Package (`personal/relocation-china/university_batch_1_outreach.md`)
 - [x] Prepare University Batch 2 Formal Outreach Package (`personal/relocation-china/university_batch_2_outreach.md`)
 - [x] Create St. Petersburg Household Liquidation Plan (`personal/relocation-china/household_liquidation_plan.md`)

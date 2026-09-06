@@ -9,8 +9,8 @@
 ## Current Projects
 
 ### 1. Personal Projects: China Relocation (Deadline: Jan 1)
-- **Status:** Master Plan defined, R2 bucket `china-relocation-docs` created, and China-Standard Academic CV generated
-- **Notes:** Priority 1: Dr. Ashley university faculty anchor (Z visa) + S1 dependent visas for Nnamdi & children. Target: $10,000 relocation capital by Dec 15. CV tailored for coastal university faculty and international school roles.
+- **Status:** Master Plan defined, R2 bucket created, China CV generated (.docx & .md), Application Tracker & Outreach Package complete
+- **Notes:** Priority 1: Dr. Ashley university faculty anchor (Z visa) + S1 dependent visas for Nnamdi & children. Target: $10,000 relocation capital by Dec 15. Target pipeline: 12 coastal universities/international schools with dedicated templates.
 
 ### 2. Personal Social Media
 - **Status:** Not started

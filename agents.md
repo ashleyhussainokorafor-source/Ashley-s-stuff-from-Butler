@@ -8,9 +8,9 @@
 
 ## Current Projects
 
-### 1. Personal Projects
-- **Status:** Not started
-- **Notes:** Placeholder created
+### 1. Personal Projects: China Relocation (Deadline: Jan 1)
+- **Status:** Master Plan defined & Cloudflare R2 bucket `china-relocation-docs` created
+- **Notes:** Priority 1: Dr. Ashley university faculty anchor (Z visa) + S1 dependent visas for Nnamdi & children. Target: $10,000 relocation capital by Dec 15.
 
 ### 2. Personal Social Media
 - **Status:** Not started

@@ -172,12 +172,13 @@
 > - **Certification Roadmaps:** Clear, step-by-step paths to FACHE, CMPE, and CRCR credentials based on your current experience.
 > - **Interactive Mock Interview Coach:** Practice with role-specific questions and receive immediate feedback on your STAR structure and executive delivery.
 > 
-> **Special Community Offer:**  
-> You can try The HCA Career Navigator for just **$29/month** (or save over 40% with our annual plan).
-> 
-> 👉 **[Explore The HCA Career Navigator & Get Started Here — Link]**
-> 
-> Whether you’re gearing up for a fellowship, stepping into your first practice management role, or aiming for the C-Suite, we’re here to help you get there faster.
+**Special Community Offer:**  
+You can try The HCA Career Navigator for just **$29/month** (or save over 40% with our annual plan).
+
+👉 **[Start Navigator Monthly ($29/mo)](https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00)**  
+👉 **[Lock in Annual Access ($199/yr — Best Value)](https://buy.stripe.com/test_8x228s3OvbTe1E9a3kgMw01)**
+
+Whether you’re gearing up for a fellowship, stepping into your first practice management role, or aiming for the C-Suite, we’re here to help you get there faster.
 > 
 > To your leadership success,  
 > **Dr. Ashley Hussain-Okorafor**  

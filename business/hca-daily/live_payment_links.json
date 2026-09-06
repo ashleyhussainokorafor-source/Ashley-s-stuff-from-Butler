@@ -1,0 +1,22 @@
+{
+  "HCA Career Navigator (Monthly)": {
+    "product_id": "prod_VD7K9tn87unkD2",
+    "price_id": "price_1UCh5gLxRw5x7Pac6J1UFS86",
+    "payment_link": "https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00"
+  },
+  "HCA Career Navigator (Annual)": {
+    "product_id": "prod_VD7KSf49vrPKAN",
+    "price_id": "price_1UCh5hLxRw5x7Pac9p3Ksis1",
+    "payment_link": "https://buy.stripe.com/test_8x228s3OvbTe1E9a3kgMw01"
+  },
+  "HCA Interview Coach (Single Session)": {
+    "product_id": "prod_VD7KDuaVuZPxPq",
+    "price_id": "price_1UCh5iLxRw5x7Pac95ElPcQu",
+    "payment_link": "https://buy.stripe.com/test_9B66oI98PbTeaaF8ZggMw02"
+  },
+  "HCA Interview Coach (3-Session Prep Pack)": {
+    "product_id": "prod_VD7K6kz7rF3FuW",
+    "price_id": "price_1UCh5jLxRw5x7PaczDT1WUFK",
+    "payment_link": "https://buy.stripe.com/test_9B6bJ2fxd8H2gz3b7ogMw03"
+  }
+}

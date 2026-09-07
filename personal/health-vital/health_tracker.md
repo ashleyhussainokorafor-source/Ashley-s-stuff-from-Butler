@@ -40,4 +40,5 @@
 ---
 
 ## 4. Weekly Progress Logs (Sundays)
-*Week 1 review scheduled for Sunday, September 13, 2026.*
+* **Week 1 Baseline Log:** September 6, 2026 — Day 2 Cycle logged. Weight: 208 lbs. Focus on gentle movement (Tampa Riverwalk) and warm gut-healing nutrition.
+* Next comprehensive review scheduled for Sunday, September 13, 2026.

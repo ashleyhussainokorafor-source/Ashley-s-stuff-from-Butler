@@ -63,6 +63,7 @@
 - [x] Build Content 360 Inbound Lead Webhook Listener (`automation/scripts/content360_lead_listener.py`) on port 8086
 - [x] Queue Week 1 LinkedIn Production Posts (`automation/configs/content360_week_1_queue.json`)
 - [x] Build Multi-Platform Social Media Suite (`business/hca-daily/content/multi_platform_social_suite.md`) — Instagram, TikTok/Shorts, X (Twitter), Facebook
+- [x] Ingest Dr. Ashley Clinical Intake & Symptoms (`personal/health-vital/clinical_profile.md`)
 - [x] Build Interactive HCA Career Navigator Prototype & Server (`business/hca-daily/web/server.py`)
 - [x] Build HCA Interview Coach Architecture & Question Banks (`business/hca-daily/interview_coach_prompt.md`)
 - [x] Document Monetization & Payment Setup Spec (`business/hca-daily/monetization_setup.md`)

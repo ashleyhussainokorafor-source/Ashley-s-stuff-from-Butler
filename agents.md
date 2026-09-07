@@ -8,9 +8,10 @@
 
 ## Current Projects
 
-### 1. Personal Projects: China Relocation & Health Optimization
+### 1. Personal Projects: China Relocation, Health & Community
 - **Relocation (Deadline: Jan 1):** Master Plan defined, R2 bucket created, China CV generated (.docx & .md), Application Tracker, Outreach Package, FBI Channeler Action Guide, and Nnamdi Healthcare Outreach Package complete. Batches 1 & 2 transmitted (8 total coastal universities) via primary Gmail with CV attached. Follow-ups tracked for Sept 11.
-- **Vital Health Optimization:** Active tracker initiated at `personal/health-vital/health_tracker.md`. Tracking nutrition, hydration, movement, sleep, Ayurvedic/TCM holistic wellness, and facial aesthetics.
+- **Vital Health Optimization:** Active tracker initiated at `personal/health-vital/health_tracker.md`. Baseline clinical intake logged (208 lbs, Day 2 cycle, Tampa Riverwalk movement).
+- **Relationship & Community Manager:** Active directory created at `personal/relationships/relationship_map.md`. Tracks Family (highest priority), Friends, and Professional networks with health scores and cadence alarms.
 
 ### 2. Personal Social Media
 - **Status:** Not started

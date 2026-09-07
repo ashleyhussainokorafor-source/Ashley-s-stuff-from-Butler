@@ -9,13 +9,12 @@
 
 ## 1. Core Profile & Baseline Metrics
 
-* **Starting Weight:** [Pending First Log]
-* **Target Weight:** [Pending Goal Setting]
-* **Height:** [Pending Entry]
-* **Daily Water Target:** Minimum 80–100 oz filtered water
-* **Dietary Philosophy:** Anti-inflammatory, gut-microbiome supportive, dosha-balanced (warm cooked meals favored over raw cold foods per TCM/Ayurveda spleen qi guidelines).
-* **Current Supplement Stack:** [Pending Entry — will audit for synergies/interactions]
-* **Active Health Conditions / Allergies:** None logged.
+* **Starting Weight:** 208 lbs | **Goal Weight:** 165 lbs (Delta: -43 lbs)
+* **Height:** 5'9" | **Age:** 38
+* **Daily Water Target:** Minimum 85–100 oz filtered water (warm/room temp)
+* **Dietary Notes:** Low appetite / loss of zest for food; evening sugar cravings addressed with psyllium husk + yogurt; morning coffee/latte.
+* **Current Supplements:** Hormify, Bitter Melon tea (Momordica charantia), periodic Oil of Oregano drops.
+* **Key Clinical Flags (Awaiting 2-Week Lab Results):** Morning gut anxiety & urgent diarrhea, rapid arm/leg fatigue, night sweats/heat intolerance, worsening silent reflux (since 2020), chin acne & painful armpit/gluteal nodules (evaluate for Hidradenitis Suppurativa), recurrent styes, tight hips/lower back.
 
 ---
 

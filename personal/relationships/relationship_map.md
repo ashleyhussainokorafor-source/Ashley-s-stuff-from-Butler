@@ -2,47 +2,63 @@
 
 **Manager:** Dedicated Relationship & Community Lead  
 **User:** Dr. Ashley Hussain-Okorafor  
-**Priority Hierarchy:**  
-1. **Family (Highest — Non-Negotiable):** Weekly touchpoints & memory sharing.  
-2. **Friends (High — Support & Joy):** 2–3 week cadence.  
-3. **Business & Mentorship (Active — Mutual Value & Respect):** Monthly / project-driven cadence.  
+**Priority Cadence:** Bi-weekly check-in schedule for family & core friends.  
 
 ---
 
-## 1. Active Relationship Directory
+## 1. Immediate & Extended Family Directory (Priority: Highest)
 
-### A. Family (Priority: Highest)
+### A. Ashley's Side of the Family
 
-| Name | Relationship | Last Contact | Cadence | Health Score | Notes & Follow-up Context |
+| Name | Relationship | Preferred Channel | Cadence | Health Score | Key Context & Life Details |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Nnamdi** | Spouse / Partner | Daily (Today) | Daily | 🟢 Green | Relocation co-pilot, clinical oncology/infusion RN, Tampa Riverwalk outing today. |
-| **Amara (5)** | Daughter | Daily (Today) | Daily | 🟢 Green | Kindergarten transition & China international schooling prep. |
-| **Anaya (1)** | Daughter | Daily (Today) | Daily | 🟢 Green | Mild warmth/fever monitoring; pediatric check-in follow-up. |
-| *[Extended Family / In-Laws]* | *[Pending]* | — | ~1 Week | 🟡 Setup | Add parents, siblings, in-laws for weekly touchpoints. |
+| **Mommy** | Mother | Regular SMS / Text | Bi-weekly | 🟢 Green | Close regular contact. Core foundation. |
+| **Dad** | Father | WhatsApp / Call | Bi-weekly | 🟡 Check-in | Check in on life and updates. |
+| **Wesley** | Brother | Regular SMS / Text | Bi-weekly | 🟢 Green | Regular text communication. |
+| **Bilal** | Brother | WhatsApp / Text | Bi-weekly | 🟡 Check-in | Sibling check-in. |
+| **Danyiel** | Brother | WhatsApp / Text | Bi-weekly | 🟡 Check-in | Sibling check-in. |
+| **Summer** | Sister | WhatsApp / Text | Bi-weekly | 🟡 Check-in | Sister bond; family updates. |
+| **Charlie** | Stepfather | WhatsApp / Text | Bi-weekly | 🟡 Check-in | Family check-in. |
+| **Filza** | Stepmother | WhatsApp / Text | Bi-weekly | 🟡 Check-in | Family check-in. |
 
 ---
 
-### B. Friends (Priority: High)
+### B. In-Laws & Nigeria / Ireland Family Network
 
-| Name | Relationship / Circle | Last Contact | Cadence | Health Score | Topics & Important Dates |
+| Name | Relationship | Location | Preferred Channel | Health Score | Critical Life Milestones & Context |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| *[Pending Entry]* | — | — | 2–3 Weeks | 🟡 Setup | Add close friends, Florida locals, college/grad school alumni. |
+| **Nnamdi** | Husband / Partner | St. Pete, FL | In Person | 🟢 Green | Partner, clinical oncology RN, relocation co-pilot. |
+| **Chinedu (Nedu)** | Brother-in-Law (Nnamdi's brother) | Ireland 🇮🇪 | WhatsApp | 🟢 Green | Lives in Ireland. |
+| **Christiana** | Sister-in-Law (Nedu's wife) | Ireland 🇮🇪 | WhatsApp | 🟢 Green | **PREGNANT!** High-priority care check-ins (pregnancy journey). |
+| **Chigozie** | Brother-in-Law (Nnamdi's brother) | Ireland 🇮🇪 | WhatsApp | 🟢 Green | Lives in Ireland; married to Qualaar. |
+| **Qualaar (Kwala)** | Sister-in-Law (Chigozie's wife) | Nigeria 🇳🇬 | WhatsApp | 🟢 Green | **NEW BABY!** Just had baby **Chizzerum**; also mother to daughter **Chizzy**. High-priority postpartum & baby congratulations. |
+| **Chizzy** | Niece (Chigozie & Qualaar's daughter) | Nigeria 🇳🇬 | WhatsApp | 🟢 Green | Big sister to newborn Chizzerum. |
+| **Chizzerum** | Newborn Niece/Nephew | Nigeria 🇳🇬 | WhatsApp | 🟢 Green | Newly born baby! |
+| **Udo** | Brother-in-Law (Nnamdi's brother) | — | WhatsApp | 🟡 Check-in | Brother-in-law check-in. |
+| **Emeka** | Father-in-Law (Nnamdi's Dad) | Nigeria 🇳🇬 | WhatsApp | 🟡 Check-in | Patriarch; check in on health and family news. |
+| **Ijemy** | Mother-in-Law (Emeka's wife) | Nigeria 🇳🇬 | WhatsApp | 🟡 Check-in | In-law family bond. |
 
 ---
 
-### C. Business & Industry Peers (Priority: Active)
+## 2. Friends Directory (Priority: High)
 
-| Name | Organization / Focus | Last Contact | Cadence | Health Score | Strategic Context |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Dr. Paulcris Okpala** | CSUSB / Scholar Collaborator | Historic | ~1 Month | 🟡 Check-in | Co-presenter at ICERI 2018 (Seville, Spain) & CSUSB faculty peer. Great reference & academic bridge. |
-| *[Charisma Univ Colleagues]* | Higher Education | Ongoing | Active | 🟢 Green | Director of Student Support Services peers. |
-| *[CSUSB Alumni / Mentees]* | Healthcare Admin | Ongoing | Active | 🟢 Green | Potential early community members for The HCA Daily. |
+| Name | Relationship / Circle | Location | Health Score | Notes & Recent Context |
+| :--- | :--- | :--- | :--- | :--- |
+| **Sara McNatt** | Best Friend in FL | Florida | 🟢 Strong Bond | Core Florida support system. |
+| **Troy McNatt** | Friend (Sara's husband) | Florida | 🟢 Active | **Reached out last night!** Needs prompt follow-up / reply today. |
+| **Yvonne** | Best Friend in FL | Florida | 🟢 Strong Bond | Top Florida friendship. |
+| **Cassandra** | Friend | Florida | 🟡 Check-in | Florida friend circle. |
+| **Sierra** | Friend | Florida | 🟡 Check-in | Florida friend circle. |
 
 ---
 
-## 2. Weekly Relationship Dashboard Protocol
-* **Sunday Check-in:** Who needs love, who has an upcoming birthday/anniversary, and 1 intentional reconnection recommendation.
-* **Cadence Alerts:**
-  - Family: Flag if >7 days without meaningful contact.
-  - Friends: Flag if >21 days.
-  - Business/Mentors: Flag if >30 days.
+## 3. WhatsApp Integration Bridge Strategy
+* Most family communications run through WhatsApp (Ireland and Nigeria family groups + international reach).
+* **Automated Bridge:** We can configure the **Hermes WhatsApp Gateway bridge** (using QR code linking or WhatsApp Business Webhook) so I can maintain real-time sync with these family threads while keeping all messages draft-only for your approval.
+
+---
+
+## 4. Immediate High-Priority Relational Actions for Today
+1. **Troy & Sara McNatt:** Follow up on Troy's message from last night (*"Hey Troy, saw your message last night!..."*).
+2. **Qualaar & Chigozie:** Send love to Qualaar in Nigeria congratulating her on baby **Chizzerum** and checking on big sister **Chizzy**!
+3. **Christiana & Nedu:** Send a warm check-in to Christiana in Ireland asking how her pregnancy is treating her this week.

@@ -25,7 +25,7 @@ We just published our flagship guide:
 
 If you want to stop guessing what hospital executives hire for and start translating your experience into quantified operational outcomes, explore the platform and join the community below:
 
-👉 Read the playbook and explore the AI Career Navigator: https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00
+👉 Read the playbook and explore the AI Career Navigator: https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00
 
 What’s the biggest hurdle you faced when breaking into healthcare leadership? Drop your thoughts below 👇
 
@@ -79,8 +79,8 @@ Notice the shift? You went from someone who punches a clock to someone who prote
 
 If you're preparing for your next career jump, you don't have to navigate it alone. We built the HCA Career Navigator—your 24/7 executive career advisor trained on healthcare systems, wRVU benchmarks, and RCM workflows.
 
-👉 Start your Navigator monthly access ($29/mo): https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00
-👉 Lock in annual access ($199/yr — save 43%): https://buy.stripe.com/test_8x228s3OvbTe1E9a3kgMw01
+👉 Start your Navigator monthly access ($29/mo): https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00
+👉 Lock in annual access ($199/yr — save 43%): https://buy.stripe.com/8x228s3OvbTe1E9a3kgMw01
 
 To your leadership success,
 

@@ -42,7 +42,7 @@ New videos every week. Subscribe and join over 6,000+ healthcare leaders buildin
 
 ## 2. Pinned Links (Under Channel Header)
 1. **Primary Link:** `Free HCA Resume Playbook` → `https://thehcadaily.com`
-2. **Secondary Link:** `HCA Career Navigator (AI Advisor)` → `https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00`
+2. **Secondary Link:** `HCA Career Navigator (AI Advisor)` → `https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00`
 3. **LinkedIn:** `Connect with Dr. Ashley` → `https://www.linkedin.com/in/dr-ashley-hussain-okorafor-dba-mha-03032b40/`
 
 ---
@@ -59,10 +59,10 @@ Stop listing duties. Learn the 3-part formula to quantify your clinical and oper
 
 🤖 24/7 AI Career Advisory: The HCA Career Navigator
 Line-by-line resume reviews, regional MGMA compensation benchmarks, and executive interview prep:
-👉 https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00
+👉 https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00
 
 🎤 Practice for your next panel interview with the HCA Interview Coach:
-👉 https://buy.stripe.com/test_9B6bJ2fxd8H2gz3b7ogMw03
+👉 https://buy.stripe.com/9B6bJ2fxd8H2gz3b7ogMw03
 
 ---
 TIMESTAMPS:

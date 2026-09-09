@@ -175,8 +175,8 @@
 **Special Community Offer:**  
 You can try The HCA Career Navigator for just **$29/month** (or save over 40% with our annual plan).
 
-👉 **[Start Navigator Monthly ($29/mo)](https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00)**  
-👉 **[Lock in Annual Access ($199/yr — Best Value)](https://buy.stripe.com/test_8x228s3OvbTe1E9a3kgMw01)**
+👉 **[Start Navigator Monthly ($29/mo)](https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00)**  
+👉 **[Lock in Annual Access ($199/yr — Best Value)](https://buy.stripe.com/8x228s3OvbTe1E9a3kgMw01)**
 
 Whether you’re gearing up for a fellowship, stepping into your first practice management role, or aiming for the C-Suite, we’re here to help you get there faster.
 > 

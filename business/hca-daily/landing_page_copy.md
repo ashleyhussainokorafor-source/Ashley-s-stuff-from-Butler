@@ -48,7 +48,7 @@
   * **Resume & LinkedIn Optimization:** Transform passive duty lists into quantified operational wins that beat applicant tracking systems.
   * **Real-Time Salary & Negotiation Playbook:** Know regional MGMA/ACHE compensation bands before you state your number.
   * **Credential Roadmap:** Tailored certification paths (FACHE, CMPE, CRCR) matched to your specific career milestone.
-* *CTA:* [Start 7-Day Navigator Trial](https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00) | [Annual Plan — 43% Off](https://buy.stripe.com/test_8x228s3OvbTe1E9a3kgMw01)
+* *CTA:* [Start 7-Day Navigator Trial](https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00) | [Annual Plan — 43% Off](https://buy.stripe.com/8x228s3OvbTe1E9a3kgMw01)
 
 ### Tier 3: The HCA Interview Coach (On-Demand / $19–$49)
 * *Best For:* Finalists with upcoming screening, panel, or executive committee interviews.
@@ -56,7 +56,7 @@
   * Role-specific AI mock interviews (Practice Manager, Hospital Ops Director, HIM, Revenue Cycle).
   * Real-time STAR method critique and operational vocabulary scoring.
   * Hard follow-up drilling on staffing shortages, physician disputes, and budget cuts.
-* *CTA:* [Book Single Mock Session ($19)](https://buy.stripe.com/test_9B66oI98PbTeaaF8ZggMw02) | [Get 3-Session Prep Pack ($49)](https://buy.stripe.com/test_9B6bJ2fxd8H2gz3b7ogMw03)
+* *CTA:* [Book Single Mock Session ($19)](https://buy.stripe.com/9B66oI98PbTeaaF8ZggMw02) | [Get 3-Session Prep Pack ($49)](https://buy.stripe.com/9B6bJ2fxd8H2gz3b7ogMw03)
 
 ---
 

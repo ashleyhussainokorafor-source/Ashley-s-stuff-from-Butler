@@ -50,7 +50,7 @@
 > Ask your lead biller for your clinic's **Clean Claim Rate** and **Third Next Available Appointment (TNAA)**. When you master those two numbers, you run the clinic—the clinic doesn't run you.
 > 
 > Ready to master these frameworks for your target role? Use the **HCA Career Navigator** to audit your operational metrics:  
-> 👉 [Start Navigator ($29/mo)](https://buy.stripe.com/test_5kQ8wQacT4qM4QlfnEgMw00)
+> 👉 [Start Navigator ($29/mo)](https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00)
 > 
 > Stay strategic,  
 > **Dr. Ashley Hussain-Okorafor**  

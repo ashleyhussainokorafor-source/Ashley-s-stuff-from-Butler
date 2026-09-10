@@ -477,3 +477,5 @@
 - **Result:** The system saved $540K a year, no patients lost meaningful access — the shuttle and extended hours actually cut average travel time by four minutes and imaging third-next-available fell three days — and 91% of affected staff accepted transfers, with no gap in mammography screening volume.
 **Metrics to name:** Cost per scan and cost per case; unit contribution margin; payer mix; patient travel time and access; third-next-available for imaging; staff retention and transfer rate; utilization.
 **Trap to avoid:** Defending the decision on margin alone — the durable answer shows you protected access, supported staff, and used data transparently before the decision was announced.
+
+---

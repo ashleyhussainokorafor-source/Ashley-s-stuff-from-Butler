@@ -53,3 +53,8 @@ hermes_state.db
 .dev.vars
 .dev.vars.*
 wrangler.toml.local
+
+# Cloudflare Workers build artifacts
+.wrangler/
+node_modules/
+dist/

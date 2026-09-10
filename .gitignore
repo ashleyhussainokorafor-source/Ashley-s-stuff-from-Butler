@@ -47,3 +47,6 @@ hermes_state.db
 # IDE
 .vscode/
 .idea/
+# Git credential store (never commit)
+.git-credentials
+.gitconfig.local

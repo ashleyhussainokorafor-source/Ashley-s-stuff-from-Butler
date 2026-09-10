@@ -78,24 +78,46 @@ The current ebook is the **worst** performing format in every dataset (0.9–8% 
 
 **Then:** a 6-email sequence (Day 0, 1, 3, 5, 7, 9) that segments by the lowest-scoring dimension and converts to the Navigator trial on Day 7.
 
-### The offer ladder (both offers confirmed — phased)
+### The offer ladder — REBUILT FOR ZERO LIVE TIME
 
-| Offer | Price | Live by | Year-1 revenue |
+**Design constraint (Ashley, Sept 10):** maximum automation, maximum income, no 1:1 customer calls — a 5-year-old and a 1-year-old at home. The earlier $1,995 done-with-you package required 8–10 hours of live time *per client* and is **disqualified**.
+
+**The finding that matters:** the automated version doesn't just fit her life — **it earns more.** The 1:1 package at 6 clients grosses ~$12,000 for 55+ hours of her calendar. The same content, sold self-paced to ~95 buyers, grosses **$19,000–28,000 and keeps selling every month after**, with zero marginal time. *Low price × high volume × zero marginal time beats high price × low volume × her personal calendar.*
+
+| Rung | Price | What it is | Zero-live? |
 |---|---|---|---|
-| **A — Done-With-You Application Package** (1:1) | $1,995 (founding $1,495) | **1–2 weeks** | ~$19,950 |
-| **B — 8-Week Group "Career Launch" Cohort** | $997 (early-bird $797) | Jan 2027 | ~$34,895 |
-| **C — Employer/University Sponsored Cohort** (B2B) | $4,000–5,000 | Month 9+ | ~$4,500 |
+| Free Starter Kit | $0 | Lead magnet → email list | ✅ |
+| **HCA Interview Answer Vault** | **$27** | 150 role-specific questions + STAR scripts + salary scripts | ✅ |
+| **HCA Career Accelerator** | **$297** | 6-module self-paced course + template vault | ✅ |
+| **HCA Application Accelerator** | **$497** | *Replaces the $1,995 package* — course + vault + AI Navigator + AI Coach + template pack | ✅ |
+| HCA Daily Insider membership | $39/mo · $347/yr | Ongoing access, monthly drops, **pre-recorded** Q&A | ✅ |
+| HCA Executive Director Track | $997 | Premium program, async AI-scored simulations | ✅ |
 
-**Base case: ~$59,345 over 12 months** on top of existing subscriptions. Conservative $26,925 · Optimistic $81,795.
+**Year-1 realistic: ~$50,000** (slow $24,000 · base ~$52,000 · strong ~$86,000) — all delivered by software, Stripe, and email sequences.
 
-**Launch order — A first, B second (≈90 days later), C last:**
+### Build order — and the first money is small on purpose
 
-- **A goes first because it costs almost nothing to build** — it repackages the resume playbook and interview coach that already exist. Highest revenue per hour (~$200–250/hr of Ashley's time).
-- **The timing is a buying window:** MHA/MPH applications are due Dec–Feb; administrative fellowships recruit Sep–Nov. Right now.
-- **Critically, A produces the student success stories she currently lacks** — and those testimonials are exactly what make a $997 cohort sell out and a $5,000 sponsorship credible.
-- **B is the strategic flagship, not the opener** — it's the only offer that scales beyond her calendar (one-to-many, ~2.5 hrs/seat), and ACHE selling out a $1,099 equivalent proves this buyer pays $1,000+. But it needs 40–60 hours of construction, so rushing it risks an empty first cohort.
+**Build the $27 Interview Answer Vault FIRST** (~20 hours). It sells from the first welcome email, brings cash within **2–3 weeks**, and proves the funnel before anything bigger is built. Then ship the **$297 course 30–45 days later** — that's the real revenue line (~$19,000/yr, launched 3× a year).
 
-Pricing benchmarks: ACHE $1,099/$1,249 · Accepted.com $3,400–$4,500 packages and $407–420/hr · BeMo $3,997–$11,097. The $1,995 price is a deliberate value wedge *under* Accepted, not a premium.
+**Why the $497 bundle matters:** it's the productized form of the $1,995 offer. Same outcome path — resume rebuilt, application targeted, interviews scored, salary scripted — at one-quarter the price, to unlimited buyers, with no calendar slot. Offered as a one-click upgrade at checkout (order bumps convert 35–40% of the time).
+
+### Phase 2b — Institutional licensing (capped side channel, NOT primary)
+
+Verdict: **conditionally viable, deliberately capped.** The revenue-per-transaction is the best available — one $27,000 career-center license equals **136 annual subscribers**; 2–4 deals a year roughly doubles a several-hundred-subscriber business. Ashley is unusually well-positioned: DBA, former CSUSB lecturer, warm California higher-ed relationships, prior institutional outreach.
+
+**The honest caveat:** this is *not* low-touch in the near term. The binding constraint is a **12–18 month approval cycle** (champion → buyer → IT security → accessibility → procurement → legal) plus FERPA/WCAG compliance gates. No automation fixes that timeline.
+
+**How to run it as close to hands-off as possible:**
+- **Best first target:** one California CAHME-accredited MHA/MPH program already in her CSUSB network.
+- **Lead with a free 90-day pilot, never a demo.** Pilots with measured outcomes convert to full purchase 2.5–3× more often.
+- **Engineer pricing under procurement thresholds** — $4,500–7,500 for a program, $10,000–27,000 for a career center. Crossing $25,000 triggers competitive bid, and incumbents (VMock, Handshake, Symplicity) get invited to undercut.
+- **Close with an auto-generated outcome report**, not a meeting. Send report + price sheet + self-serve checkout link.
+- **Cap live calls at 3–4 per year**, batched into one two-week window, signature-stage only — or hire a fractional rep at 15–20% commission.
+- **The only genuinely low-touch version:** association white-label. NCAF (109 member organizations), CAHME, and state ACHE chapters earn 70–85% margins on education and are actively hunting non-dues revenue — they supply the sales team, member list, and billing.
+
+**Stop-loss:** if no paying institution has signed within 12 months of the first pilot, or servicing exceeds 5 hours/month, exit the channel.
+
+**The rule for this whole phase:** the bottleneck is no longer her calendar — it is **traffic**. Income = traffic × conversion × price, with no ceiling. Which is why Phase 3 stops being "marketing" and becomes the actual revenue engine.
 
 ### What to avoid
 - Unlimited free 1:1 resume reviews or mock interviews — they consume the one resource that cannot scale: her time. Do it as a **monthly group session** instead (doubles as a content asset).

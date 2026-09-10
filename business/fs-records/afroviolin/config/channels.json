@@ -1,0 +1,21 @@
+{
+  "profiles": {
+    "afroviolin_v1": {
+      "channel_name": "Afroviolin (Primary)",
+      "channel_id": "PENDING_VERIFICATION",
+      "token_file": "artifacts/youtube_token.json",
+      "type": "owner",
+      "niche": "afro-highlife violin instrumentals",
+      "status": "active"
+    },
+    "afroviolin_v2": {
+      "channel_name": "Afroviolin Genre 2 (Pending)",
+      "channel_id": "PENDING_AUTH",
+      "token_file": "artifacts/youtube_token_v2.json",
+      "type": "owner",
+      "niche": "TBD (e.g., Amapiano Focus Beats)",
+      "status": "pending_desktop_auth"
+    }
+  },
+  "default_profile": "afroviolin_v1"
+}

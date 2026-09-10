@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-06-22T21:44:20.179642Z",
+  "results": [
+    {
+      "track_id": "1f0bf6bf-e398-4260-a339-408f71eaac45",
+      "display": "Dear Papa Ooo",
+      "error": "{\"error\":\"Validation of body failed\",\"issues\":[{\"code\":\"invalid_union\",\"errors\":[[{\"code\":\"invalid_union\",\"errors\":[[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}],[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}],[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}]],\"path\":[],\"message\":\"Invalid input\"}],[{\"expected\":\"array\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected array, received undefined\"}]],\"path\":[\"promptImage\"],\"message\":\"Invalid input\"},{\"code\":\"invalid_value\",\"values\":[\"1280:720\",\"720:1280\",\"1104:832\",\"832:1104\",\"960:960\",\"1584:672\"],\"path\":[\"ratio\"],\"message\":\"Invalid option: expected one of \\\"1280:720\\\"|\\\"720:1280\\\"|\\\"1104:832\\\"|\\\"832:1104\\\"|\\\"960:960\\\"|\\\"1584:672\\\"\"}],\"docUrl\":\"https://docs.dev.runwayml.com/api\"}"
+    },
+    {
+      "track_id": "703f3018-efaa-4295-af07-3436e3ef07eb",
+      "display": "\u1ee4da Oge",
+      "error": "{\"error\":\"Validation of body failed\",\"issues\":[{\"code\":\"invalid_union\",\"errors\":[[{\"code\":\"invalid_union\",\"errors\":[[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}],[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}],[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}]],\"path\":[],\"message\":\"Invalid input\"}],[{\"expected\":\"array\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected array, received undefined\"}]],\"path\":[\"promptImage\"],\"message\":\"Invalid input\"},{\"code\":\"invalid_value\",\"values\":[\"1280:720\",\"720:1280\",\"1104:832\",\"832:1104\",\"960:960\",\"1584:672\"],\"path\":[\"ratio\"],\"message\":\"Invalid option: expected one of \\\"1280:720\\\"|\\\"720:1280\\\"|\\\"1104:832\\\"|\\\"832:1104\\\"|\\\"960:960\\\"|\\\"1584:672\\\"\"}],\"docUrl\":\"https://docs.dev.runwayml.com/api\"}"
+    },
+    {
+      "track_id": "3d2d0bc4-adc4-400f-b592-b9a8f07cd29c",
+      "display": "Beautiful God",
+      "error": "{\"error\":\"Validation of body failed\",\"issues\":[{\"code\":\"invalid_union\",\"errors\":[[{\"code\":\"invalid_union\",\"errors\":[[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}],[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}],[{\"expected\":\"string\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected string, received undefined\"}]],\"path\":[],\"message\":\"Invalid input\"}],[{\"expected\":\"array\",\"code\":\"invalid_type\",\"path\":[],\"message\":\"Invalid input: expected array, received undefined\"}]],\"path\":[\"promptImage\"],\"message\":\"Invalid input\"},{\"code\":\"unrecognized_keys\",\"keys\":[\"prompt_text\",\"seed\",\"watermark\"],\"path\":[],\"message\":\"Unrecognized keys: \\\"prompt_text\\\", \\\"seed\\\", \\\"watermark\\\"\"}],\"docUrl\":\"https://docs.dev.runwayml.com/api\"}"
+    }
+  ]
+}

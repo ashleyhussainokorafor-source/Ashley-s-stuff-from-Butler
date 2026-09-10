@@ -1,0 +1,2 @@
+# Afroviolin Git LFS tracking (optional for very large metadata)
+*.json filter=lfs diff=lfs merge=lfs -text

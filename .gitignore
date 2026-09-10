@@ -8,6 +8,15 @@ Thumbs.db
 .env.*
 *.pem
 *.key
+# OAuth tokens / service accounts / secrets (regardless of extension)
+client_secret*.json
+youtube_token*.json
+*service-account*.json
+pending_verifier*.json
+pending_flow*.pkl
+google_token*.json
+auth.json
+*_secret*.json
 
 # Python
 __pycache__/

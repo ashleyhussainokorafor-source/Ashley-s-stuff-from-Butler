@@ -1,0 +1,6 @@
+# Afroviolin .gitignore
+.env
+*.env
+artifacts/backups/
+__pycache__/
+*.pyc

@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "channel_name": "Afroviolin",
+  "default_template": "afroviolin_standard",
+  "templates": {
+    "afroviolin_standard": {
+      "title_template": "{clean_title} | Afroviolin Official",
+      "description_template": "Afroviolin presents \"{clean_title}\" \u2014 a {mood_tag} {genre} instrumental where Afrobeat meets classical violin.\n\n\ud83c\udfb5 Listen / Stream: [link]\n\ud83c\udfa8 Visuals generated with Runway AI\n\n{prompt_summary}\n\n{hashtags}\n",
+      "tag_pool": [
+        "Afroviolin",
+        "Afrobeat",
+        "Violin",
+        "Afropop",
+        "ClassicalFusion",
+        "Instrumental",
+        "AfroFusion",
+        "Strings",
+        "WorldMusic",
+        "Amapiano",
+        "Highlife",
+        "GospelInstrumental",
+        "WorshipInstrumental",
+        "RelaxingMusic",
+        "StudyMusic",
+        "Ambient",
+        "Cinematic",
+        "Orchestral",
+        "Beats",
+        "AfricanMusic"
+      ]
+    }
+  }
+}

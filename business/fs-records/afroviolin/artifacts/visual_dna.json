@@ -1,0 +1,113 @@
+{
+  "dna_id": "afroviolin_v1",
+  "status": "locked",
+  "created_at": "2026-06-22T15:23:11.303032Z",
+  "brand_summary": "Afroviolin = the meeting point of classical violin elegance and vibrant West-African Afrobeat energy. Warm, cinematic, culturally rich, premium.",
+  "locked_seeds": [
+    42,
+    77,
+    133
+  ],
+  "color_palettes": {
+    "warm_cinematic": {
+      "hex": "#D4A373,#E9C46A,#2A9D8F",
+      "use": "Default / soulful & emotional tracks (tributes, worship, calm)"
+    },
+    "afrobeat_neon": {
+      "hex": "#FF006E,#FB5607,#8338EC",
+      "use": "High-energy / dance tracks (energetic, upbeat, amapiano)"
+    },
+    "elegant_fusion": {
+      "hex": "#264653,#E76F51,#F4A261",
+      "use": "Premium / cinematic singles & lead tracks"
+    }
+  },
+  "camera_motion_presets": {
+    "intimate_static": "subtle breathing, shallow depth of field, slow push-in on violin strings",
+    "energetic_orbit": "slow orbit around the violinist, warm backlight, rhythmic light pulses on beat",
+    "cinematic_pan": "horizontal dolly, golden hour lighting, dust particles in light beams"
+  },
+  "recurring_visual_motifs": [
+    "elegant violin (close-up of strings, bridge, scroll)",
+    "warm African golden-hour light",
+    "subtle Adinkra / Nsibidi inspired patterns as background texture",
+    "kente/ankara color accents woven into lighting and bokeh",
+    "film grain + soft cinematic bloom",
+    "abstract rhythmic particle waves synced to Afrobeat pulse"
+  ],
+  "prompt_templates": {
+    "options": [
+      {
+        "template_id": "afroviolin_cinematic_portrait",
+        "name": "Option 1 \u2014 Cinematic Cultural Portrait",
+        "vibe": "A solo violinist of African heritage performing in richly lit, cinematic spaces. Human, emotional, premium. Best for storytelling & tribute tracks.",
+        "base": "Cinematic close-up of an elegant African violinist playing a wooden violin, {energy_level} Afrobeat rhythm visualized through {motion_preset}, color palette {color_palette}, warm golden-hour cinematic lighting, subtle Adinkra patterns in the background, kente color accents in the bokeh, cultural fusion aesthetic, {mood_tag} atmosphere, shallow depth of field, 4K, film grain, photoreal",
+        "variables": [
+          "energy_level",
+          "motion_preset",
+          "color_palette",
+          "mood_tag"
+        ]
+      },
+      {
+        "template_id": "afroviolin_abstract_rhythm",
+        "name": "Option 2 \u2014 Abstract Rhythm Visualizer",
+        "vibe": "Violin floating in abstract, particle-driven dreamscapes that pulse with the beat. Modern, looping-friendly, low-friction to mass produce. Best for batch/filler tracks.",
+        "base": "An elegant glowing violin floating in an abstract Afrofuturist dreamscape, {energy_level} Afrobeat rhythm visualized through {motion_preset}, flowing particle waves and light ribbons in color palette {color_palette}, geometric African patterns dissolving into light, {mood_tag} mood, volumetric lighting, seamless loop, 4K, cinematic film grain",
+        "variables": [
+          "energy_level",
+          "motion_preset",
+          "color_palette",
+          "mood_tag"
+        ]
+      },
+      {
+        "template_id": "afroviolin_heritage_scene",
+        "name": "Option 3 \u2014 Heritage Landscape Scene",
+        "vibe": "Violin within evocative African landscapes & textures (savanna dusk, textile markets, drums). Documentary-cinematic, rich storytelling. Best for premium lead singles.",
+        "base": "Cinematic scene of an ornate violin resting amid a richly textured African setting (savanna at dusk / vibrant textile market / hand-carved drums), {energy_level} Afrobeat energy expressed through {motion_preset}, color palette {color_palette}, warm directional sunlight, atmospheric haze and dust motes, {mood_tag} emotional tone, cultural authenticity, 4K, anamorphic, film grain",
+        "variables": [
+          "energy_level",
+          "motion_preset",
+          "color_palette",
+          "mood_tag"
+        ]
+      }
+    ],
+    "chosen_template_id": "HYBRID"
+  },
+  "auto_mapping_rules": {
+    "energy_level_from_bpm": {
+      "low": "bpm < 100",
+      "medium": "100 <= bpm < 125",
+      "high": "bpm >= 125"
+    },
+    "motion_preset_from_mood": {
+      "calm": "intimate_static",
+      "neutral": "intimate_static",
+      "intense": "cinematic_pan",
+      "upbeat": "energetic_orbit",
+      "groovy": "energetic_orbit",
+      "energetic": "energetic_orbit"
+    },
+    "color_palette_from_mood": {
+      "calm": "warm_cinematic",
+      "neutral": "warm_cinematic",
+      "intense": "elegant_fusion",
+      "upbeat": "afrobeat_neon",
+      "groovy": "afrobeat_neon",
+      "energetic": "afrobeat_neon"
+    }
+  },
+  "locked_at": "2026-06-22T16:12:19.068069Z",
+  "hybrid_config": {
+    "default_template_id": "afroviolin_abstract_rhythm",
+    "lead_single_template_id": "afroviolin_cinematic_portrait",
+    "premium_feature_template_id": "afroviolin_heritage_scene",
+    "assignment_rules": {
+      "lead_single": "tracks flagged priority=high OR named singles -> Portrait (Gen-4 Turbo)",
+      "premium_feature": "emotionally rich / tribute / worship lead tracks -> Heritage",
+      "default": "all other tracks -> Abstract Visualizer (Seedance 2.0 Fast)"
+    }
+  }
+}

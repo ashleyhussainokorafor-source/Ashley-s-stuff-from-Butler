@@ -1,0 +1,16 @@
+# Afroviolin .gitignore
+.env
+*.env
+client_secret.json
+youtube_token*.json
+artifacts/backups/
+__pycache__/
+*.pyc
+*.log
+pending_*.pkl
+system_state.json
+logs/
+artifacts/afroviolin_tracks/*/*.mp4
+artifacts/afroviolin_tracks/*/*.mp3
+artifacts/afroviolin_tracks/*/final_video*.mp4
+artifacts/afroviolin_tracks/*/seed_image.png

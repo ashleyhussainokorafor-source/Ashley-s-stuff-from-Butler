@@ -21,6 +21,8 @@ interface Env {
   ASSETS: Fetcher;
   OPENROUTER_API_KEY: string;
   AI_MODEL?: string;
+  /** Optional email-platform endpoint (ConvertKit/MailerLite/etc). When unset, leads are logged. */
+  LEAD_WEBHOOK?: string;
 }
 
 const DEFAULT_MODEL = "deepseek/deepseek-v4-pro-0813";
@@ -36,6 +38,9 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/coach": "/coach.html",
   "/interview": "/coach.html",
   "/simulator": "/coach.html",
+  "/scorecard": "/scorecard.html",
+  "/readiness": "/scorecard.html",
+  "/quiz": "/scorecard.html",
 };
 
 interface ChatMessage {
@@ -136,6 +141,40 @@ async function handleCoach(request: Request, env: Env): Promise<Response> {
   }
 }
 
+/** Scorecard lead capture. Never fails the visitor — always returns ok on valid input. */
+async function handleScorecard(request: Request, env: Env): Promise<Response> {
+  let lead: Record<string, unknown> = {};
+  try {
+    lead = (await request.json()) as Record<string, unknown>;
+  } catch {
+    return json({ ok: false, error: "invalid json" }, 400);
+  }
+
+  const email = String(lead.email ?? "").trim();
+  if (!email || !email.includes("@")) {
+    return json({ ok: false, error: "a valid email is required" }, 400);
+  }
+
+  const record = { ...lead, email, receivedAt: new Date().toISOString() };
+
+  if (env.LEAD_WEBHOOK) {
+    try {
+      await fetch(env.LEAD_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(record),
+      });
+    } catch (error) {
+      // A broken email platform must not stop the visitor seeing their score.
+      console.error("lead webhook failed", String(error));
+    }
+  } else {
+    console.log("SCORECARD_LEAD", JSON.stringify(record));
+  }
+
+  return json({ ok: true });
+}
+
 /** Fetch the asset behind a rewritten path. */
 function serveAsset(request: Request, env: Env, pathname: string): Promise<Response> {
   const url = new URL(request.url);
@@ -150,6 +189,7 @@ export default {
     if (request.method === "POST") {
       if (url.pathname === "/api/chat") return handleChat(request, env);
       if (url.pathname === "/api/coach") return handleCoach(request, env);
+      if (url.pathname === "/api/scorecard") return handleScorecard(request, env);
       return json({ error: "Not found" }, 404);
     }
 

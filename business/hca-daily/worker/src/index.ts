@@ -41,6 +41,9 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/scorecard": "/scorecard.html",
   "/readiness": "/scorecard.html",
   "/quiz": "/scorecard.html",
+  "/vault": "/vault.html",
+  "/sales": "/vault.html",
+  "/store": "/vault.html",
 };
 
 interface ChatMessage {

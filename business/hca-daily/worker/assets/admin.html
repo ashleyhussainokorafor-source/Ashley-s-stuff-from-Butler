@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HCA Daily — Leads</title>
+<style>
+  :root{ --navy:#0b2545; --teal:#0d9488; --gold:#c9a227; --ink:#14181f; --muted:#5b6572; --bg:#f7f9fb; --line:#e4e9f0 }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;font-size:15px;padding:28px}
+  .wrap{max-width:1000px;margin:0 auto}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:12px}
+  h1{font-size:24px;color:var(--navy)}
+  .badge{background:var(--teal);color:#fff;font-weight:700;font-size:13px;border-radius:20px;padding:4px 14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th{background:var(--navy);color:#fff;text-align:left;padding:11px 14px;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  td{padding:12px 14px;border-top:1px solid var(--line);font-size:14px;vertical-align:top}
+  tr:hover td{background:#f4f8fb}
+  .score{font-weight:800;color:var(--navy)}
+  .dims{display:flex;gap:10px;flex-wrap:wrap}
+  .dim{font-size:12px;color:var(--muted)}
+  .dim b{color:var(--teal)}
+  .empty{padding:50px;text-align:center;color:var(--muted)}
+  .gate{max-width:360px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;text-align:center}
+  .gate h2{font-size:19px;color:var(--navy);margin-bottom:8px}
+  .gate p{color:var(--muted);font-size:14px;margin-bottom:18px}
+  input[type=password],input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;font-size:15px;margin-bottom:12px}
+  button{width:100%;background:var(--gold);color:#1a1400;font-weight:800;font-size:15px;padding:13px;border:none;border-radius:9px;cursor:pointer}
+  button:hover{filter:brightness(1.03)}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .ghost{background:transparent;border:1px solid var(--line);color:var(--muted);font-weight:600;width:auto;padding:8px 14px}
+  .err{color:#b91c1c;font-size:13px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div id="gate" class="gate" style="display:none">
+    <h2>HCA Daily Leads</h2>
+    <p>Enter your admin key to view captured leads.</p>
+    <input id="tokenInput" type="password" placeholder="Admin key" autocomplete="off">
+    <button onclick="unlock()">Unlock</button>
+    <div id="gateErr" class="err"></div>
+  </div>
+
+  <div id="dash" style="display:none">
+    <header>
+      <h1>HCA Daily — Scorecard Leads</h1>
+      <div class="toolbar">
+        <span id="count" class="badge">0 leads</span>
+        <button class="ghost" onclick="refresh()">↻ Refresh</button>
+        <button class="ghost" onclick="logout()">Lock</button>
+      </div>
+    </header>
+    <div class="card">
+      <table id="tbl">
+        <thead><tr>
+          <th>When</th><th>Email</th><th>Name</th><th>Score</th><th>Dimensions</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div id="empty" class="empty" style="display:none">No leads yet. Share the scorecard link to start capturing.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const LS_KEY = "hca_daily_admin_token";
+
+function token() { return localStorage.getItem(LS_KEY) || ""; }
+
+function show(which) {
+  document.getElementById("gate").style.display = which === "gate" ? "block" : "none";
+  document.getElementById("dash").style.display = which === "dash" ? "block" : "none";
+}
+
+async function fetchLeads() {
+  const r = await fetch("/admin/leads?token=" + encodeURIComponent(token()));
+  if (r.status === 401) return null;
+  return await r.json();
+}
+
+async function unlock() {
+  const t = document.getElementById("tokenInput").value.trim();
+  if (!t) return;
+  localStorage.setItem(LS_KEY, t);
+  const data = await fetchLeads();
+  if (data === null) {
+    localStorage.removeItem(LS_KEY);
+    document.getElementById("gateErr").textContent = "That key didn't work. Try again.";
+    return;
+  }
+  render(data);
+}
+
+function render(data) {
+  show("dash");
+  document.getElementById("count").textContent = (data.count || 0) + " leads";
+  const tbody = document.getElementById("tbody");
+  const empty = document.getElementById("empty");
+  tbody.innerHTML = "";
+  if (!data.leads || data.leads.length === 0) {
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+  for (const l of data.leads) {
+    const dims = l.dimensions || {};
+    const when = (l.receivedAt || l.ts || "").replace("T", " ").slice(0, 19);
+    const dimLabels = {
+      resume: "Resume", vocabulary: "Vocab", linkedin: "LinkedIn", interview: "Interview",
+      ops: "Ops", quality: "Quality", revenue: "Rev Cycle"
+    };
+    let dimHtml = Object.entries(dims).map(([k, v]) =>
+      `<span class="dim">${dimLabels[k] || k}: <b>${v}</b></span>`).join("");
+    if (!dimHtml) dimHtml = '<span class="dim">—</span>';
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td style="white-space:nowrap;color:var(--muted)">${when}</td>
+      <td>${l.email || ""}</td>
+      <td>${l.name || ""}</td>
+      <td class="score">${l.overall ?? "—"}</td>
+      <td><div class="dims">${dimHtml}</div></td>`;
+    tbody.appendChild(tr);
+  }
+}
+
+function refresh() { fetchLeads().then(d => { if (d) render(d); }); }
+function logout() { localStorage.removeItem(LS_KEY); show("gate"); }
+
+// init
+const urlToken = new URLSearchParams(location.search).get("token");
+if (urlToken) { localStorage.setItem(LS_KEY, urlToken); history.replaceState({}, "", location.pathname); }
+if (token()) {
+  fetchLeads().then(d => { if (d) render(d); else show("gate"); });
+} else {
+  show("gate");
+}
+document.getElementById("tokenInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") unlock();
+});
+</script>
+</body>
+</html>

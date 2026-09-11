@@ -23,6 +23,10 @@ interface Env {
   AI_MODEL?: string;
   /** Optional email-platform endpoint (ConvertKit/MailerLite/etc). When unset, leads are logged. */
   LEAD_WEBHOOK?: string;
+  /** KV namespace for storing scorecard leads. */
+  LEADS: KVNamespace;
+  /** Shared secret guarding the /admin/leads read endpoint. */
+  ADMIN_TOKEN?: string;
 }
 
 const DEFAULT_MODEL = "deepseek/deepseek-v4-pro-0813";
@@ -44,6 +48,8 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/vault": "/vault.html",
   "/sales": "/vault.html",
   "/store": "/vault.html",
+  "/admin": "/admin.html",
+  "/leads": "/admin.html",
 };
 
 interface ChatMessage {
@@ -160,6 +166,15 @@ async function handleScorecard(request: Request, env: Env): Promise<Response> {
 
   const record = { ...lead, email, receivedAt: new Date().toISOString() };
 
+  // 1) Always persist to KV so a lead is never lost.
+  try {
+    const key = `lead:${record.receivedAt}:${crypto.randomUUID()}`;
+    await env.LEADS.put(key, JSON.stringify(record));
+  } catch (error) {
+    console.error("lead kv write failed", String(error));
+  }
+
+  // 2) Optionally forward to an email platform.
   if (env.LEAD_WEBHOOK) {
     try {
       await fetch(env.LEAD_WEBHOOK, {
@@ -176,6 +191,27 @@ async function handleScorecard(request: Request, env: Env): Promise<Response> {
   }
 
   return json({ ok: true });
+}
+
+/** List stored leads (admin). Guarded by ADMIN_TOKEN. */
+async function handleListLeads(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token") ?? request.headers.get("X-Admin-Token") ?? "";
+
+  if (!env.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) {
+    return json({ error: "unauthorized" }, 401);
+  }
+
+  const list = await env.LEADS.list({ prefix: "lead:" });
+  const leads: Record<string, unknown>[] = [];
+  for (const key of list.keys) {
+    const raw = await env.LEADS.get(key.name);
+    if (raw) {
+      try { leads.push({ ...JSON.parse(raw), _key: key.name }); } catch { /* skip malformed */ }
+    }
+  }
+  leads.sort((a, b) => String(a.receivedAt ?? "").localeCompare(String(b.receivedAt ?? "")));
+  return json({ count: leads.length, leads });
 }
 
 /** Fetch the asset behind a rewritten path. */
@@ -199,6 +235,8 @@ export default {
     if (request.method !== "GET" && request.method !== "HEAD") {
       return json({ error: "Method not allowed" }, 405);
     }
+
+    if (url.pathname === "/admin/leads") return handleListLeads(request, env);
 
     const rewrite = ROUTE_REWRITES[url.pathname];
     if (rewrite) return serveAsset(request, env, rewrite);

@@ -34,6 +34,16 @@ FROM_NAME = "Dr. Ashley Hussain - The HCA Daily"
 FROM_EMAIL = "ashleyhussainokorafor@gmail.com"
 VAULT_LINK = "https://buy.stripe.com/fZufZi70H1eAaaFgrIgMw04"
 
+DIM_LABELS = {
+    "resume": "Resume Metrics",
+    "vocabulary": "Operational Vocabulary",
+    "linkedin": "LinkedIn & Visibility",
+    "interview": "Interview Readiness",
+    "ops": "Operational Metrics",
+    "quality": "Quality & Compliance",
+    "revenue": "Revenue Cycle",
+}
+
 # (day, hours_after_capture) -> email definition
 SEQUENCE = [
     (0, 0.0, "Your HCA Career Readiness Score is in",
@@ -178,6 +188,13 @@ def main():
         done = set(state.get(key, []))
         dims = lead.get("dimensions") or {}
 
+        if dims:
+            ranked = sorted(dims.items(), key=lambda kv: (kv[1] is not None, kv[1]), reverse=True)
+            top = DIM_LABELS.get(ranked[0][0], ranked[0][0]) if ranked else "your strongest area"
+            weak = DIM_LABELS.get(ranked[-1][0], ranked[-1][0]) if ranked else "your biggest gap"
+        else:
+            top, weak = "your strongest area", "your biggest gap"
+
         for day, hours, subject, body in SEQUENCE:
             if day in done:
                 continue
@@ -189,8 +206,8 @@ def main():
             text = body.format(
                 first=lead_name(lead),
                 score=lead.get("overall", ""),
-                top="your strongest area",
-                weak="your biggest gap",
+                top=top,
+                weak=weak,
                 vault=VAULT_LINK,
             )
             try:

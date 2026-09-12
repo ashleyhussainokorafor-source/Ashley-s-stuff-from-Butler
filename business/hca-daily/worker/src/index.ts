@@ -48,6 +48,9 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/vault": "/vault.html",
   "/sales": "/vault.html",
   "/store": "/vault.html",
+  "/vault/thanks": "/thankyou.html",
+  "/thank-you": "/thankyou.html",
+  "/thanks": "/thankyou.html",
   "/admin": "/admin.html",
   "/leads": "/admin.html",
 };
@@ -237,6 +240,16 @@ export default {
     }
 
     if (url.pathname === "/admin/leads") return handleListLeads(request, env);
+
+    if (url.pathname === "/vault/download") {
+      const pdfReq = new Request(new URL("/vault.pdf", request.url).toString(), request);
+      const asset = await env.ASSETS.fetch(pdfReq);
+      if (asset.status === 404) return json({ error: "Not found" }, 404);
+      const headers = new Headers(asset.headers);
+      headers.set("Content-Type", "application/pdf");
+      headers.set("Content-Disposition", 'attachment; filename="HCA-Interview-Answer-Vault.pdf"');
+      return new Response(asset.body, { status: 200, headers });
+    }
 
     const rewrite = ROUTE_REWRITES[url.pathname];
     if (rewrite) return serveAsset(request, env, rewrite);

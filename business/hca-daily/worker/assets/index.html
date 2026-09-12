@@ -1,307 +1,176 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The HCA Daily — Healthcare Administration Career Acceleration</title>
-  <meta name="description" content="Stop guessing what healthcare executives hire for. 24/7 AI career advisory, resume optimization, and tactical playbooks for healthcare leaders.">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The HCA Daily — Fast-Track Your Healthcare Administration Career</title>
+<meta name="description" content="Free 90-second career readiness scorecard for healthcare administrators. Discover your score, your top 3 fixes, and the exact playbook to get hired faster.">
+<meta property="og:title" content="The HCA Daily — Fast-Track Your Healthcare Administration Career">
+<meta property="og:description" content="Free 90-second readiness scorecard + the 156-question Interview Answer Vault. Built by Dr. Ashley Hussain-Okorafor, DBA.">
+<style>
+  :root{
+    --navy:#0b2545; --navy-2:#13315c; --teal:#0d9488; --teal-2:#0f766e;
+    --gold:#c9a227; --ink:#14181f; --muted:#5b6572; --bg:#f7f9fb;
+    --card:#ffffff; --line:#e4e9f0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  section{padding:64px 0}
+  h1,h2,h3{font-weight:800;line-height:1.15;color:var(--navy)}
+  h1{font-size:44px;letter-spacing:-.5px}
+  h2{font-size:32px;margin-bottom:16px}
+  h3{font-size:20px;margin-bottom:8px}
+  p{color:#2a3440;margin-bottom:14px}
+  .sub{font-size:19px;color:var(--muted)}
+  .eyebrow{letter-spacing:2px;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--teal);margin-bottom:12px}
+  .center{text-align:center}
+  .cta{display:inline-block;background:var(--gold);color:#1a1400;font-weight:800;font-size:18px;
+    padding:16px 36px;border-radius:12px;text-decoration:none;box-shadow:0 8px 24px rgba(201,162,39,.32)}
+  .cta:hover{transform:translateY(-2px)}
+  .cta-ghost{background:#fff;color:var(--navy);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+
+  header{border-bottom:1px solid var(--line);background:#fff}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{font-weight:800;font-size:19px;color:var(--navy);text-decoration:none;letter-spacing:-.3px}
+  .logo span{color:var(--teal)}
+  .navlinks{display:flex;gap:26px;align-items:center}
+  .navlinks a{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
+  .navlinks a:hover{color:var(--navy)}
+  .navlinks .btn{background:var(--gold);color:#1a1400;padding:9px 18px;border-radius:9px;font-weight:800}
+
+  .hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 65%,#0e3a5c 100%);color:#fff;padding:84px 0 72px}
+  .hero h1{color:#fff}
+  .hero .sub{color:#c7d3e2;margin:18px 0 30px}
+  .hero .gold{color:var(--gold)}
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .stat-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:42px}
+  .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 22px;min-width:140px}
+  .stat b{display:block;font-size:28px;color:#fff}
+  .stat span{font-size:13px;color:#aebfd4}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px}
+  .card.accent{border-top:5px solid var(--teal)}
+  .card.gold{border-top:5px solid var(--gold)}
+  .price{font-size:38px;font-weight:800;color:var(--navy)}
+  .was{text-decoration:line-through;color:var(--muted);font-size:18px}
+  .list{margin:16px 0 20px;padding-left:0;list-style:none}
+  .list li{padding:7px 0 7px 28px;position:relative;color:#2a3440}
+  .list li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:800}
+  .list.gold li::before{color:var(--gold)}
+
+  .whoami{display:flex;gap:24px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px;max-width:760px;margin:0 auto}
+  .avatar{width:84px;height:84px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;flex-shrink:0}
+  .coming{background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:28px;text-align:center}
+
+  footer{background:var(--navy);color:#8ca2bd;text-align:center;padding:34px 0;font-size:14px}
+  @media(max-width:760px){h1{font-size:32px}h2{font-size:26px}.two-col{grid-template-columns:1fr}.navlinks{gap:16px}}
+</style>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased selection:bg-teal-500 selection:text-slate-950">
+<body>
 
-  <!-- NAVIGATION -->
-  <nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="w-8 h-8 rounded-lg bg-teal-500 flex items-center justify-center font-extrabold text-slate-950 text-lg">H</span>
-        <span class="font-bold text-xl tracking-tight text-white">The HCA Daily</span>
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo">The HCA <span>Daily</span></a>
+    <nav class="navlinks">
+      <a href="/scorecard">Free Scorecard</a>
+      <a href="/vault">The Vault</a>
+      <a href="https://www.youtube.com/@professorashley" class="btn">YouTube ↗</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap center">
+    <h1>Fast-track your healthcare administration career — <span class="gold">starting today.</span></h1>
+    <p class="sub">Know exactly where you stand in 90 seconds, then use the playbook that gets healthcare<br>admin candidates hired — built by a DBA who's been on the hiring side.</p>
+    <div class="hero-ctas">
+      <a href="/scorecard" class="cta">Take the Free Scorecard</a>
+      <a href="/vault" class="cta cta-ghost">Get the Vault — $27</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><b>90 sec</b><span>to your score</span></div>
+      <div class="stat"><b>4</b><span>hiring dimensions</span></div>
+      <div class="stat"><b>156</b><span>interview scripts</span></div>
+      <div class="stat"><b>6K+</b><span>YouTube students</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Start Here — It's Free</div><h2>Your HCA Career Readiness Scorecard</h2>
+    <p class="sub" style="max-width:640px;margin:0 auto">10 quick questions. 90 seconds. Get your 0–100 score across the four dimensions hiring managers actually screen on — and your top 3 fixes, personalized.</p></div>
+    <div class="stat-row" style="margin-top:28px">
+      <div class="stat" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--navy)">Resume</b><span style="color:var(--muted)">Metrics</span></div>
+      <div class="stat" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--navy)">Ops</b><span style="color:var(--muted)">Vocabulary</span></div>
+      <div class="stat" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--navy)">LinkedIn</b><span style="color:var(--muted)">Visibility</span></div>
+      <div class="stat" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--navy)">Interview</b><span style="color:var(--muted)">Readiness</span></div>
+    </div>
+    <div class="center" style="margin-top:30px"><a href="/scorecard" class="cta">Get My Score — Free</a>
+    <p class="sub" style="margin-top:12px;font-size:15px">No spam. Takes about 90 seconds.</p></div>
+  </div>
+</section>
+
+<section style="background:#fff">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">The Playbook</div><h2>Get hired with the Interview Answer Vault</h2>
+    <p class="sub" style="max-width:680px;margin:0 auto">156 real healthcare-administration interview questions with complete answer scripts — every answer anchored to the metrics hiring executives actually listen for.</p></div>
+    <div class="two-col" style="margin-top:30px">
+      <div class="card accent">
+        <h3>Everything inside</h3>
+        <ul class="list">
+          <li>30 Behavioral & Leadership scripts</li>
+          <li>30 Operational & Metrics-Driven</li>
+          <li>30 Revenue Cycle & Patient Access</li>
+          <li>30 Clinical Ops, Quality, HIM & LTC</li>
+          <li>36 Salary negotiation & follow-up scripts</li>
+          <li>157 pages, instant PDF download</li>
+        </ul>
       </div>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#problem" class="hover:text-teal-400 transition-colors">Why It's Hard</a>
-        <a href="#pricing" class="hover:text-teal-400 transition-colors">Products & Pricing</a>
-        <a href="#comparison" class="hover:text-teal-400 transition-colors">The Edge</a>
-        <a href="#faq" class="hover:text-teal-400 transition-colors">FAQ</a>
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="#pricing" class="px-4 py-2 text-sm font-semibold rounded-lg bg-teal-500 text-slate-950 hover:bg-teal-400 transition-all shadow-lg shadow-teal-500/20">
-          Get Started
-        </a>
+      <div class="card gold">
+        <div class="eyebrow">Lifetime access</div>
+        <h3>The HCA Interview Answer Vault</h3>
+        <p>Say goodbye to <em>"I'd improve productivity."</em> Walk in speaking wRVUs, days in A/R, and no-show rates — and get the offer.</p>
+        <p style="margin-top:8px"><span class="was">$97</span> <span class="price">$27</span></p>
+        <a href="/vault" class="cta" style="margin-top:6px">Get the Vault</a>
+        <p class="sub" style="font-size:13px;margin-top:10px">30-day money-back guarantee</p>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- HERO SECTION -->
-  <section class="relative pt-24 pb-20 overflow-hidden">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-6">
-        The #1 Career Acceleration Platform for Healthcare Administration
-      </div>
-      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight md:leading-none mb-6">
-        Stop Guessing What Healthcare Executives <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Hire For.</span>
-      </h1>
-      <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10">
-        Executive-grade AI career advisory, role-specific operational metrics, and the proven playbooks designed to take you from bedside clinician, student, or coordinator to director-level leadership.
-      </p>
-      
-      <!-- HERO CTAS -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-12">
-        <a href="https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00" target="_blank" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 transition-all shadow-xl shadow-teal-500/25 text-center">
-          Start Navigator ($29/mo)
-        </a>
-        <a href="#free-resource" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 font-semibold hover:bg-slate-800 transition-all text-center">
-          Free Resume Playbook
-        </a>
-      </div>
+<section>
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Coming Soon</div><h2>The Career Accelerator</h2>
+    <p class="sub" style="max-width:640px;margin:0 auto">An automated, productized upgrade for candidates who've gotten the scorecard and the Vault and are ready to go deeper — application strategy, personal branding, and offer negotiation, on your own timeline.</p></div>
+    <div class="coming" style="max-width:640px;margin:28px auto 0">
+      <p style="color:var(--muted)">🚧 In development — drop your email on the scorecard and you'll be first to know when it launches.</p>
+    </div>
+  </div>
+</section>
 
-      <!-- TRUST PROOF -->
-      <div class="pt-8 border-t border-slate-800/80 flex flex-wrap justify-center items-center gap-6 md:gap-12 text-xs uppercase tracking-widest text-slate-500 font-semibold">
-        <span>Ambulatory Clinics</span>
-        <span>•</span>
-        <span>Acute Care Hospitals</span>
-        <span>•</span>
-        <span>Academic Medical Centers</span>
-        <span>•</span>
-        <span>Surgery Centers (ASCs)</span>
+<section style="background:#fff">
+  <div class="wrap center">
+    <div class="eyebrow">Who Built This</div>
+    <div class="whoami">
+      <div class="avatar">AH</div>
+      <div style="text-align:left">
+        <h3 style="margin-bottom:4px">Dr. Ashley Hussain-Okorafor, DBA</h3>
+        <p style="margin:0">Doctor of Business Administration in Healthcare. Former full-time university lecturer. Founder of The HCA Daily and the @professorashley YouTube channel (6K+ students). Ashley has sat on the hiring side and taught the people who get hired — this is the exact playbook her students use.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- THE PROBLEM SECTION -->
-  <section id="problem" class="py-20 bg-slate-900/40 border-y border-slate-800">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="text-3xl font-bold text-white mb-4">Breaking Into Leadership Shouldn’t Feel Like an Inside Secret</h2>
-        <p class="text-slate-400">The healthcare administration hiring system is broken for candidates who actually have the skills.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center font-bold text-xl mb-6">1</div>
-          <h3 class="text-xl font-bold text-white mb-3">The Clinical Barrier</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            You're a nurse, tech, or therapist with years of clinical leadership, but HR rejects your applications because you "lack business operations experience."
-          </p>
-        </div>
-        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xl mb-6">2</div>
-          <h3 class="text-xl font-bold text-white mb-3">The Grad School Gap</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            You hold an MHA, MPH, or MBA, but every "entry-level" clinic manager role demands 3–5 years of operational metrics you were never taught to document.
-          </p>
-        </div>
-        <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xl mb-6">3</div>
-          <h3 class="text-xl font-bold text-white mb-3">The Silent Ceiling</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            You’re stuck at coordinator or supervisor, watching outside consultants get promoted because nobody taught you how to speak wRVUs, EBITDA, and labor variance.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING & PRODUCT SUITE TIERS -->
-  <section id="pricing" class="py-24">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Three Tiers of Career Leverage</h2>
-        <p class="text-slate-400 text-base">Engineered specifically for healthcare professionals ready to step into high-impact management.</p>
-      </div>
-
-      <div class="grid lg:grid-cols-3 gap-8 items-stretch">
-        
-        <!-- TIER 1: FREE COMMUNITY -->
-        <div id="free-resource" class="p-8 rounded-3xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Free Top of Funnel</span>
-            <h3 class="text-2xl font-bold text-white mt-2 mb-1">Community & Weekly Brief</h3>
-            <p class="text-slate-400 text-sm mb-6">Stay informed with tactical operational breakdowns every Tuesday.</p>
-            <div class="text-4xl font-extrabold text-white mb-6">$0 <span class="text-slate-500 text-base font-normal">/ forever</span></div>
-            <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Weekly Tuesday operational newsletter
-              </li>
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Peer networking community hub
-              </li>
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Downloadable Metric-Driven Resume Template
-              </li>
-            </ul>
-          </div>
-          <a href="/scorecard" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-center transition-all">
-            Join Free Community
-          </a>
-        </div>
-
-        <!-- TIER 2: PRIMARY SAAS NAVIGATOR (FEATURED) -->
-        <div class="relative p-8 rounded-3xl bg-slate-900 border-2 border-teal-500 flex flex-col justify-between shadow-2xl shadow-teal-500/10">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold text-xs uppercase tracking-wider">
-            Most Popular
-          </div>
-          <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Primary Revenue</span>
-            <h3 class="text-2xl font-bold text-white mt-2 mb-1">HCA Career Navigator</h3>
-            <p class="text-slate-400 text-sm mb-6">24/7 AI career executive trained on hospital operations and RCM.</p>
-            <div class="flex items-baseline gap-2 mb-6">
-              <span class="text-4xl font-extrabold text-white">$29</span>
-              <span class="text-slate-500 text-base font-normal">/ month</span>
-              <span class="text-xs font-semibold text-teal-400 ml-auto bg-teal-500/10 px-2 py-1 rounded">or $199/yr (Save 43%)</span>
-            </div>
-            <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Unlimited 24/7 AI Career Advisor sessions
-              </li>
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Line-by-line metric-driven resume rewrites
-              </li>
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Regional MGMA/ACHE salary negotiation scripts
-              </li>
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                FACHE, CMPE, and CRCR certification roadmaps
-              </li>
-            </ul>
-          </div>
-          <div class="space-y-3">
-            <a href="https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00" target="_blank" class="block w-full py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-center transition-all shadow-lg shadow-teal-500/20">
-              Start Monthly ($29/mo)
-            </a>
-            <a href="https://buy.stripe.com/8x228s3OvbTe1E9a3kgMw01" target="_blank" class="block w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 font-semibold text-center text-xs transition-all">
-              Switch to Annual ($199/yr — 43% Off)
-            </a>
-          </div>
-        </div>
-
-        <!-- TIER 3: INTERVIEW COACH -->
-        <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-teal-400">On-Demand Usage</span>
-            <h3 class="text-2xl font-bold text-white mt-2 mb-1">HCA Interview Coach</h3>
-            <p class="text-slate-400 text-sm mb-6">Live AI mock interview simulations with executive STAR scoring.</p>
-            <div class="text-4xl font-extrabold text-white mb-6">$19 <span class="text-slate-500 text-base font-normal">/ session</span></div>
-            <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Role-specific scenario interviews (Clinic Mgr, Ops Dir)
-              </li>
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Real-time STAR structure & metric critique
-              </li>
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Hard follow-ups on physician conflict & budget cuts
-              </li>
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                Actionable "Say This Instead" executive rewrites
-              </li>
-            </ul>
-          </div>
-          <div class="space-y-3">
-            <a href="https://buy.stripe.com/9B66oI98PbTeaaF8ZggMw02" target="_blank" class="block w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-center transition-all">
-              Single Session ($19)
-            </a>
-            <a href="https://buy.stripe.com/9B6bJ2fxd8H2gz3b7ogMw03" target="_blank" class="block w-full py-2.5 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 font-semibold text-center text-xs transition-all">
-              Buy 3-Session Prep Pack ($49)
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPARISON TABLE SECTION -->
-  <section id="comparison" class="py-20 bg-slate-900/50 border-t border-slate-800">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-white mb-2">Why The HCA Daily Wins</h2>
-        <p class="text-slate-400">Comparing generic career advice with healthcare-native advisory.</p>
-      </div>
-
-      <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900">
-        <table class="w-full text-left text-sm text-slate-300">
-          <thead class="bg-slate-950 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
-            <tr>
-              <th class="p-4">Dimension</th>
-              <th class="p-4 text-slate-500">Generic Career Coaches</th>
-              <th class="p-4 text-teal-400 font-bold bg-teal-950/20">The HCA Daily</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-800/60">
-            <tr>
-              <td class="p-4 font-semibold text-white">Healthcare Domain Depth</td>
-              <td class="p-4 text-slate-400">Surface corporate advice</td>
-              <td class="p-4 text-teal-300 font-medium bg-teal-950/20">100% native (wRVUs, HCAHPS, RCM)</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-white">Resume Transformation</td>
-              <td class="p-4 text-slate-400">Duty lists & formatting tweaks</td>
-              <td class="p-4 text-teal-300 font-medium bg-teal-950/20">Quantified operational outcomes ($ & %)</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-white">Salary Benchmarking</td>
-              <td class="p-4 text-slate-400">Generic Glassdoor medians</td>
-              <td class="p-4 text-teal-300 font-medium bg-teal-950/20">Regional MGMA / ACHE compensation bands</td>
-            </tr>
-            <tr>
-              <td class="p-4 font-semibold text-white">Availability & Speed</td>
-              <td class="p-4 text-slate-400">Weeks out for 1 hour session</td>
-              <td class="p-4 text-teal-300 font-medium bg-teal-950/20">Instant, 24/7 unlimited AI advisory</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ SECTION -->
-  <section id="faq" class="py-20 max-w-4xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold text-white mb-2">Frequently Asked Questions</h2>
-      <p class="text-slate-400">Everything you need to know about the platform.</p>
-    </div>
-    <div class="space-y-6">
-      <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-        <h4 class="text-lg font-bold text-white mb-2">I am a bedside nurse or clinician with no business degree. Is this for me?</h4>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Yes. That is our core specialty. We help you translate crisis patient triage, shift staffing, and unit safety committees into the operational metrics (capacity, labor variance, compliance) executive hiring panels demand.
-        </p>
-      </div>
-      <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-        <h4 class="text-lg font-bold text-white mb-2">Can I cancel my Navigator subscription at any time?</h4>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Absolutely. Monthly subscriptions can be canceled with one click at any time. There are no contracts, no cancellation penalties, and no lock-in.
-        </p>
-      </div>
-      <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-        <h4 class="text-lg font-bold text-white mb-2">How does the HCA Interview Coach work?</h4>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          The coach operates as an interactive AI simulation. It asks high-stakes, role-specific scenario questions, analyzes your STAR structure and healthcare vocabulary, and provides immediate executive feedback with "Say This Instead" rewrites.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="py-12 border-t border-slate-800 text-center text-xs text-slate-600">
-    <p>© 2026 The HCA Daily. Founded by Dr. Ashley Hussain-Okorafor. All rights reserved.</p>
-  </footer>
+<footer>
+  <div class="wrap">
+    © 2026 The HCA Daily · All rights reserved
+    <div style="color:#6d8097;font-size:13px;margin-top:8px">Educational products. Results vary and are not guaranteed.</div>
+  </div>
+</footer>
 
 </body>
 </html>

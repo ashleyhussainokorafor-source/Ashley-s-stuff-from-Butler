@@ -52,6 +52,7 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/thank-you": "/thankyou.html",
   "/thanks": "/thankyou.html",
   "/accelerator": "/accelerator.html",
+  "/accelerator/thanks": "/accelerator-thanks.html",
   "/admin": "/admin.html",
   "/leads": "/admin.html",
 };
@@ -249,6 +250,16 @@ export default {
       const headers = new Headers(asset.headers);
       headers.set("Content-Type", "application/pdf");
       headers.set("Content-Disposition", 'attachment; filename="HCA-Interview-Answer-Vault.pdf"');
+      return new Response(asset.body, { status: 200, headers });
+    }
+
+    if (url.pathname === "/accelerator/download") {
+      const pdfReq = new Request(new URL("/accelerator.pdf", request.url).toString(), request);
+      const asset = await env.ASSETS.fetch(pdfReq);
+      if (asset.status === 404) return json({ error: "Not found" }, 404);
+      const headers = new Headers(asset.headers);
+      headers.set("Content-Type", "application/pdf");
+      headers.set("Content-Disposition", 'attachment; filename="HCA-Career-Accelerator.pdf"');
       return new Response(asset.body, { status: 200, headers });
     }
 

@@ -131,14 +131,13 @@
     </div>
 
     <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8 mb-6 no-print">
-      <h3 class="font-extrabold text-lg mb-2">Your scorecard tells you what's broken.</h3>
+      <h3 class="font-extrabold text-lg mb-2">Your path starts now.</h3>
       <p class="text-slate-300 mb-5">
-        The <strong class="text-white">HCA Career Navigator</strong> fixes it — resume optimization against real job descriptions,
-        skill-gap analysis, salary benchmarking, and 24/7 career advisory. Built specifically for healthcare administration.
+        Scorecard done. Next: today's 4-minute drill — the daily habit that turns these numbers into interview fluency.
       </p>
       <div class="flex flex-col sm:flex-row gap-3">
-        <a href="/navigator" class="px-6 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold text-center transition-all">
-          Start my 7-day Navigator trial →
+        <a id="drillCta" href="/learn" class="px-6 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold text-center transition-all">
+          Start today's drill →
         </a>
         <button onclick="window.print()" class="px-6 py-3.5 rounded-xl border border-slate-700 hover:border-slate-500 font-bold text-center transition-all">
           Download as PDF
@@ -430,10 +429,16 @@ function renderResults() {
   return { overall, dimScores };
 }
 
-/* ---------------- email capture ----------------
-   Posts to the Worker. If it fails for ANY reason we still show results —
-   never block the user on a backend hiccup.                               */
+/* ---------------- email capture + account creation ----------------
+   Posts to the Worker (lead + learner). If it fails we still show results. */
+function uid() {
+  let u = localStorage.getItem("hcaUid");
+  if (!u) { u = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : ("u" + Date.now()); localStorage.setItem("hcaUid", u); }
+  return u;
+}
+
 async function captureLead(email, name, overall, dimScores) {
+  const userId = uid();
   try {
     await fetch("/api/scorecard", {
       method: "POST",
@@ -448,6 +453,16 @@ async function captureLead(email, name, overall, dimScores) {
   } catch (e) {
     console.warn("Lead capture failed (results still shown):", e);
   }
+  try {
+    await fetch("/api/user", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ userId, email, name, overall, dimensions: dimScores })
+    });
+  } catch (e) {
+    console.warn("Account creation failed (drill still accessible):", e);
+  }
+  return userId;
 }
 
 /* ---------------- wiring ---------------- */
@@ -464,8 +479,9 @@ $("gateForm").onsubmit = async (e) => {
   btn.disabled = true;
   btn.textContent = "Calculating…";
   const { overall, dimScores } = computeScores();
-  await captureLead(email, name, overall, dimScores);
+  const userId = await captureLead(email, name, overall, dimScores);
   renderResults();
+  $("drillCta").href = "/learn?u=" + encodeURIComponent(userId);
   btn.disabled = false;
   btn.textContent = "Reveal my score →";
 };

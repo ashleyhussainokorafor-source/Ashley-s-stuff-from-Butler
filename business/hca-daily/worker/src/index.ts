@@ -45,6 +45,8 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/scorecard": "/scorecard.html",
   "/readiness": "/scorecard.html",
   "/quiz": "/scorecard.html",
+  "/learn": "/learn.html",
+  "/today": "/learn.html",
   "/vault": "/vault.html",
   "/sales": "/vault.html",
   "/store": "/vault.html",
@@ -219,6 +221,63 @@ async function handleListLeads(request: Request, env: Env): Promise<Response> {
   return json({ count: leads.length, leads });
 }
 
+function todayStr(): string { return new Date().toISOString().slice(0, 10); }
+function yesterdayStr(): string { return new Date(Date.now() - 86400000).toISOString().slice(0, 10); }
+
+/** Create/upsert a learner from the scorecard. Never loses prior state. */
+async function handleCreateUser(request: Request, env: Env): Promise<Response> {
+  let body: Record<string, unknown> = {};
+  try { body = (await request.json()) as Record<string, unknown>; } catch { return json({ ok: false, error: "invalid json" }, 400); }
+
+  const userId = String(body.userId ?? "").trim() || crypto.randomUUID();
+  const raw = await env.LEADS.get(`user:${userId}`);
+  let existing: Record<string, unknown> = {};
+  if (raw) { try { existing = JSON.parse(raw) as Record<string, unknown>; } catch { /* ignore */ } }
+
+  const prevDims = (existing.dimensions ?? {}) as Record<string, number>;
+  const user = {
+    userId,
+    email: String(body.email ?? existing.email ?? "").trim(),
+    name: String(body.name ?? existing.name ?? "").trim(),
+    overall: (body.overall ?? existing.overall) as number,
+    dimensions: { ...prevDims, ...((body.dimensions ?? {}) as Record<string, number>) },
+    createdAt: (existing.createdAt ?? new Date().toISOString()) as string,
+    streak: (existing.streak ?? 0) as number,
+    lastDrillDay: (existing.lastDrillDay ?? null) as string | null,
+  };
+  await env.LEADS.put(`user:${userId}`, JSON.stringify(user));
+  return json({ ok: true, userId, user });
+}
+
+async function handleGetUser(request: Request, env: Env): Promise<Response> {
+  const id = new URL(request.url).searchParams.get("id") ?? "";
+  if (!id) return json({ user: null });
+  const raw = await env.LEADS.get(`user:${id}`);
+  return raw ? json({ user: JSON.parse(raw) }) : json({ user: null });
+}
+
+/** Record a completed drill; increment streak on a new day (humane pacing). */
+async function handleDrill(request: Request, env: Env): Promise<Response> {
+  let body: Record<string, unknown> = {};
+  try { body = (await request.json()) as Record<string, unknown>; } catch { return json({ ok: false, error: "invalid json" }, 400); }
+  const userId = String(body.userId ?? "").trim();
+  if (!userId) return json({ ok: false, error: "missing userId" }, 400);
+
+  const raw = await env.LEADS.get(`user:${userId}`);
+  let user: Record<string, unknown> = raw
+    ? (JSON.parse(raw) as Record<string, unknown>)
+    : { userId, streak: 0, lastDrillDay: null, dimensions: {}, overall: 0 };
+
+  const today = todayStr();
+  if (user.lastDrillDay === today) {
+    return json({ ok: true, streak: user.streak as number, already: true, user });
+  }
+  user.streak = (user.lastDrillDay === yesterdayStr()) ? ((user.streak as number) || 0) + 1 : 1;
+  user.lastDrillDay = today;
+  await env.LEADS.put(`user:${userId}`, JSON.stringify(user));
+  return json({ ok: true, streak: user.streak as number, user });
+}
+
 /** Fetch the asset behind a rewritten path. */
 function serveAsset(request: Request, env: Env, pathname: string): Promise<Response> {
   const url = new URL(request.url);
@@ -234,6 +293,8 @@ export default {
       if (url.pathname === "/api/chat") return handleChat(request, env);
       if (url.pathname === "/api/coach") return handleCoach(request, env);
       if (url.pathname === "/api/scorecard") return handleScorecard(request, env);
+      if (url.pathname === "/api/user") return handleCreateUser(request, env);
+      if (url.pathname === "/api/drill") return handleDrill(request, env);
       return json({ error: "Not found" }, 404);
     }
 
@@ -242,6 +303,8 @@ export default {
     }
 
     if (url.pathname === "/admin/leads") return handleListLeads(request, env);
+
+    if (url.pathname === "/api/user") return handleGetUser(request, env);
 
     if (url.pathname === "/vault/download") {
       const pdfReq = new Request(new URL("/vault.pdf", request.url).toString(), request);

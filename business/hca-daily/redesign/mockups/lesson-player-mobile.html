@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The HCA Daily — Today's Drill (lesson player mockup)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0b2545; --navy2:#13315c; --coral:#ff5749; --amber:#f59e0b; --green:#16a34a;
+    --slate:#94a3b8; --off:#faf9f6; --ink:#14181f; --muted:#5b6572; --line:#e6e3dd }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#e9e6e0;display:flex;justify-content:center;padding:24px 0}
+  .phone{width:390px;background:var(--off);min-height:100vh;box-shadow:0 0 40px rgba(11,37,69,.25);border-radius:34px;overflow:hidden;display:flex;flex-direction:column}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .h{font-family:'Sora',sans-serif}
+  /* top bar */
+  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+  .exit{font-size:20px;color:var(--slate);width:28px;text-align:left}
+  .title{font-size:13.5px;font-weight:700;color:var(--navy);text-align:center;flex:1}
+  .hearts{font-size:16px;color:#f0a0a0;letter-spacing:1px;white-space:nowrap}
+  .hearts .lost{color:var(--slate)}
+  .xp{font-size:12px;font-weight:700;color:var(--amber);white-space:nowrap;margin-left:8px}
+  /* progress dots */
+  .dots{display:flex;gap:5px;padding:18px 18px 0}
+  .dot{height:8px;border-radius:4px;flex:1;background:#e6e3dd}
+  .dot.done{background:var(--green)}
+  .dot.curr{background:var(--coral)}
+  .prog-label{font-size:11px;color:var(--muted);padding:8px 18px 0;font-family:'IBM Plex Mono',monospace}
+  /* prompt */
+  .body{flex:1;padding:22px 18px}
+  .ctype{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:10px}
+  .prompt{font-size:20px;font-weight:700;color:var(--navy);line-height:1.3}
+  .prompt .mono{color:var(--navy2)}
+  .context{font-size:13.5px;color:var(--muted);line-height:1.5;margin-top:10px}
+  .opts{margin-top:22px}
+  .opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;padding:15px 14px;border-radius:14px;margin-bottom:11px;font-size:14.5px;color:var(--ink);cursor:pointer;line-height:1.4}
+  .opt.correct{border-color:var(--green);background:#f0fdf4;font-weight:600}
+  .opt.wrong{border-color:#f0b9b5;background:#fff5f4}
+  /* feedback band */
+  .fb{display:flex;gap:9px;align-items:flex-start;margin-top:6px;font-size:13.5px;color:#3f4a57;background:#f1f5f9;border-left:3px solid var(--green);padding:12px 14px;border-radius:6px}
+  .fb b{color:#0f766e}
+  /* speak aloud variant */
+  .timer{display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 16px;margin-top:20px}
+  .timer .time{font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:600;color:var(--navy)}
+  .rubric{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
+  .rubric .lt{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:8px}
+  .rubric .row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink);padding:5px 0}
+  .rubric .ck{color:var(--green);font-weight:700}
+  /* continue bar */
+  .continue{background:var(--navy);color:#fff;text-align:center;font-weight:700;font-size:16px;padding:16px;border-radius:16px 16px 0 0;margin:0 18px 0}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="top">
+    <span class="exit">✕</span>
+    <span class="title">Revenue Cycle in 6 Numbers</span>
+    <span class="hearts">♥♥♥♥<span class="lost">♥</span></span>
+    <span class="xp">⚡ 40</span>
+  </div>
+  <div class="dots"><span class="dot done"></span><span class="dot done"></span><span class="dot done"></span><span class="dot curr"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+  <div class="prog-label">4 / 8 · ≈2 min left</div>
+
+  <div class="body">
+    <div class="ctype">Metric flash</div>
+    <div class="prompt">Denial rate is <span class="mono">12%</span>.<br>What's your first move?</div>
+    <div class="context">A director just asked you how you'd fix it.</div>
+    <div class="opts">
+      <div class="opt correct">✔ Investigate the top denial reasons before re-billing anything.</div>
+      <div class="opt">Re-file every claim faster.</div>
+      <div class="opt wrong">✗ Reduce coding staff to save cost.</div>
+    </div>
+    <div class="fb"><span>💡</span><div><b>Why hiring managers care:</b> denial rate is a <em>root-cause</em> signal — leaders want you to fix the cause, not burn hours reworking claims.</div></div>
+    <a class="cta" style="display:block;background:var(--coral);color:#fff;font-weight:700;font-size:16px;padding:15px;border-radius:14px;margin-top:20px;text-decoration:none;text-align:center">Continue</a>
+
+    <div class="timer" style="margin-top:28px">
+      <span class="time">0:07</span>
+      <span style="color:var(--muted);font-size:13px">Speak-aloud: "Tell me about a time you cut denials."</span>
+    </div>
+    <div class="rubric">
+      <div class="lt">Self-score — did you…</div>
+      <div class="row"><span>Name the metric</span><span class="ck">✓</span></div>
+      <div class="row"><span>Include a number</span><span class="ck">✓</span></div>
+      <div class="row"><span>Own the action</span><span class="ck">✓</span></div>
+      <div class="row"><span>Tie it to margin</span><span style="color:var(--slate)">—</span></div>
+    </div>
+  </div>
+
+  <div class="continue">Continue — next item →</div>
+</div>
+</body>
+</html>

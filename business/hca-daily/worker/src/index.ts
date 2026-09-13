@@ -47,6 +47,8 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/quiz": "/scorecard.html",
   "/learn": "/learn.html",
   "/today": "/learn.html",
+  "/path": "/path.html",
+  "/practice": "/practice.html",
   "/vault": "/vault.html",
   "/sales": "/vault.html",
   "/store": "/vault.html",
@@ -244,6 +246,7 @@ async function handleCreateUser(request: Request, env: Env): Promise<Response> {
     createdAt: (existing.createdAt ?? new Date().toISOString()) as string,
     streak: (existing.streak ?? 0) as number,
     lastDrillDay: (existing.lastDrillDay ?? null) as string | null,
+    path: (existing.path ?? {}) as Record<string, unknown>,
   };
   await env.LEADS.put(`user:${userId}`, JSON.stringify(user));
   return json({ ok: true, userId, user });
@@ -266,7 +269,7 @@ async function handleDrill(request: Request, env: Env): Promise<Response> {
   const raw = await env.LEADS.get(`user:${userId}`);
   let user: Record<string, unknown> = raw
     ? (JSON.parse(raw) as Record<string, unknown>)
-    : { userId, streak: 0, lastDrillDay: null, dimensions: {}, overall: 0 };
+    : { userId, streak: 0, lastDrillDay: null, dimensions: {}, overall: 0, path: {} };
 
   const today = todayStr();
   if (user.lastDrillDay === today) {
@@ -276,6 +279,26 @@ async function handleDrill(request: Request, env: Env): Promise<Response> {
   user.lastDrillDay = today;
   await env.LEADS.put(`user:${userId}`, JSON.stringify(user));
   return json({ ok: true, streak: user.streak as number, user });
+}
+
+/** Mark a unit mastered on the skill path. */
+async function handleProgress(request: Request, env: Env): Promise<Response> {
+  let body: Record<string, unknown> = {};
+  try { body = (await request.json()) as Record<string, unknown>; } catch { return json({ ok: false, error: "invalid json" }, 400); }
+  const userId = String(body.userId ?? "").trim();
+  const unitId = String(body.unitId ?? "").trim();
+  if (!userId || !unitId) return json({ ok: false, error: "userId + unitId required" }, 400);
+
+  const raw = await env.LEADS.get(`user:${userId}`);
+  let user: Record<string, unknown> = raw
+    ? (JSON.parse(raw) as Record<string, unknown>)
+    : { userId, streak: 0, lastDrillDay: null, dimensions: {}, overall: 0, path: {} };
+
+  const path = (user.path ?? {}) as Record<string, unknown>;
+  path[unitId] = { mastered: true, at: new Date().toISOString() };
+  user.path = path;
+  await env.LEADS.put(`user:${userId}`, JSON.stringify(user));
+  return json({ ok: true, path: user.path });
 }
 
 /** Fetch the asset behind a rewritten path. */
@@ -295,6 +318,7 @@ export default {
       if (url.pathname === "/api/scorecard") return handleScorecard(request, env);
       if (url.pathname === "/api/user") return handleCreateUser(request, env);
       if (url.pathname === "/api/drill") return handleDrill(request, env);
+      if (url.pathname === "/api/progress") return handleProgress(request, env);
       return json({ error: "Not found" }, 404);
     }
 

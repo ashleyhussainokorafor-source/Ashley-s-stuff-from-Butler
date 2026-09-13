@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Path — The HCA Daily</title>
+<meta name="theme-color" content="#0b2545">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0b2545; --navy2:#13315c; --coral:#ff5749; --amber:#f59e0b; --green:#16a34a;
+    --slate:#94a3b8; --violet:#7c3aed; --off:#faf9f6; --ink:#14181f; --muted:#5b6572; --line:#e6e3dd }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--off);line-height:1.5}
+  h1,h2,h3{font-family:'Sora',sans-serif}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  header{background:linear-gradient(168deg,#0b2545,#13315c);color:#fff;padding:32px 0 28px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  .nav-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .logo{font-family:'Sora',sans-serif;font-weight:800;color:#fff;text-decoration:none;font-size:17px}
+  .logo span{color:var(--coral)}
+  .back{color:#c2cfe0;font-size:14px;text-decoration:none}
+  header h1{color:#fff;font-size:26px;font-weight:800}
+  header .sub{color:#8ca2bd;font-size:14px;margin-top:4px}
+  .streak{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:30px;padding:6px 13px;font-size:13px;font-weight:700;color:#fff;margin-top:12px}
+  .streak .fl{color:var(--amber)}
+  main{padding:28px 0 60px}
+  .dim{margin-bottom:30px}
+  .dim-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .dim-head .ic{font-size:20px}
+  .dim-head h2{font-size:18px;color:var(--navy);font-weight:800}
+  .dim-head .prog{font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-weight:600}
+  .node{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 18px;margin-bottom:10px}
+  .node.mastered{border-color:#bbe3c8;background:#f6fdf8}
+  .node.ip{border-color:#ffb9b3;background:#fffaf9}
+  .node.locked{opacity:.62}
+  .node .ring{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;font-weight:700}
+  .ring.mastered{background:var(--green);color:#fff}
+  .ring.ip{background:var(--coral);color:#fff}
+  .ring.locked{background:#eef1f5;color:var(--slate)}
+  .node .body{flex:1}
+  .node .t{font-weight:700;color:var(--navy);font-size:15px}
+  .node .lv{font-size:11.5px;color:var(--muted);margin-top:1px}
+  .node .blurb{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .node .tag{font-size:10.5px;font-weight:700;letter-spacing:.5px;padding:4px 10px;border-radius:20px;white-space:nowrap}
+  .tag.mastered{background:#dcfce7;color:#15803d}
+  .tag.ip{background:rgba(255,87,73,.13);color:var(--coral)}
+  .tag.locked{background:#eef1f5;color:var(--slate)}
+  .lvl{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:8px;background:#f1f5f9;color:var(--muted);margin-left:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="nav-row">
+      <a class="logo" href="/">The HCA <span>Daily</span></a>
+      <a class="back" href="/learn">← Back to today</a>
+    </div>
+    <h1>Your skill path</h1>
+    <p class="sub">17 units across 5 skills. Master one to unlock the next.</p>
+    <span class="streak"><span class="fl">🔥</span> <span id="streakN">0</span>-day streak</span>
+  </div>
+</header>
+<main>
+  <div class="wrap" id="path"></div>
+</main>
+
+<script src="/lessons/part-resume-linkedin.js"></script>
+<script src="/lessons/part-vocab.js"></script>
+<script src="/lessons/part-interview.js"></script>
+<script src="/lessons/part-offer.js"></script>
+<script src="/lessons/lessons.js"></script>
+<script>
+  const uid = () => new URLSearchParams(location.search).get("u") || localStorage.getItem("hcaUid") || "";
+  const LEVELS = {1:"Intro",2:"Fluent",3:"Interview-ready"};
+
+  function stateFor(path){
+    // linear unlock: first non-mastered unit is 'in progress'; after it = locked
+    let firstNonMastered = null;
+    for(const id of HCA_UNIT_ORDER){
+      if(!path[id]?.mastered){ firstNonMastered = id; break; }
+    }
+    return id => {
+      if(path[id]?.mastered) return "mastered";
+      if(id === firstNonMastered) return "ip";
+      return "locked";
+    };
+  }
+
+  async function render(){
+    let path = {}, streak = 0;
+    const u = uid();
+    if(u){
+      try{
+        const r = await fetch("/api/user?id="+encodeURIComponent(u));
+        if(r.ok){ const j = await r.json(); if(j.user){ path = j.user.path||{}; streak = j.user.streak||0; } }
+      }catch(e){}
+    }
+    document.getElementById("streakN").textContent = streak;
+    const get = stateFor(path);
+    const root = document.getElementById("path");
+    root.innerHTML = "";
+
+    for(const dim of HCA_DIMENSIONS){
+      const units = HCA_UNITS.filter(x => x.dim === dim.id);
+      if(!units.length) continue;
+      const masteredCount = units.filter(x => path[x.id]?.mastered).length;
+      const sec = document.createElement("div");
+      sec.className = "dim";
+      sec.innerHTML = `<div class="dim-head"><span class="ic">${dim.icon}</span><h2>${dim.label}</h2><span class="prog">${masteredCount}/${units.length}</span></div>`;
+      units.forEach(unit => {
+        const st = get(unit.id);
+        const node = document.createElement("a");
+        node.className = "node "+st;
+        node.href = (st === "locked") ? "#" : "/learn?u="+encodeURIComponent(u)+"&unit="+unit.id;
+        node.style.textDecoration = "none";
+        node.innerHTML = `
+          <span class="ring ${st}">${st==="mastered"?"✓":st==="ip"?"→":"🔒"}</span>
+          <span class="body">
+            <span class="t">${unit.title}</span>
+            <span class="lvl">${LEVELS[unit.level]||""}</span>
+            <div class="blurb">${(unit.blurb||"")}</div>
+          </span>
+          <span class="tag ${st}">${st==="mastered"?"MASTERED":st==="ip"?"IN PROGRESS":"LOCKED"}</span>`;
+        sec.appendChild(node);
+      });
+      root.appendChild(sec);
+    }
+  }
+  render();
+</script>
+</body>
+</html>

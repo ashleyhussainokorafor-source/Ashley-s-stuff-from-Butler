@@ -6,6 +6,11 @@
 <title>Today's Drill — The HCA Daily</title>
 <meta name="theme-color" content="#0b2545">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+<script src="/lessons/part-resume-linkedin.js"></script>
+<script src="/lessons/part-vocab.js"></script>
+<script src="/lessons/part-interview.js"></script>
+<script src="/lessons/part-offer.js"></script>
+<script src="/lessons/lessons.js"></script>
 <style>
   :root{ --navy:#0b2545; --navy2:#13315c; --coral:#ff5749; --amber:#f59e0b; --green:#16a34a;
     --slate:#94a3b8; --off:#faf9f6; --ink:#14181f; --muted:#5b6572; --line:#e6e3dd; --rose:#ef4444 }
@@ -14,14 +19,12 @@
   .mono{font-family:'IBM Plex Mono',monospace}
   h1,h2,h3{font-family:'Sora',sans-serif}
   .shell{max-width:520px;margin:0 auto;width:100%;padding:0 18px;flex:1}
-  /* top bar */
   .top{display:flex;align-items:center;gap:10px;padding:18px 0 10px;border-bottom:1px solid var(--line);margin-bottom:16px}
   .exit{font-size:20px;color:var(--slate);cursor:pointer;text-decoration:none;width:24px}
   .title{font-size:13.5px;font-weight:700;color:var(--navy);flex:1;text-align:center}
   .hearts{font-size:15px;color:#f0a0a0;letter-spacing:1px}
   .hearts .lost{color:#e2e8f0}
   .xp{font-size:12px;font-weight:700;color:var(--amber);white-space:nowrap}
-  /* streak + dims header */
   .streakrow{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
   .streak{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:7px 13px;font-size:14px;font-weight:700;color:var(--navy)}
   .streak .fl{color:var(--amber);font-size:17px}
@@ -29,13 +32,11 @@
   .dimmini{display:flex;gap:8px;flex-wrap:wrap}
   .dimchip{font-size:11px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:20px;padding:4px 10px}
   .dimchip b{color:var(--navy);font-family:'IBM Plex Mono',monospace}
-  /* progress dots */
   .dots{display:flex;gap:5px;margin:6px 0 4px}
   .dot{height:8px;border-radius:4px;flex:1;background:#e6e3dd}
   .dot.done{background:var(--green)}
   .dot.curr{background:var(--coral)}
   .prog-label{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace}
-  /* prompt card */
   .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 20px;margin-top:6px}
   .ctype{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:10px}
   .prompt{font-size:20px;font-weight:700;color:var(--navy);line-height:1.3}
@@ -50,7 +51,6 @@
   .fb{display:flex;gap:9px;align-items:flex-start;margin-top:14px;font-size:13.5px;color:#3f4a57;background:#f1f5f9;border-left:3px solid var(--green);padding:12px 14px;border-radius:6px;line-height:1.5}
   .fb.wrong{border-left-color:var(--rose);background:#fef2f2}
   .fb b{color:#0f766e}.fb.wrong b{color:#b91c1c}
-  /* speak aloud */
   .timer{display:flex;align-items:center;justify-content:center;gap:12px;background:#0b2545;color:#fff;border-radius:14px;padding:22px 16px;margin-top:16px}
   .timer .time{font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:700}
   .timer button{background:var(--coral);border:none;color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:10px;cursor:pointer}
@@ -59,11 +59,9 @@
   .rubric .row{display:flex;justify-content:space-between;font-size:13.5px;padding:6px 0}
   .rubric button.ckbtn{border:1px solid var(--line);background:#fff;border-radius:8px;width:30px;height:30px;font-size:14px;cursor:pointer}
   .rubric button.ckbtn.on{background:#f0fdf4;border-color:var(--green);color:var(--green);font-weight:700}
-  /* continue */
   .continue{background:var(--navy);color:#fff;text-align:center;font-weight:700;font-size:16px;padding:16px;border-radius:16px;text-decoration:none;cursor:pointer;border:none;width:100%;margin:20px 0}
   .continue:disabled{opacity:.4;cursor:default}
-  /* complete screen */
-  .done-wrap{text-align:center;padding:40px 0}
+  .done-wrap{text-align:center;padding:30px 0}
   .done-badge{font-size:54px}
   .done-wrap h2{font-size:26px;color:var(--navy);margin:10px 0 6px}
   .done-wrap p{color:var(--muted);font-size:15px;line-height:1.5}
@@ -77,7 +75,7 @@
   .dimbar .lb b{color:var(--navy)}
   .dimbar .track{height:7px;border-radius:4px;background:#e6e3dd;overflow:hidden}
   .dimbar .fill{height:100%;border-radius:4px;width:0;transition:width .6s}
-  .fill.resume{background:var(--coral)}.fill.vocabulary{background:var(--amber)}.fill.linkedin{background:var(--teal,#0d9488)}.fill.interview{background:var(--navy)}
+  .fill.resume{background:var(--coral)}.fill.vocabulary{background:var(--amber)}.fill.linkedin{background:#0d9488}.fill.interview{background:var(--navy)}
   .hidden{display:none !important}
 </style>
 </head>
@@ -85,31 +83,29 @@
 <div class="shell">
   <div class="top">
     <a class="exit" href="/">←</a>
-    <span class="title">Today's Drill</span>
+    <span class="title" id="topTitle">Today's Drill</span>
     <span class="hearts" id="hearts">♥♥♥♥♥</span>
     <span class="xp mono" id="xp">⚡ 0</span>
   </div>
 
-  <!-- dashboard -->
   <div id="dash">
     <div class="streakrow">
       <span class="streak"><span class="fl">🔥</span> <span id="streakN">0</span> <span class="muted">day streak</span></span>
       <span class="dimmini" id="dimmini"></span>
     </div>
     <div class="card">
-      <div class="ctype">Today · ≈4 min</div>
+      <div class="ctype" id="dashCtype">Today · ≈4 min</div>
       <div class="prompt" id="dailyTitle">Ready for today's drill?</div>
-      <p class="context" id="dailySub">8 quick reps. 5 hearts. Finish it to keep your streak alive.</p>
+      <p class="context" id="dailySub">A few quick reps. 5 hearts. Finish it to keep your streak alive.</p>
       <button class="continue" id="startDrill" style="background:var(--coral)">Start today's drill →</button>
     </div>
     <div class="card" style="margin-top:12px">
       <div class="ctype">Your four dimensions</div>
       <div class="dimbars" id="dimbars"></div>
-      <p class="context" style="font-size:12.5px;margin-top:6px">Rescored as you drill. Master each to unlock the next unit.</p>
+      <a href="/path" style="display:block;text-align:center;margin-top:10px;font-size:13px;font-weight:600;color:var(--teal,#0d9488);text-decoration:none">View full skill path →</a>
     </div>
   </div>
 
-  <!-- drill player -->
   <div id="player" class="hidden">
     <div class="dots" id="dots"></div>
     <div class="prog-label mono" id="progLabel"></div>
@@ -117,110 +113,55 @@
     <button class="continue" id="continueBtn" disabled>Continue →</button>
   </div>
 
-  <!-- completion -->
   <div id="done" class="hidden">
     <div class="done-wrap">
       <div class="done-badge">🎉</div>
-      <h2>Drill complete.</h2>
+      <h2>Unit complete.</h2>
       <p id="doneStreak"></p>
       <div class="xp-gain">+10 XP</div>
       <div class="next-up">
         <div class="tag">Next unlock</div>
-        <div class="t">Operational Vocabulary</div>
-        <p class="context" style="font-size:13px;margin-top:2px">wRVU · days in A/R · denial rate · no-show — speak them tomorrow.</p>
+        <div class="t" id="nextTitle">…</div>
+        <p class="context" style="font-size:13px;margin-top:2px" id="nextSub"></p>
       </div>
-      <button class="continue" style="background:var(--coral)" onclick="location.reload()">Come back tomorrow →</button>
+      <a class="continue" style="background:var(--coral);text-align:center;display:block" href="/path">See your path →</a>
       <p class="context" style="font-size:12.5px">Your streak is safe. One drill a day is the whole trick.</p>
     </div>
   </div>
 </div>
 
 <script>
-/* ---------------- lesson data (Phase 1: Unit 1 + vocab sampler) ---------------- */
-const LESSON = [
-  { type:"bullet", prompt:"Which bullet <b>proves</b> impact, rather than listing duties?",
-    options:[
-      {text:"Managed patient registration for a 42-physician clinic.", correct:false},
-      {text:"Oversaw front-desk operations daily.", correct:false},
-      {text:"Reduced patient no-shows 19% → 11% in one quarter by reworking the reminder cadence.", correct:true},
-    ],
-    why:"Only the last has a <b>delta + a number + a mechanism</b>. That's what survives the resume screen." },
-  { type:"flash", prompt:"Your <span class='mono'>no-show rate</span> is 18%. What does that actually cost the org?",
-    options:[
-      {text:"Lost revenue and idle staff — every no-show is an empty slot.", correct:true},
-      {text:"Nothing — patients just reschedule.", correct:false},
-      {text:"It's mostly a marketing problem.", correct:false},
-    ],
-    why:"No-show is a <b>revenue + capacity</b> metric. Flagging it in dollar terms is director language." },
-  { type:"flash", prompt:"<span class='mono'>Days in A/R</span> is 48. What's the takeaway?",
-    options:[
-      {text:"Cash sits uncollected ~48 days — you're financing operations on credit.", correct:true},
-      {text:"It takes 48 days to schedule a patient.", correct:false},
-      {text:"Payments post instantly.", correct:false},
-    ],
-    why:"A/R days is a <b>liquidity lever</b>. Quoting it correctly signals you think in cash-cycle terms." },
-  { type:"star-order", prompt:"Order this messy story into STAR.",
-    context:"\"Denials were killing us — 14% of claims — so I pulled a report, found missing prior-auths, then built a checklist and trained 8 staff.\"",
-    options:[
-      {text:"S — denials running 14% of claims", correct:true},
-      {text:"T — fix the prior-auth workflow", correct:true},
-      {text:"A — built a pre-auth checklist + trained 8 staff", correct:true},
-      {text:"R — denials 14% → 6%, $310K recovered", correct:true},
-    ],
-    order:true,
-    why:"STAR forces <b>metric → action → result</b>. Panels listen for the numbers, not the adjectives." },
-  { type:"bullet", prompt:"Pick the strongest resume line.",
-    options:[
-      {text:"Responsible for patient access team.", correct:false},
-      {text:"Cut clean-claim rejections 9% → 4% by rebuilding the eligibility check.", correct:true},
-      {text:"Worked with revenue cycle staff.", correct:false},
-    ],
-    why:"Verb + action + <b>quantified result</b>. The middle line is the only one that proves you moved a number." },
-  { type:"star-number", prompt:"Fill the missing number in this result.",
-    context:"\"Reduced clean-claim rejections from ____ to 4%.\"",
-    options:[
-      {text:"9%", correct:true},
-      {text:"51%", correct:false},
-      {text:"100%", correct:false},
-    ],
-    why:"A believable <b>before → after</b> (9% → 4%) shows real movement. Absurd numbers get you screened out." },
-  { type:"linkedin", prompt:"Which headline would a recruiter actually find?",
-    options:[
-      {text:"Healthcare professional dedicated to excellence", correct:false},
-      {text:"Revenue Cycle Manager · ↓ denials 14%→6% · A/R 48→31 days", correct:true},
-      {text:"Passionate about patient care", correct:false},
-    ],
-    why:"Recruiters <b>search job titles + metrics</b>, never adjectives. The middle line is searchable." },
-  { type:"speak", prompt:"\"Tell me about a time you improved a process.\"",
-    context:"30 seconds, out loud. Then self-score against the four checks.",
-    rubric:["Named the metric","Included a number","Owned the action","Tied it to margin or operations"] },
-];
-
 /* ---------------- state ---------------- */
 let hp = 5, xp = 0, idx = 0, answered = false;
-const DIMS = { resume:"Resume Metrics", vocabulary:"Operational Vocabulary", linkedin:"LinkedIn & Visibility", interview:"Interview Readiness" };
+let items = [], currentUnitId = null, nextUnit = null;
+const DIMS = { resume:"Resume Metrics", vocabulary:"Operational Vocabulary", linkedin:"LinkedIn & Visibility", interview:"Interview Readiness", offer:"Offer & Negotiation" };
 const userId = () => new URLSearchParams(location.search).get("u") || localStorage.getItem("hcaUid");
 
-function makeDots(){ const d=document.getElementById("dots"); d.innerHTML="";
-  LESSON.forEach((_,i)=>{ const s=document.createElement("span"); s.className="dot"+(i<idx?" done":i===idx?" curr":""); d.appendChild(s); }); }
-
-function renderHearts(){ let h=""; for(let i=0;i<5;i++) h += i<hp ? "♥" : "<span class='lost'>♥</span>"; document.getElementById("hearts").innerHTML=h;
-  document.getElementById("xp").textContent="⚡ "+xp; }
-
-function startDrill(){ document.getElementById("dash").classList.add("hidden"); document.getElementById("player").classList.remove("hidden");
-  idx=0; renderItem(); }
-
+function makeDots(){
+  const d=document.getElementById("dots"); d.innerHTML="";
+  items.forEach((_,i)=>{ const s=document.createElement("span"); s.className="dot"+(i<idx?" done":i===idx?" curr":""); d.appendChild(s); });
+}
+function renderHearts(){
+  let h=""; for(let i=0;i<5;i++) h += i<hp ? "♥" : "<span class='lost'>♥</span>";
+  document.getElementById("hearts").innerHTML=h;
+  document.getElementById("xp").textContent="⚡ "+xp;
+}
+function startDrill(){
+  document.getElementById("dash").classList.add("hidden");
+  document.getElementById("player").classList.remove("hidden");
+  idx=0; renderItem();
+}
 function renderItem(){
   answered=false;
-  const it = LESSON[idx];
+  const it = items[idx];
   makeDots();
-  document.getElementById("progLabel").textContent = (idx+1)+" / "+LESSON.length+" · "+ (idx>=LESSON.length-1?"final":"≈4 min");
-  const ctype={flash:"Metric flash",bullet:"Spot the weak bullet","star-order":"Fill the STAR","star-number":"Fill the STAR",linkedin:"LinkedIn scan",speak:"Speak-aloud"}[it.type];
+  document.getElementById("progLabel").textContent = (idx+1)+" / "+items.length+" · "+(idx>=items.length-1?"final":"≈4 min");
+  const ctype={flash:"Metric flash",bullet:"Spot the weak bullet",star:"Fill the STAR",linkedin:"LinkedIn scan",speak:"Speak-aloud"}[it.type]||"Drill";
   const card=document.getElementById("itemCard");
   let opts="";
   if(it.type==="speak"){
     opts = `<div class="timer"><span class="time" id="t">0:30</span><button id="sayBtn">Start</button></div>
-      <div class="rubric"><div class="lt">Self-score — did you…</div>${it.rubric.map((r,i)=>`<div class="row"><span>${r}</span><button class="ckbtn" data-i="${i}">✓</button></div>`).join("")}</div>`;
+      <div class="rubric"><div class="lt">Self-score — did you…</div>${(it.rubric||[]).map((r,i)=>`<div class="row"><span>${r}</span><button class="ckbtn" data-i="${i}">✓</button></div>`).join("")}</div>`;
   } else {
     opts = `<div class="opts">${it.options.map((o,i)=>`<button class="opt" data-i="${i}">${o.text}</button>`).join("")}</div>`;
   }
@@ -233,87 +174,103 @@ function renderItem(){
   } else {
     card.querySelectorAll(".opt").forEach(btn=>btn.onclick=()=>answer(btn,it));
   }
-  const cb=document.getElementById("continueBtn"); cb.disabled=true; cb.textContent= idx>=LESSON.length-1 ? "Finish drill →" : "Continue →";
+  const cb=document.getElementById("continueBtn"); cb.disabled=true; cb.textContent= idx>=items.length-1 ? "Finish unit →" : "Continue →";
 }
-
 function checkSpeakReady(){
   const all = [...document.querySelectorAll(".ckbtn")].every(b=>b.classList.contains("on"));
   document.getElementById("continueBtn").disabled = !all;
 }
-
 function answer(btn, it){
   if(answered) return;
   answered=true;
   const card = document.getElementById("itemCard");
   const i = +btn.dataset.i, o = it.options[i];
   card.querySelectorAll(".opt").forEach(b=>b.disabled=true);
-  const isRight = it.type==="star-order" ? o.correct && remainingOrderCorrect() : o.correct;
+  const isRight = !!o.correct;
   if(!isRight){ hp = Math.max(0, hp-1); btn.classList.add("wrong"); renderHearts(); }
   it.options.forEach((opt,ii)=>{ if(opt.correct) card.querySelectorAll(".opt")[ii].classList.add("correct"); });
   const fb=document.createElement("div"); fb.className="fb "+(isRight?"":"wrong");
-  fb.innerHTML = `<span>${isRight?"💡":"✗"}</span><div><b>Why hiring managers care:</b> ${isRight?it.why:"The right answer is marked green. "+it.why}</div>`;
+  fb.innerHTML = `<span>${isRight?"💡":"✗"}</span><div><b>Why hiring managers care:</b> ${isRight?(it.why||""):(it.why||"The marked answer is correct.")}</div>`;
   card.appendChild(fb);
   if(isRight) xp += 2; renderHearts();
-  if(hp===0){ document.getElementById("continueBtn").disabled=false; document.getElementById("continueBtn").textContent="Out of hearts — see summary"; }
-  else document.getElementById("continueBtn").disabled=false;
+  document.getElementById("continueBtn").disabled=false;
+  if(hp===0) document.getElementById("continueBtn").textContent="Out of hearts — finish";
 }
-
-function remainingOrderCorrect(){ return true; } // simplified: any first tap of a correct option counts
-
 async function finishDrill(){
   document.getElementById("player").classList.add("hidden");
   document.getElementById("done").classList.remove("hidden");
   const uid = userId();
   let streak = "Your streak is safe.";
-  if(uid){
+  if(uid && currentUnitId){
     try{
       const r = await fetch("/api/drill", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:uid})});
       const d = await r.json();
-      if(d.streak) streak = `Streak: <b>${d.streak}</b> day${d.streak===1?"":"s"}${d.streak===1?" — keep it alive tomorrow.":" — nice work."}`;
+      if(d.streak) streak = `Streak: <b>${d.streak}</b> day${d.streak===1?"":"s"}.`;
+      await fetch("/api/progress", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:uid, unitId:currentUnitId})});
     }catch(e){}
   }
   document.getElementById("doneStreak").innerHTML = streak;
-  document.getElementById("streakN").textContent = "…";
+  if(nextUnit){
+    document.getElementById("nextTitle").textContent = nextUnit.title;
+    document.getElementById("nextSub").textContent = nextUnit.blurb||"";
+  } else {
+    document.getElementById("nextTitle").textContent = "Path complete";
+    document.getElementById("nextSub").textContent = "You've finished Phase 2. Nice work.";
+  }
 }
-
 document.getElementById("continueBtn").onclick = () => {
-  if(hp===0){ finishDrill(); return; }
   idx++;
-  if(idx >= LESSON.length){ finishDrill(); return; }
+  if(idx >= items.length){ finishDrill(); return; }
   renderItem();
 };
+document.getElementById("startDrill").onclick = startDrill;
 
-/* ---------------- boot: load user state ---------------- */
-async function boot(){
-  const uid = userId();
-  if(uid){
-    try{
-      const r = await fetch("/api/user?id="+encodeURIComponent(uid));
-      if(r.ok){
-        const u = await r.json();
-        if(u && u.user){
-          document.getElementById("streakN").textContent = u.user.streak||0;
-          renderDimBars(u.user.dimensions||{});
-          return;
-        }
-      }
-    }catch(e){}
-  }
-  // no user: prompt to take scorecard first
-  document.getElementById("streakN").textContent="0";
-  document.getElementById("dimmini").innerHTML = `<a href="/scorecard" style="color:var(--coral);font-weight:600;font-size:13px;text-decoration:none">Take the scorecard →</a>`;
+/* ---------------- unit resolution ---------------- */
+function resolveUnit(path){
+  const byId = window.HCA_UNITS_BY_ID || {};
+  const unitParam = new URLSearchParams(location.search).get("unit");
+  if(unitParam && byId[unitParam]) return unitParam;
+  // first non-mastered unit in order
+  for(const id of (window.HCA_UNIT_ORDER||[])){ if(!path[id]?.mastered) return id; }
+  return (window.HCA_UNIT_ORDER||[])[0] || null;
 }
 function renderDimBars(dims){
   const el=document.getElementById("dimbars"); el.innerHTML="";
   const mini=document.getElementById("dimmini"); mini.innerHTML="";
   Object.keys(DIMS).forEach(k=>{
+    if(dims[k]===undefined && k!=="resume") return; // only show dimensions with data
     const v = Math.round(dims[k]||0);
     mini.innerHTML += `<span class="dimchip"><b>${v}</b> ${DIMS[k]}</span>`;
     el.innerHTML += `<div class="dimbar"><div class="lb"><span>${DIMS[k]}</span><b>${v}</b></div><div class="track"><div class="fill ${k}" style="width:${v}%"></div></div></div>`;
   });
 }
-
-document.getElementById("startDrill").onclick = startDrill;
+async function boot(){
+  const byId = window.HCA_UNITS_BY_ID || {};
+  const order = window.HCA_UNIT_ORDER || [];
+  let path = {};
+  const uid = userId();
+  if(uid){
+    try{
+      const r = await fetch("/api/user?id="+encodeURIComponent(uid));
+      if(r.ok){ const j = await r.json(); if(j.user){ path = j.user.path||{}; document.getElementById("streakN").textContent = j.user.streak||0; renderDimBars(j.user.dimensions||{}); } }
+    }catch(e){}
+  }
+  currentUnitId = resolveUnit(path);
+  const unit = byId[currentUnitId];
+  if(unit){
+    items = unit.items||[];
+    document.getElementById("dailyTitle").textContent = unit.title;
+    document.getElementById("dailySub").textContent = (unit.blurb||"") + " · " + items.length + " reps, ~4 min.";
+    document.getElementById("topTitle").textContent = unit.title;
+    document.getElementById("dashCtype").textContent = HCA_DIM_LABEL(unit.dim) + " · ≈4 min";
+    // next unit
+    const i = order.indexOf(currentUnitId);
+    nextUnit = (i>=0 && i<order.length-1) ? byId[order[i+1]] : null;
+  }
+  if(!document.getElementById("streakN").textContent || document.getElementById("streakN").textContent==="0"){
+    if(!uid) document.getElementById("dimmini").innerHTML = `<a href="/scorecard" style="color:var(--coral);font-weight:600;font-size:13px;text-decoration:none">Take the scorecard →</a>`;
+  }
+}
 renderHearts();
 boot();
 </script>

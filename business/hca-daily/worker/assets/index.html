@@ -3,174 +3,226 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The HCA Daily — Fast-Track Your Healthcare Administration Career</title>
-<meta name="description" content="Free 90-second career readiness scorecard for healthcare administrators. Discover your score, your top 3 fixes, and the exact playbook to get hired faster.">
-<meta property="og:title" content="The HCA Daily — Fast-Track Your Healthcare Administration Career">
-<meta property="og:description" content="Free 90-second readiness scorecard + the 156-question Interview Answer Vault. Built by Dr. Ashley Hussain-Okorafor, DBA.">
+<title>The HCA Daily — Get Interview-Fluent, 5 Minutes a Day</title>
+<meta name="description" content="The HCA Daily turns healthcare administrators interview-fluent in the metrics hiring execs actually use — wRVUs, days in A/R, denial rates — 5 minutes a day.">
+<meta name="theme-color" content="#0b2545">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#0b2545; --navy-2:#13315c; --teal:#0d9488; --teal-2:#0f766e;
-    --gold:#c9a227; --ink:#14181f; --muted:#5b6572; --bg:#f7f9fb;
-    --card:#ffffff; --line:#e4e9f0;
-  }
+  :root{ --navy:#0b2545; --navy2:#13315c; --coral:#ff5749; --amber:#f59e0b; --teal:#0d9488;
+    --green:#16a34a; --slate:#94a3b8; --off:#faf9f6; --ink:#14181f; --muted:#5b6572; --line:#e6e3dd }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--off);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Sora',sans-serif;color:var(--navy);line-height:1.12}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .container{max-width:1080px;margin:0 auto;padding:0 22px}
   section{padding:64px 0}
-  h1,h2,h3{font-weight:800;line-height:1.15;color:var(--navy)}
-  h1{font-size:44px;letter-spacing:-.5px}
-  h2{font-size:32px;margin-bottom:16px}
-  h3{font-size:20px;margin-bottom:8px}
-  p{color:#2a3440;margin-bottom:14px}
-  .sub{font-size:19px;color:var(--muted)}
-  .eyebrow{letter-spacing:2px;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--teal);margin-bottom:12px}
-  .center{text-align:center}
-  .cta{display:inline-block;background:var(--gold);color:#1a1400;font-weight:800;font-size:18px;
-    padding:16px 36px;border-radius:12px;text-decoration:none;box-shadow:0 8px 24px rgba(201,162,39,.32)}
-  .cta:hover{transform:translateY(-2px)}
-  .cta-ghost{background:#fff;color:var(--navy);box-shadow:0 6px 20px rgba(0,0,0,.12)}
-
-  header{border-bottom:1px solid var(--line);background:#fff}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .logo{font-weight:800;font-size:19px;color:var(--navy);text-decoration:none;letter-spacing:-.3px}
-  .logo span{color:var(--teal)}
-  .navlinks{display:flex;gap:26px;align-items:center}
-  .navlinks a{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
-  .navlinks a:hover{color:var(--navy)}
-  .navlinks .btn{background:var(--gold);color:#1a1400;padding:9px 18px;border-radius:9px;font-weight:800}
-
-  .hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 65%,#0e3a5c 100%);color:#fff;padding:84px 0 72px}
-  .hero h1{color:#fff}
-  .hero .sub{color:#c7d3e2;margin:18px 0 30px}
-  .hero .gold{color:var(--gold)}
-  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .stat-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:42px}
-  .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 22px;min-width:140px}
-  .stat b{display:block;font-size:28px;color:#fff}
-  .stat span{font-size:13px;color:#aebfd4}
-
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px}
-  .card.accent{border-top:5px solid var(--teal)}
-  .card.gold{border-top:5px solid var(--gold)}
-  .price{font-size:38px;font-weight:800;color:var(--navy)}
-  .was{text-decoration:line-through;color:var(--muted);font-size:18px}
-  .list{margin:16px 0 20px;padding-left:0;list-style:none}
-  .list li{padding:7px 0 7px 28px;position:relative;color:#2a3440}
-  .list li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:800}
-  .list.gold li::before{color:var(--gold)}
-
-  .whoami{display:flex;gap:24px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px;max-width:760px;margin:0 auto}
-  .avatar{width:84px;height:84px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;flex-shrink:0}
-  .coming{background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:28px;text-align:center}
-
-  footer{background:var(--navy);color:#8ca2bd;text-align:center;padding:34px 0;font-size:14px}
-  @media(max-width:760px){h1{font-size:32px}h2{font-size:26px}.two-col{grid-template-columns:1fr}.navlinks{gap:16px}}
+  .eyebrow{letter-spacing:2.5px;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--coral);margin-bottom:14px}
+  h2{font-size:34px;font-weight:800;letter-spacing:-.5px;margin-bottom:12px}
+  .sub{color:var(--muted);font-size:17px;line-height:1.6;max-width:620px}
+  .btn{display:inline-block;background:var(--coral);color:#fff;font-weight:700;font-size:16px;padding:15px 32px;border-radius:14px;text-decoration:none;box-shadow:0 10px 24px rgba(255,87,73,.28);transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--navy);box-shadow:none;border:2px solid var(--line)}
+  /* nav */
+  nav{position:sticky;top:0;background:rgba(11,37,69,.96);backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Sora',sans-serif;font-weight:800;color:#fff;font-size:17px;text-decoration:none}
+  .logo span{color:var(--coral)}
+  .nav-r{display:flex;align-items:center;gap:16px}
+  .nav-login{color:#c2cfe0;font-size:14px;font-weight:600;text-decoration:none}
+  .nav-cta{background:var(--coral);color:#fff;font-size:14px;font-weight:700;padding:9px 18px;border-radius:10px;text-decoration:none}
+  /* hero */
+  .hero{background:linear-gradient(168deg,#0b2545,#13315c 62%,#0e3a5c);color:#fff;padding:80px 0 72px;text-align:center}
+  .hero h1{color:#fff;font-size:46px;max-width:820px;margin:0 auto 18px;letter-spacing:-1px}
+  .hero .sub{color:#c2cfe0;font-size:19px;max-width:640px;margin:0 auto 28px}
+  .hero .sharp{color:var(--amber);font-weight:600}
+  .hero .btn{margin-top:6px}
+  .hero .ghost{color:#b9c8dc;border-color:rgba(255,255,255,.2);margin-left:12px}
+  .hero-stats{display:flex;justify-content:center;gap:44px;margin-top:38px;flex-wrap:wrap}
+  .hstat .n{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:700;color:var(--amber)}
+  .hstat .l{font-size:13px;color:#8ca2bd}
+  /* drill demo */
+  .drill-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+  .drill-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 12px 32px rgba(11,37,69,.07)}
+  .drill-box .q{font-size:18px;font-weight:600;color:var(--navy);line-height:1.45}
+  .drill-box .opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;padding:15px;border-radius:13px;margin-top:12px;font-size:15px;color:var(--ink);cursor:pointer;transition:border-color .12s,background .12s}
+  .drill-box .opt:hover{border-color:#cbd5e1}
+  .drill-box .opt.correct{border-color:var(--green);background:#f0fdf4;font-weight:600}
+  .drill-fb{display:flex;gap:9px;align-items:flex-start;margin-top:16px;font-size:14px;color:#3f4a57;background:#f1f5f9;border-left:3px solid var(--green);padding:12px 14px;border-radius:6px}
+  .drill-fb b{color:#0f766e}
+  /* path */
+  .path{margin-top:28px;display:flex;flex-direction:column;gap:6px}
+  .pnode{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .pnode .ic{font-size:20px;margin-right:12px}
+  .pnode .t{font-weight:600;color:var(--navy);font-size:15.5px;display:flex;align-items:center}
+  .pnode .st{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap}
+  .st.ip{background:rgba(255,87,73,.12);color:var(--coral)}
+  .st.lk{background:#eef1f5;color:var(--slate)}
+  /* authority */
+  .auth{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .auth-card{display:flex;gap:20px;align-items:center;max-width:760px}
+  .auth-av{width:64px;height:64px;border-radius:16px;background:linear-gradient(140deg,var(--navy),var(--teal));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:22px;flex-shrink:0}
+  .auth .who{font-weight:700;color:var(--navy);font-size:16px}
+  /* loop */
+  .loop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+  .loop{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+  .loop .n{width:36px;height:36px;border-radius:10px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:12px}
+  .loop .tt{font-weight:700;color:var(--navy);font-size:15.5px;margin-bottom:4px}
+  .loop .dd{font-size:13.5px;color:var(--muted)}
+  /* depth */
+  .depth-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+  .depth{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
+  .depth .tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--slate)}
+  .depth .t{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:8px 0 6px}
+  .depth .d{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .pricetag{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--green);font-size:15px}
+  .depth .btn{margin-top:16px;padding:12px 24px;font-size:14.5px}
+  /* FAQ */
+  .faq{max-width:720px;margin:0 auto}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px}
+  .faq summary{font-weight:700;color:var(--navy);font-size:15.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  .faq summary::after{content:"+";font-size:22px;color:var(--coral);font-weight:600}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--muted);font-size:14.5px;margin-top:10px;line-height:1.6}
+  /* footer */
+  footer{background:var(--navy);color:#8ca2bd;padding:48px 0;font-size:14px}
+  footer a{color:#c2cfe0;text-decoration:none}
+  .foot-grid{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  @media(max-width:820px){
+    h2{font-size:28px}.hero h1{font-size:32px}
+    .drill-grid,.depth-grid{grid-template-columns:1fr;gap:22px}
+    .loop-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:480px){ .loop-grid{grid-template-columns:1fr} .hero .ghost{margin-left:0;margin-top:10px} }
 </style>
 </head>
 <body>
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/">The HCA <span>Daily</span></a>
+    <div class="nav-r">
+      <a class="nav-login" href="/learn">Log in</a>
+      <a class="nav-cta" href="/scorecard">Start</a>
+    </div>
+  </div>
+</nav>
 
-<header>
-  <div class="wrap nav">
-    <a href="/" class="logo">The HCA <span>Daily</span></a>
-    <nav class="navlinks">
-      <a href="/scorecard">Free Scorecard</a>
-      <a href="/vault">The Vault</a>
-      <a href="https://www.youtube.com/@professorashley" class="btn">YouTube ↗</a>
-    </nav>
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow" style="color:#8fd3c9">The HCA Daily · Hiring-side training</p>
+    <h1>Get interview-fluent in the metrics hiring execs actually use — 5 minutes a day.</h1>
+    <p class="sub">Say goodbye to <span class="sharp">"I'd improve productivity."</span> Walk in speaking wRVUs, days in A/R, and no-show rates.</p>
+    <a class="btn" href="/scorecard">Take the 90-second Scorecard</a>
+    <a class="btn ghost" href="#drill">See a sample drill ↓</a>
+    <div class="hero-stats">
+      <div class="hstat"><div class="n">6,000+</div><div class="l">healthcare leaders</div></div>
+      <div class="hstat"><div class="n">4</div><div class="l">scored dimensions</div></div>
+      <div class="hstat"><div class="n">5 min</div><div class="l">a day</div></div>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap center">
-    <h1>Fast-track your healthcare administration career — <span class="gold">starting today.</span></h1>
-    <p class="sub">Know exactly where you stand in 90 seconds, then use the playbook that gets healthcare<br>admin candidates hired — built by a DBA who's been on the hiring side.</p>
-    <div class="hero-ctas">
-      <a href="/scorecard" class="cta">Take the Free Scorecard</a>
-      <a href="/vault" class="cta cta-ghost">Get the Vault — $27</a>
+<section id="drill">
+  <div class="container drill-grid">
+    <div>
+      <p class="eyebrow">Live demo</p>
+      <h2>This is a drill.</h2>
+      <p class="sub">One metric, one tap, one sentence on <em>why it matters</em>. That's the whole unit — no 40-minute videos, no pages to read.</p>
     </div>
-    <div class="stat-row">
-      <div class="stat"><b>90 sec</b><span>to your score</span></div>
-      <div class="stat"><b>4</b><span>hiring dimensions</span></div>
-      <div class="stat"><b>156</b><span>interview scripts</span></div>
-      <div class="stat"><b>6K+</b><span>YouTube students</span></div>
+    <div class="drill-box">
+      <div class="q">Your <span class="mono" style="color:#13315c">A/R days</span> is <span class="mono" style="color:#13315c">48</span>. What does that mean for cash?</div>
+      <button class="opt" data-i="0">Cash is sitting uncollected ~48 days — you're financing operations on credit.</button>
+      <button class="opt" data-i="1">Patients wait 48 days for appointments.</button>
+      <button class="opt" data-i="2">It takes 48 days to post a payment.</button>
+      <div class="drill-fb hidden"><span>💡</span><div><b>Why hiring managers care:</b> A/R days is a liquidity lever. Quoting it correctly signals you think in cash-cycle terms — that's director language.</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;border-top:1px solid var(--line)">
+  <div class="container">
+    <p class="eyebrow">Your path</p>
+    <h2>Four skills stand between you and the offer.</h2>
+    <p class="sub">Not 156 scripts — four scored dimensions. Master each and the director role gets closer.</p>
+    <div class="path">
+      <div class="pnode"><span class="t"><span class="ic">📊</span>Resume Metrics</span><span class="st ip">IN PROGRESS</span></div>
+      <div class="pnode"><span class="t"><span class="ic">🗣️</span>Operational Vocabulary</span><span class="st ip">IN PROGRESS</span></div>
+      <div class="pnode"><span class="t"><span class="ic">🔗</span>LinkedIn &amp; Visibility</span><span class="st lk">LOCKED</span></div>
+      <div class="pnode"><span class="t"><span class="ic">🎤</span>Interview Delivery</span><span class="st lk">LOCKED</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="auth">
+  <div class="container auth-card">
+    <div class="auth-av">AH</div>
+    <div>
+      <p class="who">Trained by someone who sat on your side of the table.</p>
+      <p class="sub" style="font-size:15px;max-width:640px">Dr. Ashley Hussain-Okorafor, DBA — former university lecturer, hiring-side administrator, and the voice behind <a href="https://www.youtube.com/@professorashley" style="color:var(--teal);font-weight:600">@professorashley</a> (6,000+ healthcare leaders).</p>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">Start Here — It's Free</div><h2>Your HCA Career Readiness Scorecard</h2>
-    <p class="sub" style="max-width:640px;margin:0 auto">10 quick questions. 90 seconds. Get your 0–100 score across the four dimensions hiring managers actually screen on — and your top 3 fixes, personalized.</p></div>
-    <div class="stat-row" style="margin-top:28px">
-      <div class="stat" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--navy)">Resume</b><span style="color:var(--muted)">Metrics</span></div>
-      <div class="stat" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--navy)">Ops</b><span style="color:var(--muted)">Vocabulary</span></div>
-      <div class="stat" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--navy)">LinkedIn</b><span style="color:var(--muted)">Visibility</span></div>
-      <div class="stat" style="background:var(--card);border:1px solid var(--line)"><b style="color:var(--navy)">Interview</b><span style="color:var(--muted)">Readiness</span></div>
+  <div class="container">
+    <p class="eyebrow">The daily loop</p>
+    <h2>Score → Drill → Review → Unlock.</h2>
+    <div class="loop-grid">
+      <div class="loop"><div class="n">1</div><div class="tt">90-second scorecard</div><div class="dd">Places you on the path.</div></div>
+      <div class="loop"><div class="n">2</div><div class="tt">Today's 4-min drill</div><div class="dd">One skill, retrieval practice.</div></div>
+      <div class="loop"><div class="n">3</div><div class="tt">A review rescues fading skills</div><div class="dd">Spaced repetition, on autopilot.</div></div>
+      <div class="loop"><div class="n">4</div><div class="tt">Next unit unlocks</div><div class="dd">Streak + bars always visible.</div></div>
     </div>
-    <div class="center" style="margin-top:30px"><a href="/scorecard" class="cta">Get My Score — Free</a>
-    <p class="sub" style="margin-top:12px;font-size:15px">No spam. Takes about 90 seconds.</p></div>
   </div>
 </section>
 
-<section style="background:#fff">
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">The Playbook</div><h2>Get hired with the Interview Answer Vault</h2>
-    <p class="sub" style="max-width:680px;margin:0 auto">156 real healthcare-administration interview questions with complete answer scripts — every answer anchored to the metrics hiring executives actually listen for.</p></div>
-    <div class="two-col" style="margin-top:30px">
-      <div class="card accent">
-        <h3>Everything inside</h3>
-        <ul class="list">
-          <li>30 Behavioral & Leadership scripts</li>
-          <li>30 Operational & Metrics-Driven</li>
-          <li>30 Revenue Cycle & Patient Access</li>
-          <li>30 Clinical Ops, Quality, HIM & LTC</li>
-          <li>36 Salary negotiation & follow-up scripts</li>
-          <li>157 pages, instant PDF download</li>
-        </ul>
+<section style="background:#fff;border-top:1px solid var(--line)">
+  <div class="container">
+    <p class="eyebrow">Go deeper</p>
+    <h2>Already in the path?</h2>
+    <div class="depth-grid">
+      <div class="depth">
+        <div class="tag">Vault · Lifetime · <span class="pricetag">$27</span></div>
+        <div class="t">The full 156-script library</div>
+        <div class="d">The answer key every drill pulls from. Search by question type — behavioral, operations, revenue cycle, quality — then <em>"Drill this."</em></div>
+        <a class="btn" href="/vault">Get the Vault →</a>
       </div>
-      <div class="card gold">
-        <div class="eyebrow">Lifetime access</div>
-        <h3>The HCA Interview Answer Vault</h3>
-        <p>Say goodbye to <em>"I'd improve productivity."</em> Walk in speaking wRVUs, days in A/R, and no-show rates — and get the offer.</p>
-        <p style="margin-top:8px"><span class="was">$97</span> <span class="price">$27</span></p>
-        <a href="/vault" class="cta" style="margin-top:6px">Get the Vault</a>
-        <p class="sub" style="font-size:13px;margin-top:10px">30-day money-back guarantee</p>
+      <div class="depth">
+        <div class="tag">Career Accelerator · <span class="pricetag">$279</span></div>
+        <div class="t">Adaptive plan + 24/7 advisory</div>
+        <div class="d">JD matching, salary benchmarking, the negotiation unit, and the full resume &amp; LinkedIn kit — 18,500 words, done-for-you.</div>
+        <a class="btn" href="/accelerator">See the Accelerator →</a>
       </div>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="center"><div class="eyebrow">Coming Soon</div><h2>The Career Accelerator</h2>
-    <p class="sub" style="max-width:640px;margin:0 auto">An automated, productized upgrade for candidates who've gotten the scorecard and the Vault and are ready to go deeper — application strategy, personal branding, and offer negotiation, on your own timeline.</p></div>
-    <div class="coming" style="max-width:640px;margin:28px auto 0">
-      <p style="color:var(--muted)">🚧 In development — drop your email on the scorecard and you'll be first to know when it launches.</p>
-    </div>
-  </div>
-</section>
-
-<section style="background:#fff">
-  <div class="wrap center">
-    <div class="eyebrow">Who Built This</div>
-    <div class="whoami">
-      <div class="avatar">AH</div>
-      <div style="text-align:left">
-        <h3 style="margin-bottom:4px">Dr. Ashley Hussain-Okorafor, DBA</h3>
-        <p style="margin:0">Doctor of Business Administration in Healthcare. Former full-time university lecturer. Founder of The HCA Daily and the @professorashley YouTube channel (6K+ students). Ashley has sat on the hiring side and taught the people who get hired — this is the exact playbook her students use.</p>
-      </div>
-    </div>
+  <div class="container faq">
+    <p class="eyebrow" style="text-align:center">Questions</p>
+    <h2 style="text-align:center">FAQ</h2>
+    <details><summary>Is this 1:1 coaching?</summary><p>No. It's fully automated, self-paced, and 5 minutes a day — you get the system and the daily drills, not calls on your calendar.</p></details>
+    <details><summary>How long until I'm interview-ready?</summary><p>The scorecard shows your gap in 90 seconds. Most learners feel the difference within 14 days of daily drills — fluency compounds from repeated retrieval, not a single PDF.</p></details>
+    <details><summary>Can I try before paying?</summary><p>Yes. The full scorecard and your first drills are free. You only pay when you want the depth — the full script library or the Accelerator.</p></details>
+    <details><summary>What roles does this cover?</summary><p>Practice managers, directors, supervisors, and coordinators across patient access, revenue cycle, HIM, clinical operations, quality, and long-term care.</p></details>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    © 2026 The HCA Daily · All rights reserved
-    <div style="color:#6d8097;font-size:13px;margin-top:8px">Educational products. Results vary and are not guaranteed.</div>
+  <div class="container foot-grid">
+    <div><a class="logo" href="/" style="font-family:'Sora',sans-serif;font-weight:800">The HCA <span style="color:var(--coral)">Daily</span></a></div>
+    <div>© 2026 The HCA Daily · Built for healthcare administration professionals</div>
+    <div><a href="/about">About</a> · <a href="/legal">Terms</a></div>
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll(".drill-box .opt").forEach(b=>b.addEventListener("click", function(){
+    const i = +this.dataset.i;
+    document.querySelectorAll(".drill-box .opt").forEach((o,j)=>{ o.classList.remove("correct"); if(j!==i){ o.style.opacity=.5; } else { o.classList.add("correct"); } });
+    document.querySelector(".drill-box .drill-fb").classList.remove("hidden");
+  }));
+</script>
 </body>
 </html>

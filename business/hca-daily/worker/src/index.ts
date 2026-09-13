@@ -51,6 +51,7 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/vault/thanks": "/thankyou.html",
   "/thank-you": "/thankyou.html",
   "/thanks": "/thankyou.html",
+  "/accelerator": "/accelerator.html",
   "/admin": "/admin.html",
   "/leads": "/admin.html",
 };

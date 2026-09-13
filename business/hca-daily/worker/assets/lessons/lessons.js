@@ -17,5 +17,13 @@ window.HCA_UNITS_BY_ID = {};
 window.HCA_UNITS.forEach(u => { window.HCA_UNITS_BY_ID[u.id] = u; });
 window.HCA_UNITS = window.HCA_UNIT_ORDER.map(id => window.HCA_UNITS_BY_ID[id]).filter(Boolean);
 
+/* inject star-ORDER extras into matching units */
+if (window.HCA_STAR_ORDER) {
+  Object.keys(window.HCA_STAR_ORDER).forEach(uid => {
+    const u = window.HCA_UNITS_BY_ID[uid];
+    if (u) u.items = (u.items || []).concat(window.HCA_STAR_ORDER[uid]);
+  });
+}
+
 /* label for a dimension id */
 window.HCA_DIM_LABEL = id => (window.HCA_DIMENSIONS.find(d => d.id === id) || {}).label || id;

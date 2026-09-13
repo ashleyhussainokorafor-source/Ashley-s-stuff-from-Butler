@@ -49,6 +49,7 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/today": "/learn.html",
   "/path": "/path.html",
   "/practice": "/practice.html",
+  "/league": "/league.html",
   "/vault": "/vault.html",
   "/sales": "/vault.html",
   "/store": "/vault.html",
@@ -225,6 +226,15 @@ async function handleListLeads(request: Request, env: Env): Promise<Response> {
 
 function todayStr(): string { return new Date().toISOString().slice(0, 10); }
 function yesterdayStr(): string { return new Date(Date.now() - 86400000).toISOString().slice(0, 10); }
+function mondayStr(d = new Date()): string {
+  const day = d.getUTCDay();
+  const diff = day === 0 ? 6 : day - 1;
+  const m = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - diff));
+  return m.toISOString().slice(0, 10);
+}
+function daysBetween(a: string, b: string): number {
+  return Math.round((new Date(b + "T00:00:00Z").getTime() - new Date(a + "T00:00:00Z").getTime()) / 86400000);
+}
 
 /** Create/upsert a learner from the scorecard. Never loses prior state. */
 async function handleCreateUser(request: Request, env: Env): Promise<Response> {
@@ -246,6 +256,11 @@ async function handleCreateUser(request: Request, env: Env): Promise<Response> {
     createdAt: (existing.createdAt ?? new Date().toISOString()) as string,
     streak: (existing.streak ?? 0) as number,
     lastDrillDay: (existing.lastDrillDay ?? null) as string | null,
+    freezes: (existing.freezes ?? 1) as number,
+    freezeAwarded: (existing.freezeAwarded ?? false) as boolean,
+    xp: (existing.xp ?? 0) as number,
+    xpWeek: (existing.xpWeek ?? 0) as number,
+    weekStart: (existing.weekStart ?? null) as string | null,
     path: (existing.path ?? {}) as Record<string, unknown>,
   };
   await env.LEADS.put(`user:${userId}`, JSON.stringify(user));
@@ -259,26 +274,53 @@ async function handleGetUser(request: Request, env: Env): Promise<Response> {
   return raw ? json({ user: JSON.parse(raw) }) : json({ user: null });
 }
 
-/** Record a completed drill; increment streak on a new day (humane pacing). */
+/** Record a completed drill: XP + streak (with freeze) + weekly XP. Humane pacing. */
 async function handleDrill(request: Request, env: Env): Promise<Response> {
   let body: Record<string, unknown> = {};
   try { body = (await request.json()) as Record<string, unknown>; } catch { return json({ ok: false, error: "invalid json" }, 400); }
   const userId = String(body.userId ?? "").trim();
   if (!userId) return json({ ok: false, error: "missing userId" }, 400);
+  const xpEarned = Math.max(0, Number(body.xpEarned) || 10);
 
   const raw = await env.LEADS.get(`user:${userId}`);
   let user: Record<string, unknown> = raw
     ? (JSON.parse(raw) as Record<string, unknown>)
-    : { userId, streak: 0, lastDrillDay: null, dimensions: {}, overall: 0, path: {} };
+    : { userId, streak: 0, lastDrillDay: null, freezes: 1, xp: 0, xpWeek: 0, weekStart: null, dimensions: {}, overall: 0, path: {} };
+
+  // weekly XP rollover
+  const wm = mondayStr();
+  if ((user.weekStart ?? "") !== wm) { user.xpWeek = 0; user.weekStart = wm; }
+  user.xp = ((user.xp as number) || 0) + xpEarned;
+  user.xpWeek = ((user.xpWeek as number) || 0) + xpEarned;
 
   const today = todayStr();
+  let already = false, froze = false;
   if (user.lastDrillDay === today) {
-    return json({ ok: true, streak: user.streak as number, already: true, user });
+    already = true;
+  } else if (user.lastDrillDay === yesterdayStr()) {
+    user.streak = ((user.streak as number) || 0) + 1;
+  } else if (user.lastDrillDay) {
+    const gap = daysBetween(user.lastDrillDay as string, today);
+    if (gap === 2 && (user.freezes as number) > 0) {
+      user.freezes = (user.freezes as number) - 1;
+      user.streak = ((user.streak as number) || 0) + 1;
+      froze = true;
+    } else {
+      user.streak = 1;
+    }
+  } else {
+    user.streak = 1;
   }
-  user.streak = (user.lastDrillDay === yesterdayStr()) ? ((user.streak as number) || 0) + 1 : 1;
   user.lastDrillDay = today;
+
+  // award a freeze at a 7-day streak (once)
+  if (!user.freezeAwarded && ((user.streak as number) || 0) >= 7) {
+    user.freezeAwarded = true;
+    user.freezes = Math.min(2, ((user.freezes as number) || 0) + 1);
+  }
+
   await env.LEADS.put(`user:${userId}`, JSON.stringify(user));
-  return json({ ok: true, streak: user.streak as number, user });
+  return json({ ok: true, streak: user.streak as number, xp: user.xp, xpWeek: user.xpWeek, freezes: user.freezes, froze, already, user });
 }
 
 /** Mark a unit mastered on the skill path. */
@@ -299,6 +341,29 @@ async function handleProgress(request: Request, env: Env): Promise<Response> {
   user.path = path;
   await env.LEADS.put(`user:${userId}`, JSON.stringify(user));
   return json({ ok: true, path: user.path });
+}
+
+/** Weekly XP leaderboard (small cohort, opt-in, no public humiliation — top 10 + requester rank). */
+async function handleLeague(request: Request, env: Env): Promise<Response> {
+  const uid = new URL(request.url).searchParams.get("id") ?? "";
+  const list = await env.LEADS.list({ prefix: "user:" });
+  const rows: Array<{ userId: string; name: string; xpWeek: number }> = [];
+  for (const k of list.keys) {
+    const raw = await env.LEADS.get(k.name);
+    if (!raw) continue;
+    try {
+      const u = JSON.parse(raw) as Record<string, unknown>;
+      const xp = (u.xpWeek as number) || 0;
+      if (xp > 0) rows.push({ userId: (u.userId as string) || "", name: (u.name as string) || "Anonymous", xpWeek: xp });
+    } catch { /* skip malformed */ }
+  }
+  rows.sort((a, b) => b.xpWeek - a.xpWeek);
+  const idx = uid ? rows.findIndex(r => r.userId === uid) : -1;
+  return json({
+    top: rows.slice(0, 10).map((r, i) => ({ rank: i + 1, ...r })),
+    myRank: idx >= 0 ? idx + 1 : null,
+    myXp: idx >= 0 ? rows[idx].xpWeek : 0,
+  });
 }
 
 /** Fetch the asset behind a rewritten path. */
@@ -329,6 +394,8 @@ export default {
     if (url.pathname === "/admin/leads") return handleListLeads(request, env);
 
     if (url.pathname === "/api/user") return handleGetUser(request, env);
+
+    if (url.pathname === "/api/league") return handleLeague(request, env);
 
     if (url.pathname === "/vault/download") {
       const pdfReq = new Request(new URL("/vault.pdf", request.url).toString(), request);

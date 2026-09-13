@@ -10,6 +10,7 @@
 <script src="/lessons/part-vocab.js"></script>
 <script src="/lessons/part-interview.js"></script>
 <script src="/lessons/part-offer.js"></script>
+<script src="/lessons/part-starorder.js"></script>
 <script src="/lessons/lessons.js"></script>
 <style>
   :root{ --navy:#0b2545; --navy2:#13315c; --coral:#ff5749; --amber:#f59e0b; --green:#16a34a;
@@ -91,6 +92,7 @@
   <div id="dash">
     <div class="streakrow">
       <span class="streak"><span class="fl">🔥</span> <span id="streakN">0</span> <span class="muted">day streak</span></span>
+      <span class="streak"><span class="fl">❄️</span> <span id="freezeN">0</span> <span class="muted">freeze</span></span>
       <span class="dimmini" id="dimmini"></span>
     </div>
     <div class="card">
@@ -133,6 +135,8 @@
 <script>
 /* ---------------- state ---------------- */
 let hp = 5, xp = 0, idx = 0, answered = false;
+let consecCorrect = 0, consecMiss = 0, freezes = 1;
+let starStep = 0, starOrder = null;
 let items = [], currentUnitId = null, nextUnit = null;
 const DIMS = { resume:"Resume Metrics", vocabulary:"Operational Vocabulary", linkedin:"LinkedIn & Visibility", interview:"Interview Readiness", offer:"Offer & Negotiation" };
 const userId = () => new URLSearchParams(location.search).get("u") || localStorage.getItem("hcaUid");
@@ -156,12 +160,16 @@ function renderItem(){
   const it = items[idx];
   makeDots();
   document.getElementById("progLabel").textContent = (idx+1)+" / "+items.length+" · "+(idx>=items.length-1?"final":"≈4 min");
-  const ctype={flash:"Metric flash",bullet:"Spot the weak bullet",star:"Fill the STAR",linkedin:"LinkedIn scan",speak:"Speak-aloud"}[it.type]||"Drill";
+  const ctype={flash:"Metric flash",bullet:"Spot the weak bullet",star:"Fill the STAR","star-order":"Fill the STAR",linkedin:"LinkedIn scan",speak:"Speak-aloud"}[it.type]||"Drill";
   const card=document.getElementById("itemCard");
   let opts="";
   if(it.type==="speak"){
     opts = `<div class="timer"><span class="time" id="t">0:30</span><button id="sayBtn">Start</button></div>
       <div class="rubric"><div class="lt">Self-score — did you…</div>${(it.rubric||[]).map((r,i)=>`<div class="row"><span>${r}</span><button class="ckbtn" data-i="${i}">✓</button></div>`).join("")}</div>`;
+  } else if(it.type==="star-order"){
+    starStep = 0;
+    starOrder = it.options.map((o,i)=>i).sort(()=>Math.random()-0.5);
+    opts = `<div class="opts">${starOrder.map((orig)=>`<button class="opt" data-orig="${orig}">${it.options[orig].text}</button>`).join("")}</div>`;
   } else {
     opts = `<div class="opts">${it.options.map((o,i)=>`<button class="opt" data-i="${i}">${o.text}</button>`).join("")}</div>`;
   }
@@ -171,6 +179,8 @@ function renderItem(){
     let s=30,t=null; const el=document.getElementById("t"), btn=document.getElementById("sayBtn");
     btn.onclick=()=>{ if(t) return; t=setInterval(()=>{s--; el.textContent="0:"+String(s).padStart(2,"0"); if(s<=0){clearInterval(t); el.textContent="0:00";} },1000); btn.textContent="…"; };
     card.querySelectorAll(".ckbtn").forEach(b=>b.onclick=()=>{ b.classList.toggle("on"); checkSpeakReady(); });
+  } else if(it.type==="star-order"){
+    card.querySelectorAll(".opt").forEach(btn=>btn.onclick=()=>answerStarOrder(btn,it));
   } else {
     card.querySelectorAll(".opt").forEach(btn=>btn.onclick=()=>answer(btn,it));
   }
@@ -187,14 +197,43 @@ function answer(btn, it){
   const i = +btn.dataset.i, o = it.options[i];
   card.querySelectorAll(".opt").forEach(b=>b.disabled=true);
   const isRight = !!o.correct;
-  if(!isRight){ hp = Math.max(0, hp-1); btn.classList.add("wrong"); renderHearts(); }
+  let onFire = false, scaffold = false;
+  if(isRight){
+    consecCorrect++; consecMiss=0; xp += 2;
+    if(consecCorrect>=4){ onFire=true; xp += 2; consecCorrect=0; }
+  } else {
+    consecCorrect=0; consecMiss++;
+    hp = Math.max(0, hp-1); btn.classList.add("wrong");
+    if(consecMiss>=2) scaffold = true;
+  }
   it.options.forEach((opt,ii)=>{ if(opt.correct) card.querySelectorAll(".opt")[ii].classList.add("correct"); });
   const fb=document.createElement("div"); fb.className="fb "+(isRight?"":"wrong");
-  fb.innerHTML = `<span>${isRight?"💡":"✗"}</span><div><b>Why hiring managers care:</b> ${isRight?(it.why||""):(it.why||"The marked answer is correct.")}</div>`;
+  let extra = "";
+  if(onFire) extra = `<div style="margin-top:4px;color:#b45309">🔥 On fire — +2 XP bonus.</div>`;
+  if(scaffold) extra = `<div style="margin-top:4px;color:#b45309">Heads up: read the metric first, then the mechanism.</div>`;
+  fb.innerHTML = `<span>${isRight?"💡":"✗"}</span><div><b>Why hiring managers care:</b> ${isRight?(it.why||""):(it.why||"The marked answer is correct.")}${extra}</div>`;
   card.appendChild(fb);
-  if(isRight) xp += 2; renderHearts();
+  renderHearts();
   document.getElementById("continueBtn").disabled=false;
   if(hp===0) document.getElementById("continueBtn").textContent="Out of hearts — finish";
+}
+function answerStarOrder(btn, it){
+  const orig = +btn.dataset.orig;
+  const card = document.getElementById("itemCard");
+  if(orig === starStep){
+    btn.classList.add("correct"); btn.disabled=true; starStep++;
+    if(starStep >= it.options.length){
+      // complete
+      consecCorrect++; consecMiss=0; xp += 2;
+      const fb=document.createElement("div"); fb.className="fb";
+      fb.innerHTML = `<span>💡</span><div><b>Why hiring managers care:</b> ${it.why||""}</div>`;
+      card.appendChild(fb); renderHearts();
+      document.getElementById("continueBtn").disabled=false;
+    }
+  } else {
+    consecCorrect=0; consecMiss++;
+    hp = Math.max(0, hp-1); btn.classList.add("wrong"); renderHearts();
+  }
 }
 async function finishDrill(){
   document.getElementById("player").classList.add("hidden");
@@ -203,13 +242,15 @@ async function finishDrill(){
   let streak = "Your streak is safe.";
   if(uid && currentUnitId){
     try{
-      const r = await fetch("/api/drill", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:uid})});
+      const r = await fetch("/api/drill", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:uid, xpEarned:xp})});
       const d = await r.json();
       if(d.streak) streak = `Streak: <b>${d.streak}</b> day${d.streak===1?"":"s"}.`;
+      if(d.froze) streak += ` <span style="color:#0d9488">❄️ Freeze used — streak preserved.</span>`;
       await fetch("/api/progress", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:uid, unitId:currentUnitId})});
     }catch(e){}
   }
   document.getElementById("doneStreak").innerHTML = streak;
+  const xg = document.querySelector(".xp-gain"); if(xg) xg.textContent = "+"+xp+" XP";
   if(nextUnit){
     document.getElementById("nextTitle").textContent = nextUnit.title;
     document.getElementById("nextSub").textContent = nextUnit.blurb||"";
@@ -252,7 +293,7 @@ async function boot(){
   if(uid){
     try{
       const r = await fetch("/api/user?id="+encodeURIComponent(uid));
-      if(r.ok){ const j = await r.json(); if(j.user){ path = j.user.path||{}; document.getElementById("streakN").textContent = j.user.streak||0; renderDimBars(j.user.dimensions||{}); } }
+      if(r.ok){ const j = await r.json(); if(j.user){ path = j.user.path||{}; document.getElementById("streakN").textContent = j.user.streak||0; freezes = j.user.freezes||0; document.getElementById("freezeN").textContent = freezes; renderDimBars(j.user.dimensions||{}); } }
     }catch(e){}
   }
   currentUnitId = resolveUnit(path);
@@ -266,6 +307,14 @@ async function boot(){
     // next unit
     const i = order.indexOf(currentUnitId);
     nextUnit = (i>=0 && i<order.length-1) ? byId[order[i+1]] : null;
+    // Navigator/Coach wiring — surface the AI tools at the right moment in the path
+    if(unit.dim==="interview" || unit.dim==="offer"){
+      const ai = document.createElement("a");
+      ai.href = unit.dim==="interview" ? "/coach" : "/navigator";
+      ai.style.cssText = "display:block;text-align:center;margin-top:12px;font-size:13px;font-weight:600;color:#0d9488;text-decoration:none";
+      ai.textContent = unit.dim==="interview" ? "🎤 Practice with the AI interview coach →" : "💰 Ask the Career Navigator for comp advice →";
+      const lastCard = document.querySelector("#dash .card:last-child"); if(lastCard) lastCard.appendChild(ai);
+    }
   }
   if(!document.getElementById("streakN").textContent || document.getElementById("streakN").textContent==="0"){
     if(!uid) document.getElementById("dimmini").innerHTML = `<a href="/scorecard" style="color:var(--coral);font-weight:600;font-size:13px;text-decoration:none">Take the scorecard →</a>`;

@@ -19,6 +19,7 @@ Schedule: run every ~2 hours via cron. Leads get:
 import base64
 import json
 import os
+import sys
 import time
 import urllib.request
 from email.mime.text import MIMEText
@@ -162,7 +163,14 @@ def lead_name(lead):
 
 
 def main():
-    leads = fetch_leads()
+    try:
+        leads = fetch_leads()
+    except Exception as e:
+        # Transient fetch/network failure. Leads are durable in KV, so the
+        # next tick retries — don't crash or spam an error alert every run.
+        # Log to stderr (cron captures it for debugging), exit 0 cleanly.
+        print(f"lead fetch failed (will retry next tick): {str(e)[:140]}", file=sys.stderr)
+        return
     state = load_state()
     now = time.time()
     svc = None  # lazy — only init if there's something to send

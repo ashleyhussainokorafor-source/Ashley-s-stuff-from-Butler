@@ -23,5 +23,10 @@
     "product_id": "prod_VDDMGN6W4HcJDs",
     "price_id": "price_1UCmwELxRw5x7PacgkVSxvI7",
     "payment_link": "https://buy.stripe.com/9B6bJ2fxd8H2gz3b7ogMw03"
+  },
+  "HCA Career Accelerator": {
+    "payment_link": "https://buy.stripe.com/00w4gAbgX1eAdmRejAgMw05",
+    "price": "79.00",
+    "type": "one-time"
   }
 }

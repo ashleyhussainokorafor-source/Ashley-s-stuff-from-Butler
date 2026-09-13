@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HCA Interview Coach — Live Executive Mock Simulation</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: {
+      slate: { 50:'#f8fafc',100:'#eef3f8',200:'#dce5ef',300:'#c5d2e2',400:'#a8b8ce',500:'#8ba0bd',600:'#5b7294',700:'#3d5b88',800:'#24466f',900:'#13315c',950:'#0b2545' },
+      teal: { 300:'#5eead4',400:'#2dd4bf',500:'#0d9488',600:'#0f766e' },
+      gold: { 400:'#d4b23a',500:'#c9a227' }
+    } } } }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -25,8 +32,8 @@
       </div>
     </div>
     <div class="flex items-center gap-3">
-      <a href="https://buy.stripe.com/9B6bJ2fxd8H2gz3b7ogMw03" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-all shadow-md shadow-teal-500/20">
-        Unlock 3-Session Pack ($49)
+      <a href="/vault" class="px-3.5 py-1.5 rounded-lg bg-gold-500 hover:bg-gold-400 text-[#1a1400] font-bold text-xs transition-all shadow-md shadow-gold-500/20">
+        Get the Vault — $27
       </a>
     </div>
   </header>
@@ -79,7 +86,7 @@
       </div>
       <div class="flex justify-between items-center text-[11px] text-slate-500 px-1">
         <span>💡 Tip: Say "I led" instead of "We helped", and cite quantified metrics.</span>
-        <span>Need full mock prep? <a href="https://buy.stripe.com/test_9B6bJ2fxd8H2gz3b7ogMw03" target="_blank" class="text-teal-400 hover:underline">Get the 3-Pack for $49</a></span>
+        <span>Need all 156 scripts? <a href="/vault" class="text-teal-400 hover:underline">Get the Vault →</a></span>
       </div>
     </div>
   </footer>

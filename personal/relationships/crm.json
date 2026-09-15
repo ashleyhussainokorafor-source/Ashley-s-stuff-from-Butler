@@ -1,0 +1,27 @@
+{
+  "contacts": [
+    {"name": "Mommy", "relation": "Mother", "channel": "SMS", "cadence_days": 14, "health": 3, "milestones": [], "notes": "Core foundation, close regular contact."},
+    {"name": "Dad", "relation": "Father", "channel": "WhatsApp/Call", "cadence_days": 14, "health": 2, "milestones": [], "notes": "Check in on life + updates."},
+    {"name": "Wesley", "relation": "Brother", "channel": "SMS", "cadence_days": 14, "health": 3, "milestones": [], "notes": "Regular text communication."},
+    {"name": "Bilal", "relation": "Brother", "channel": "WhatsApp", "cadence_days": 14, "health": 2, "milestones": [], "notes": "Sibling check-in."},
+    {"name": "Danyiel", "relation": "Brother", "channel": "WhatsApp", "cadence_days": 14, "health": 2, "milestones": [], "notes": "Sibling check-in."},
+    {"name": "Summer", "relation": "Sister", "channel": "WhatsApp", "cadence_days": 14, "health": 2, "milestones": [], "notes": "Sister bond; family updates."},
+    {"name": "Charlie", "relation": "Stepfather", "channel": "WhatsApp", "cadence_days": 14, "health": 2, "milestones": [], "notes": "Family check-in."},
+    {"name": "Filza", "relation": "Stepmother", "channel": "WhatsApp", "cadence_days": 14, "health": 2, "milestones": [], "notes": "Family check-in."},
+    {"name": "Nnamdi", "relation": "Husband", "channel": "In-person", "cadence_days": 1, "health": 3, "milestones": [], "notes": "Partner, oncology RN, relocation co-pilot."},
+    {"name": "Nedu (Chinedu)", "relation": "Brother-in-law", "channel": "WhatsApp", "cadence_days": 14, "health": 3, "milestones": [], "notes": "Brother-in-law, lives in Ireland."},
+    {"name": "Christiana", "relation": "Sister-in-law", "channel": "WhatsApp", "cadence_days": 7, "health": 3, "milestones": ["PREGNANT — high-priority care check-ins"], "notes": "Nedu's wife, Ireland. Pregnancy journey."},
+    {"name": "Chigozie", "relation": "Brother-in-law", "channel": "WhatsApp", "cadence_days": 14, "health": 3, "milestones": [], "notes": "Nnamdi's brother, Ireland, married to Qualaar."},
+    {"name": "Qualaar", "relation": "Sister-in-law", "channel": "WhatsApp", "cadence_days": 7, "health": 3, "milestones": ["NEW BABY Chizzerum, just born"], "notes": "Nigeria. Mother to Chizzy + newborn Chizzerum."},
+    {"name": "Chizzy", "relation": "Niece", "channel": "WhatsApp", "cadence_days": 14, "health": 3, "milestones": ["Big sister to newborn Chizzerum"], "notes": "Chigozie & Qualaar's daughter."},
+    {"name": "Chizzerum", "relation": "Niece/Nephew", "channel": "WhatsApp", "cadence_days": 7, "health": 3, "milestones": ["NEWBORN"], "notes": "Newly born baby."},
+    {"name": "Udo", "relation": "Brother-in-law", "channel": "WhatsApp", "cadence_days": 14, "health": 2, "milestones": [], "notes": "Brother-in-law check-in."},
+    {"name": "Emeka", "relation": "Father-in-law", "channel": "WhatsApp", "cadence_days": 14, "health": 2, "milestones": [], "notes": "Patriarch, Nigeria. Health + family news."},
+    {"name": "Ijemy", "relation": "Mother-in-law", "channel": "WhatsApp", "cadence_days": 14, "health": 2, "milestones": [], "notes": "In-law family bond, Nigeria."},
+    {"name": "Sara McNatt", "relation": "Best friend", "channel": "SMS/Call", "cadence_days": 7, "health": 3, "milestones": [], "notes": "Core FL support system."},
+    {"name": "Troy McNatt", "relation": "Friend (Sara's husband)", "channel": "SMS", "cadence_days": 7, "health": 3, "milestones": [], "notes": "Reached out recently — follow up on his message."},
+    {"name": "Yvonne", "relation": "Best friend", "channel": "SMS/Call", "cadence_days": 7, "health": 3, "milestones": [], "notes": "Top FL friendship."},
+    {"name": "Cassandra", "relation": "Friend", "channel": "SMS", "cadence_days": 14, "health": 2, "milestones": [], "notes": "FL friend circle."},
+    {"name": "Sierra", "relation": "Friend", "channel": "SMS", "cadence_days": 14, "health": 2, "milestones": [], "notes": "FL friend circle."}
+  ]
+}

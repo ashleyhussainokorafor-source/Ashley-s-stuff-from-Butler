@@ -97,8 +97,8 @@ SEQUENCE = [
      "Metrics-Driven\n- 30 Revenue Cycle & Patient Access\n- 30 Clinical Ops, "
      "Quality, HIM & Long-Term Care\n- 36 Salary negotiation scripts\n\nEvery "
      "one uses the baseline → action → result formula, anchored to the real "
-     "metrics hiring executives ask about.\n\nNormally $97. For readers on this "
-     "list, it's **$27.**\n\nGet the Vault: {vault}\n\n30-day money-back "
+     "metrics hiring executives ask about.\n\nIt's **$27** — one-time, yours "
+     "forever.\n\nGet the Vault: {vault}\n\n30-day money-back "
      "guarantee.\n\n— Ashley\n\n---\nReply STOP to opt out."),
     (7, 168.0, '"But I\'m not a metrics person"',
      "Hi {first},\n\nIf the thought running through your head is \"this all "
@@ -111,13 +111,13 @@ SEQUENCE = [
      "so it lands.\n\nAnd if it doesn't move the needle in 30 days, email me "
      "and I refund you. You keep it either way.\n\nGet the Vault: {vault}\n\n— "
      "Ashley\n\n---\nReply STOP to opt out."),
-    (9, 216.0, "Last one from me on this (closing this list price)",
+    (9, 216.0, "Last one from me on this",
      "Hi {first},\n\nI said I wouldn't email you forever, so this is the last "
      "one.\n\nIn the last week you learned the #1 reason qualified candidates "
      "lose offers, got the 3-number formula, and now know exactly what the "
-     "Vault is.\n\nHere's the honest bottom line: the $27 price is an "
-     "early-list price. When the Vault moves to the public site, it goes to "
-     "$97.\n\nThe difference between the candidate who walks in prepared and "
+     "Vault is.\n\nHere's the honest bottom line: the Vault is $27 — one "
+     "time, for 156 answers. If it doesn't help you in the room, email me "
+     "within 30 days and I refund you in full.\n\nThe difference between the "
      "the one who wings it is typically the job itself — an offer worth "
      "$10k–$30k more in year one.\n\nGet the Vault: {vault}\n\nEither way — "
      "good luck in that next room.\n\n— Ashley\n\n---\nReply STOP to opt out."),

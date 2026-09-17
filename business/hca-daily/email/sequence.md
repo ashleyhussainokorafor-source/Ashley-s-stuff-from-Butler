@@ -100,7 +100,7 @@ Every single one uses the baseline → action → result formula from my last em
 
 You don't memorize all 156. You read the 5–8 relevant to your next interview and you walk in speaking the language.
 
-Normally $97. For readers on this list, it's **$27.**
+It's **$27** — one-time, yours forever.
 
 [ **Get the Vault →** ]({{vault_link}})
 
@@ -142,7 +142,7 @@ I said I wouldn't email you forever, so this is the last one.
 
 In the last week you learned the #1 reason qualified candidates lose offers, got the 3-number formula, and now know exactly what the Vault is.
 
-Here's the honest bottom line: the $27 price is an early-list price. When the Vault moves to the public site next month, it goes to $97 — and I'll have it on auto-respond for new subscribers.
+Here's the honest bottom line: the Vault is $27 — one time, for 156 answers. If it doesn't help you in the room, email me within 30 days and I refund you in full.
 
 The difference between the candidate who walks in prepared and the one who wings it is typically the job itself — an offer that can be worth $10k–$30k more in year one.
 

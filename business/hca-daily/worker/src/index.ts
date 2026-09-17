@@ -60,6 +60,15 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/accelerator/thanks": "/accelerator-thanks.html",
   "/admin": "/admin.html",
   "/leads": "/admin.html",
+  "/playbook": "/playbook.html",
+  "/resume-playbook": "/playbook.html",
+  "/free": "/playbook.html",
+  "/pricing": "/pricing.html",
+  "/plans": "/pricing.html",
+  "/about": "/about.html",
+  "/legal": "/legal.html",
+  "/terms": "/legal.html",
+  "/privacy": "/legal.html",
 };
 
 interface ChatMessage {
@@ -160,6 +169,113 @@ async function handleCoach(request: Request, env: Env): Promise<Response> {
   }
 }
 
+/** Bot-ish user agents — never let scanners inflate our own traffic numbers. */
+const BOT_UA =
+  /bot|crawler|spider|crawl|slurp|curl|wget|python-|httpclient|scanner|nmap|masscan|zgrab|censys|expanse|semrush|ahrefs|mj12|dotbot|petalbot|bytespider|monitor|headless|lighthouse|go-http|okhttp|java\/|libwww|facebookexternalhit|preview/i;
+
+function isLikelyBot(request: Request): boolean {
+  const ua = request.headers.get("user-agent") || "";
+  return !ua || BOT_UA.test(ua);
+}
+
+/**
+ * Where a visitor actually came from.
+ *
+ * Prefers UTMs sent in the request body; falls back to the page URL in the
+ * Referer header (a same-origin fetch sends the full URL, query string and all),
+ * which is how the scorecard page hands us the campaign that brought them in.
+ */
+function attribution(request: Request, body: Record<string, unknown> = {}): Record<string, string> {
+  let params: URLSearchParams | null = null;
+  let referrer = "";
+  try {
+    const ref = request.headers.get("referer") || request.headers.get("referrer") || "";
+    if (ref) {
+      const u = new URL(ref);
+      params = u.searchParams;
+      referrer = u.origin;
+    }
+  } catch {
+    params = null;
+    referrer = "";
+  }
+
+  const pick = (k: string): string => {
+    const fromBody = body[k];
+    if (typeof fromBody === "string" && fromBody) return fromBody;
+    return params?.get(k) ?? "";
+  };
+
+  const cf = (request as unknown as { cf?: { country?: string; city?: string } }).cf;
+
+  return {
+    utmSource: pick("utm_source"),
+    utmMedium: pick("utm_medium"),
+    utmCampaign: pick("utm_campaign"),
+    utmContent: pick("utm_content"),
+    referrer,
+    country: cf?.country ?? "",
+  };
+}
+
+/** Persist one pageview into a per-day counter, so we can see real humans. */
+async function recordPageview(env: Env, request: Request, path: string): Promise<void> {
+  if (isLikelyBot(request)) return;
+  const day = new Date().toISOString().slice(0, 10);
+  const key = `pv:${day}`;
+  try {
+    const raw = await env.LEADS.get(key);
+    const counts: Record<string, number> = raw ? JSON.parse(raw) : {};
+    counts[path] = (counts[path] || 0) + 1;
+    await env.LEADS.put(key, JSON.stringify(counts));
+  } catch (error) {
+    console.error("pageview write failed", String(error));
+  }
+}
+
+/** Human traffic + lead sources (admin). Guarded by ADMIN_TOKEN. */
+async function handleTraffic(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token") ?? request.headers.get("X-Admin-Token") ?? "";
+  if (!env.ADMIN_TOKEN || token !== env.ADMIN_TOKEN) {
+    return json({ error: "unauthorized" }, 401);
+  }
+
+  const days: Record<string, Record<string, number>> = {};
+  const pvList = await env.LEADS.list({ prefix: "pv:" });
+  for (const k of pvList.keys) {
+    const raw = await env.LEADS.get(k.name);
+    if (!raw) continue;
+    try { days[k.name.slice(3)] = JSON.parse(raw); } catch { /* skip */ }
+  }
+
+  const leadList = await env.LEADS.list({ prefix: "lead:" });
+  const leadsBySource: Record<string, number> = {};
+  const recent: Record<string, unknown>[] = [];
+  for (const k of leadList.keys) {
+    const raw = await env.LEADS.get(k.name);
+    if (!raw) continue;
+    try {
+      const l = JSON.parse(raw) as Record<string, string>;
+      const src = l.utmSource || l.referrer || "(direct)";
+      leadsBySource[src] = (leadsBySource[src] || 0) + 1;
+      recent.push({
+        email: l.email, source: src, campaign: l.utmCampaign || "",
+        overall: l.overall, receivedAt: l.receivedAt, country: l.country,
+      });
+    } catch { /* skip malformed */ }
+  }
+
+  const userList = await env.LEADS.list({ prefix: "user:" });
+
+  return json({
+    counts: { leads: leadList.keys.length, users: userList.keys.length, daysTracked: pvList.keys.length },
+    leadsBySource,
+    days,
+    recentLeads: recent.slice(-50),
+  });
+}
+
 /** Scorecard lead capture. Never fails the visitor — always returns ok on valid input. */
 async function handleScorecard(request: Request, env: Env): Promise<Response> {
   let lead: Record<string, unknown> = {};
@@ -174,7 +290,12 @@ async function handleScorecard(request: Request, env: Env): Promise<Response> {
     return json({ ok: false, error: "a valid email is required" }, 400);
   }
 
-  const record = { ...lead, email, receivedAt: new Date().toISOString() };
+  const record = {
+    ...lead,
+    email,
+    ...attribution(request, lead),
+    receivedAt: new Date().toISOString(),
+  };
 
   // 1) Always persist to KV so a lead is never lost.
   try {
@@ -374,7 +495,11 @@ function serveAsset(request: Request, env: Env, pathname: string): Promise<Respo
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: { waitUntil(promise: Promise<unknown>): void },
+  ): Promise<Response> {
     const url = new URL(request.url);
 
     if (request.method === "POST") {
@@ -392,6 +517,8 @@ export default {
     }
 
     if (url.pathname === "/admin/leads") return handleListLeads(request, env);
+
+    if (url.pathname === "/admin/traffic") return handleTraffic(request, env);
 
     if (url.pathname === "/api/user") return handleGetUser(request, env);
 
@@ -418,7 +545,10 @@ export default {
     }
 
     const rewrite = ROUTE_REWRITES[url.pathname];
-    if (rewrite) return serveAsset(request, env, rewrite);
+    if (rewrite) {
+      ctx.waitUntil(recordPageview(env, request, url.pathname));
+      return serveAsset(request, env, rewrite);
+    }
 
     const asset = await env.ASSETS.fetch(request);
     if (asset.status === 404) {

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Keep the private bits out of search results.
+Disallow: /admin
+Disallow: /leads
+Disallow: /api/
+
+Sitemap: https://thehcadaily.com/sitemap.xml

@@ -34,6 +34,22 @@ STATE_FILE = "/data/business/hca-daily/email/drip_state.json"
 FROM_NAME = "Dr. Ashley Hussain - The HCA Daily"
 FROM_EMAIL = "ashleyhussainokorafor@gmail.com"
 VAULT_LINK = "https://buy.stripe.com/fZufZi70H1eAaaFgrIgMw04"
+PLAYBOOK_LINK = "https://thehcadaily.com/playbook.pdf"
+
+# Day-0 email for people who took the free playbook but never scored themselves.
+# Sending them the score template would print an empty "/ 100".
+DAY0_PLAYBOOK = (
+    "Hi {first},\n\nHere's the playbook you asked for — the 3-part formula that "
+    "turns duty-list bullets into quantified executive achievements:\n\n"
+    "**Download it here:** {playbook}\n\n"
+    "Read Part 2 first (the formula), then go straight to Part 3 and apply it to "
+    "the top three bullets on your résumé. That's the whole exercise — 20 minutes "
+    "and your résumé reads differently.\n\n"
+    "If you want to know where you actually stand, the free 90-second scorecard "
+    "scores you across the four dimensions healthcare leaders hire on and shows "
+    "your top 3 fixes: https://thehcadaily.com/scorecard\n\n"
+    "— Ashley\n\n---\nReply STOP to opt out."
+)
 
 DIM_LABELS = {
     "resume": "Resume Metrics",
@@ -203,11 +219,18 @@ def main():
         else:
             top, weak = "your strongest area", "your biggest gap"
 
+        has_score = bool(lead.get("overall"))
+
         for day, hours, subject, body in SEQUENCE:
             if day in done:
                 continue
             if age_h < hours:
                 continue  # not due yet
+            # Day 0 differs for people who only took the free playbook: they have
+            # no score, so the score template would read "/ 100".
+            if day == 0 and not has_score:
+                subject = "Your free playbook is here"
+                body = DAY0_PLAYBOOK
             # due and not yet sent -> send
             if svc is None:
                 svc = gmail_service()
@@ -217,6 +240,7 @@ def main():
                 top=top,
                 weak=weak,
                 vault=VAULT_LINK,
+                playbook=PLAYBOOK_LINK,
             )
             try:
                 send_email(svc, email, subject, text)

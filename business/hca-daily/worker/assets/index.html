@@ -39,6 +39,13 @@
   .hero .sharp{color:var(--amber);font-weight:600}
   .hero .btn{margin-top:6px}
   .hero .ghost{color:#b9c8dc;border-color:rgba(255,255,255,.2);margin-left:12px}
+  .hero-form{display:flex;gap:10px;justify-content:center;max-width:520px;margin:26px auto 0;flex-wrap:wrap}
+  .hero-form input{flex:1;min-width:210px;border:0;border-radius:12px;padding:15px 16px;font-size:15px;font-family:inherit}
+  .hero-form input:focus{outline:2px solid var(--amber)}
+  .hero-form button{background:var(--amber);color:#3a2a00;border:0;border-radius:12px;padding:15px 26px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer}
+  .hero-fine{color:#7f96b4;font-size:13px;margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto}
+  .hero-ok{display:none;margin-top:14px;font-size:14.5px;font-weight:600;color:#8fd3c9}
+  .hero-ok a{color:var(--amber);font-weight:700}
   .hero-stats{display:flex;justify-content:center;gap:44px;margin-top:38px;flex-wrap:wrap}
   .hstat .n{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:700;color:var(--amber)}
   .hstat .l{font-size:13px;color:#8ca2bd}
@@ -102,6 +109,8 @@
   <div class="nav-in">
     <a class="logo" href="/">The HCA <span>Daily</span></a>
     <div class="nav-r">
+      <a class="nav-login" href="/pricing">Pricing</a>
+      <a class="nav-login" href="/playbook">Free playbook</a>
       <a class="nav-login" href="/learn">Log in</a>
       <a class="nav-cta" href="/scorecard">Start</a>
     </div>
@@ -114,7 +123,13 @@
     <h1>Get interview-fluent in the metrics hiring execs actually use — 5 minutes a day.</h1>
     <p class="sub">Say goodbye to <span class="sharp">"I'd improve productivity."</span> Walk in speaking wRVUs, days in A/R, and no-show rates.</p>
     <a class="btn" href="/scorecard">Take the 90-second Scorecard</a>
-    <a class="btn ghost" href="#drill">See a sample drill ↓</a>
+    <a class="btn ghost" href="/playbook">Get the free playbook</a>
+    <form class="hero-form" id="heroForm">
+      <input id="heroEmail" type="email" required placeholder="you@email.com" aria-label="Your email address">
+      <button type="submit">Get instant access</button>
+    </form>
+    <p class="hero-fine">Free · the 3-part formula that turns duty-list bullets into quantified executive achievements. We'll also send your daily drill.</p>
+    <p class="hero-ok" id="heroOk">✅ It's yours — <a href="/playbook.pdf">download the playbook now →</a></p>
     <div class="hero-stats">
       <div class="hstat"><div class="n">6,000+</div><div class="l">healthcare leaders</div></div>
       <div class="hstat"><div class="n">4</div><div class="l">scored dimensions</div></div>
@@ -189,7 +204,7 @@
         <a class="btn" href="/vault">Get the Vault →</a>
       </div>
       <div class="depth">
-        <div class="tag">Career Accelerator · <span class="pricetag">$279</span></div>
+        <div class="tag">Career Accelerator · <span class="pricetag">$297</span></div>
         <div class="t">Adaptive plan + 24/7 advisory</div>
         <div class="d">JD matching, salary benchmarking, the negotiation unit, and the full resume &amp; LinkedIn kit — 18,500 words, done-for-you.</div>
         <a class="btn" href="/accelerator">See the Accelerator →</a>
@@ -213,7 +228,7 @@
   <div class="container foot-grid">
     <div><a class="logo" href="/" style="font-family:'Sora',sans-serif;font-weight:800">The HCA <span style="color:var(--coral)">Daily</span></a></div>
     <div>© 2026 The HCA Daily · Built for healthcare administration professionals</div>
-    <div><a href="/about">About</a> · <a href="/legal">Terms</a></div>
+    <div><a href="/about">About</a> · <a href="/pricing">Pricing</a> · <a href="/playbook">Free playbook</a> · <a href="/legal">Terms &amp; privacy</a></div>
   </div>
 </footer>
 
@@ -223,6 +238,45 @@
     document.querySelectorAll(".drill-box .opt").forEach((o,j)=>{ o.classList.remove("correct"); if(j!==i){ o.style.opacity=.5; } else { o.classList.add("correct"); } });
     document.querySelector(".drill-box .drill-fb").classList.remove("hidden");
   }));
+
+  // Carry campaign tags through to every internal link, so a visitor who
+  // arrives from YouTube is still attributed when they convert on /scorecard.
+  (function () {
+    var incoming = new URLSearchParams(location.search);
+    var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+    var has = keys.some(function (k) { return incoming.get(k); });
+    if (!has) return;
+    document.querySelectorAll('a[href^="/"]').forEach(function (a) {
+      var u = new URL(a.getAttribute("href"), location.origin);
+      keys.forEach(function (k) { if (incoming.get(k)) u.searchParams.set(k, incoming.get(k)); });
+      a.setAttribute("href", u.pathname + "?" + u.searchParams.toString());
+    });
+  })();
+
+  // Hero lead capture — free playbook, delivered instantly.
+  var heroForm = document.getElementById("heroForm");
+  heroForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var email = document.getElementById("heroEmail").value.trim();
+    if (!email) return;
+    var params = new URLSearchParams(location.search);
+    try {
+      await fetch("/api/scorecard", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          source: "home-hero",
+          utm_source: params.get("utm_source") || "",
+          utm_medium: params.get("utm_medium") || "",
+          utm_campaign: params.get("utm_campaign") || "",
+          utm_content: params.get("utm_content") || ""
+        })
+      });
+    } catch (err) { /* never block the download */ }
+    document.getElementById("heroOk").style.display = "block";
+    window.location.href = "/playbook.pdf";
+  });
 </script>
 </body>
 </html>

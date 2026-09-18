@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-09-18T21:01:56.373150+00:00",
+  "checked_at": "2026-09-18T22:34:04.988138+00:00",
   "verdict": "FAIL",
-  "run": 7,
+  "run": 10,
   "leads": 2,
   "sales_count": 0,
   "revenue_usd": 0.0,
@@ -115,7 +115,7 @@
     {
       "name": "drip",
       "status": "OK",
-      "detail": "last write 0.0h ago"
+      "detail": "last write 1.6h ago"
     },
     {
       "name": "stripe charges",

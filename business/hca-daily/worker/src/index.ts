@@ -53,6 +53,8 @@ const ENTITLED_PRICES: Record<string, string[]> = {
   navigator: ["price_1UCmwALxRw5x7PacwMCWqOYF", "price_1UCmwBLxRw5x7Pac7UPmWiJn"],
   // $19 single session + $49 3-session prep pack Interview Coach
   coach: ["price_1UCmwCLxRw5x7PacgMiFzkdY", "price_1UCmwELxRw5x7PacgkVSxvI7"],
+  // $147 done-for-you résumé translation
+  resume: ["price_1UHAWBLxRw5x7PaccZEaL50i"],
 };
 
 /** Products that unlock a live app rather than a file download. */
@@ -178,6 +180,83 @@ async function handleAccessThanks(request: Request, env: Env, product: string): 
   if (token) headers["Set-Cookie"] = accessCookie(product, token);
 
   return new Response(renderThanks(html, product, Boolean(token)), { status: 200, headers });
+}
+
+/** Intake form shown to a verified résumé-translation buyer. */
+const RESUME_INTAKE_FORM = `
+<form id="intakeForm">
+  <label for="f_name">Your name</label>
+  <input id="f_name" autocomplete="name" required>
+  <label for="f_email">Email I should reply to</label>
+  <input id="f_email" type="email" autocomplete="email" required>
+  <label for="f_role">The role you're targeting</label>
+  <input id="f_role" placeholder="e.g. Ambulatory Clinic Manager">
+  <label for="f_resume">Paste your current résumé</label>
+  <textarea id="f_resume" required placeholder="Paste the whole thing — formatting doesn't matter, I'll rebuild it."></textarea>
+  <p class="hint">Paste it as text. If you only have a PDF or Word file, email it to
+  ashleyhussainokorafor@gmail.com and mention this order.</p>
+  <label for="f_notes">Anything else I should know?</label>
+  <textarea id="f_notes" style="min-height:90px" placeholder="Target salary, geography, a specific posting you're going after, a gap you're worried about…"></textarea>
+  <button type="submit">Send my résumé →</button>
+</form>
+<div class="ok" id="okBox"><strong>Got it.</strong> Your rewrite comes back to you by email within 3 business days.</div>`;
+
+/** /resume/thanks — verify the purchase, then hand over the intake form. */
+async function handleResumeThanks(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const sessionId = url.searchParams.get("session_id") ?? "";
+  const granted = await sessionEntitles(env, sessionId, "resume");
+
+  const asset = await serveAsset(request, env, "/resume-thanks.html");
+  const html = await asset.text();
+  const block = granted
+    ? RESUME_INTAKE_FORM
+    : `<div class="warn">We couldn't verify that purchase yet. If you just paid, wait a
+       few seconds and reload — Stripe occasionally takes a moment to confirm. If it still
+       fails, email <a href="mailto:ashleyhussainokorafor@gmail.com">ashleyhussainokorafor@gmail.com</a>
+       with your receipt and I'll sort it directly.</div>`;
+
+  return new Response(html.replace("<!--ACCESS-->", block), {
+    status: 200,
+    headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" },
+  });
+}
+
+/**
+ * POST /api/resume-intake — store a buyer's résumé for Ashley to rewrite.
+ * Never loses work: writes to KV first, and only reports success once it lands.
+ */
+async function handleResumeIntake(request: Request, env: Env): Promise<Response> {
+  let body: Record<string, unknown> = {};
+  try {
+    body = (await request.json()) as Record<string, unknown>;
+  } catch {
+    /* fall through to validation */
+  }
+
+  const email = String(body.email ?? "").trim();
+  const resumeText = String(body.resumeText ?? "").trim();
+  if (!email.includes("@") || resumeText.length < 40) {
+    return json({ ok: false, error: "a valid email and the résumé text are required" }, 400);
+  }
+
+  const record = {
+    name: String(body.name ?? "").trim(),
+    email,
+    targetRole: String(body.targetRole ?? "").trim(),
+    notes: String(body.notes ?? "").trim(),
+    resumeText,
+    receivedAt: new Date().toISOString(),
+  };
+
+  try {
+    await env.LEADS.put(`resume:${record.receivedAt}:${crypto.randomUUID()}`,
+                        JSON.stringify(record));
+  } catch (error) {
+    console.error("resume intake write failed", String(error));
+    return json({ ok: false, error: "could not save your résumé" }, 500);
+  }
+  return json({ ok: true });
 }
 
 /** Gate /app and /coach behind the access cookie (or a ?t= token that sets it). */
@@ -358,6 +437,9 @@ const ROUTE_REWRITES: Record<string, string> = {
   "/vault/thanks": "/thankyou.html",
   "/thank-you": "/thankyou.html",
   "/thanks": "/thankyou.html",
+  "/resume": "/resume.html",
+  "/resume-translation": "/resume.html",
+  "/resume-rewrite": "/resume.html",
   "/accelerator": "/accelerator.html",
   "/accelerator/thanks": "/accelerator-thanks.html",
   "/admin": "/admin.html",
@@ -883,6 +965,7 @@ export default {
       if (url.pathname === "/api/user") return handleCreateUser(request, env);
       if (url.pathname === "/api/drill") return handleDrill(request, env);
       if (url.pathname === "/api/progress") return handleProgress(request, env);
+      if (url.pathname === "/api/resume-intake") return handleResumeIntake(request, env);
       return json({ error: "Not found" }, 404);
     }
 
@@ -912,6 +995,8 @@ export default {
       return handleAccessThanks(request, env, "navigator");
 
     if (url.pathname === "/coach/thanks") return handleAccessThanks(request, env, "coach");
+
+    if (url.pathname === "/resume/thanks") return handleResumeThanks(request, env);
 
     // The live apps are paid products — gate them before the rewrite map runs.
     const gatedProduct = APP_PRODUCT_FOR_PATH[url.pathname];

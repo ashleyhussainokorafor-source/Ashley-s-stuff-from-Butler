@@ -79,10 +79,10 @@ A blocked agent that explains itself beats two agents overwriting each other.
 
 | # | Item | Owner | Status |
 |---|---|---|---|
-| 1 | Reply to every YouTube comment with a relevance-matched link | growth | IN PROGRESS — engine live, 6 posted, cron every 4h (~476 to go, quota-bound) |
-| 2 | No-experience offers (products for people with zero healthcare background) | growth | NOT STARTED |
+| 1 | Reply to every YouTube comment with a relevance-matched link | growth | IN PROGRESS — engine live; 15/run every 2h (Ashley's pacing call), daily cap 120 |
+| 2 | No-experience offers (products for people with zero healthcare background) | growth | **DONE** — $147 Résumé Translation live: /resume, Stripe product + link, gated intake form, order-alert cron every 30m |
 | 3 | Re-engagement video for the 6,190 dormant subs | growth | NOT STARTED |
-| 4 | Write the 7 research-backed Shorts scripts (pack runs dry Sept 22) | growth | NOT STARTED |
+| 4 | Write the 7 research-backed Shorts scripts (pack runs dry Sept 22) | growth | **DONE** — pack extended to Sept 29; trimmed to the 20-25s retention window |
 | 5 | Reach BOTH audiences: clinical (nurses/radiology/MD) and non-clinical | growth | NOT STARTED |
 | 6 | Direct outreach to HCA programs/universities (this-month revenue) | growth | NOT STARTED |
 | 7 | Push to GitHub regularly; teach the house rule to all bots | both | IN PROGRESS |

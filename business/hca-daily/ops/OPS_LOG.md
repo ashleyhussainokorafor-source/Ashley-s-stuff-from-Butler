@@ -80,3 +80,12 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
 - **2026-09-18 21:01 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=2 sales=0 revenue=$0.00
     - FAIL · page /navigator · HTTP 402, 1594b
     - FAIL · page /coach · HTTP 402, 1554b
+- **2026-09-18 21:32 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=2 sales=0 revenue=$0.00
+    - FAIL · page /navigator · HTTP 402, 1594b
+    - FAIL · page /coach · HTTP 402, 1554b
+- **2026-09-18 22:03 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=2 sales=0 revenue=$0.00
+    - FAIL · page /navigator · HTTP 402, 1594b
+    - FAIL · page /coach · HTTP 402, 1554b
+- **2026-09-18 22:34 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=2 sales=0 revenue=$0.00
+    - FAIL · page /navigator · HTTP 402, 1594b
+    - FAIL · page /coach · HTTP 402, 1554b

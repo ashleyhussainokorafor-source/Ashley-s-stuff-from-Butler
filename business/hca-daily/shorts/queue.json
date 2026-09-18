@@ -121,6 +121,25 @@
         "frames": 19,
         "duration": 29.42
       }
+    },
+    {
+      "id": "short007",
+      "title": "What Jobs Can You ACTUALLY Get With This Degree? #Shorts",
+      "file": "/data/business/hca-daily/shorts/builds/short007/hca-short007.mp4",
+      "videoId": null,
+      "status": "ready",
+      "publishAt": "2026-09-23T15:00:00+00:00",
+      "tags": [
+        "healthcare administration",
+        "healthcare jobs",
+        "entry level jobs",
+        "healthcare careers",
+        "career advice"
+      ],
+      "built": {
+        "frames": 12,
+        "duration": 20.66
+      }
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "_notes": "Source of truth for the faceless Shorts factory. Ported from content/shorts_script_pack_v1.md. Each segment = one slide. 'vo' is what gets SPOKEN (write numbers/metrics the way a human says them); 'display' is what appears ON SCREEN (muted-readable, progressive reveal). Order matters. Script 1 (MHA vs MBA) is already produced as short001.",
+  "_notes": "Source of truth for the faceless Shorts factory. Ported from content/shorts_script_pack_v1.md. Each segment = one slide. 'vo' is what gets SPOKEN (write numbers/metrics the way a human says them); 'display' is what appears ON SCREEN (muted-readable, progressive reveal). Order matters. Script 1 (MHA vs MBA) is already produced as short001. Scripts 007-013 written 2026-09-18 from audience research (372 comments + YouTube autocomplete); topics ranked by comment agreement cross-checked against search demand.",
   "_spec": "15-25s target. Frame 1 = pattern interrupt, no greeting/logo/intro. Navy base, teal signal, gold CTA. Exactly one CTA at the end. Never invent a statistic.",
   "scripts": [
     {
@@ -311,6 +311,418 @@
           ]
         }
       ]
+    },
+    {
+      "id": "short007",
+      "title": "What Jobs Can You ACTUALLY Get With This Degree? #Shorts",
+      "tags": [
+        "healthcare administration",
+        "healthcare jobs",
+        "entry level jobs",
+        "healthcare careers",
+        "career advice"
+      ],
+      "cluster": "jobs with the degree",
+      "_source": "Top comment demand (20 likes, repeated x4) + top search demand: 'healthcare administration jobs / degree jobs / entry level jobs'",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "You have the degree. Now what job does it actually get you?",
+          "display": [
+            "You have the degree.",
+            "Now what job does it",
+            "actually get you?"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Not assistant. Three doors.",
+          "display": [
+            "Not \"assistant.\"",
+            "Three doors."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Operations, revenue cycle, and compliance.",
+          "display": [
+            "Operations \u00b7 revenue cycle",
+            "\u00b7 compliance"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Revenue cycle hires fastest. Analysts, not clerks.",
+          "display": [
+            "Revenue cycle hires fastest.",
+            "Analysts \u2014 not clerks."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Free 90-second scorecard at the H C A daily dot com.",
+          "display": [
+            "Free 90-second scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ],
+      "_retention": "trimmed to the 20-25s window; original read long (30s+)"
+    },
+    {
+      "id": "short008",
+      "title": "The Stress Nobody Warns You About #Shorts",
+      "tags": [
+        "healthcare administration",
+        "healthcare careers",
+        "burnout",
+        "career advice",
+        "healthcare management"
+      ],
+      "cluster": "stress / day in the life",
+      "_source": "Most-liked audience question in the whole set (22 likes): 'What about the stress level?' + autocomplete 'day in the life'",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "Nobody warns you about the stress in healthcare administration.",
+          "display": [
+            "Nobody warns you",
+            "about the stress."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "The stress isn't the patients. It's the staffing sheet.",
+          "display": [
+            "The stress isn't the patients.",
+            "It's the staffing sheet."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "You'll see the ratios are short before anyone else does.",
+          "display": [
+            "You'll see the ratios are short",
+            "before anyone else does."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "The people who last name the problem early. That's the skill.",
+          "display": [
+            "The people who last",
+            "name the problem early.",
+            "That's the skill."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "If that sounds like your week, free scorecard at the H C A daily dot com.",
+          "display": [
+            "If that sounds like your week",
+            "Free scorecard",
+            "thehcadaily.com/scorecard"
+          ]
+        }
+      ],
+      "_retention": "trimmed to the 20-25s window; original read long (30s+)"
+    },
+    {
+      "id": "short009",
+      "title": "Healthcare Management vs Administration \u2014 The Real Difference #Shorts",
+      "tags": [
+        "healthcare management",
+        "healthcare administration",
+        "healthcare careers",
+        "career advice",
+        "management"
+      ],
+      "cluster": "management vs administration",
+      "_source": "Proven topic (49,406 views) STILL being asked in comments ('Which one is better?', 'Is there a difference?') + autocomplete 'healthcare management vs healthcare administration'",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "Healthcare management or administration? Here's the real difference.",
+          "display": [
+            "Healthcare management",
+            "or administration?",
+            "Here's the real difference."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Management runs the operation: staffing, flow, the floor.",
+          "display": [
+            "Management runs the operation:",
+            "staffing \u00b7 flow \u00b7 the floor"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Administration runs the business: contracts, payers, money.",
+          "display": [
+            "Administration runs the business:",
+            "contracts \u00b7 payers \u00b7 money"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Most postings want both. The title says which one.",
+          "display": [
+            "Most postings want both.",
+            "The title says which one."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Free 90-second scorecard at the H C A daily dot com.",
+          "display": [
+            "Free 90-second scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ],
+      "_retention": "trimmed to the 20-25s window; original read long (30s+)"
+    },
+    {
+      "id": "short010",
+      "title": "Starting Over in Your 40s? Do It In This Order #Shorts",
+      "tags": [
+        "career change",
+        "healthcare administration",
+        "career advice",
+        "second career",
+        "healthcare careers"
+      ],
+      "cluster": "too late / career changer",
+      "_source": "High-agreement comments: 55-year-old restarting (12 likes), late-30s switcher asking for motivation (3) + autocomplete 'career changer'",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "Starting over in your forties? It's not too late. But do it in this order.",
+          "display": [
+            "Starting over in your 40s?",
+            "It's not too late.",
+            "But do it in this order."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Don't get the degree first. Get the entry role first.",
+          "display": [
+            "Don't get the degree first.",
+            "Get the entry role first."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Your old career isn't wasted. It's why they pick you over a new grad.",
+          "display": [
+            "Your old career isn't wasted.",
+            "It's why they pick you",
+            "over a new grad."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Then the credential. Then the title.",
+          "display": [
+            "Then the credential.",
+            "Then the title."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Free 90-second scorecard at the H C A daily dot com.",
+          "display": [
+            "Free 90-second scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ],
+      "_retention": "trimmed to the 20-25s window; original read long (30s+)"
+    },
+    {
+      "id": "short011",
+      "title": "How To Get a Mentor When You Know Nobody #Shorts",
+      "tags": [
+        "mentorship",
+        "networking",
+        "healthcare administration",
+        "career advice",
+        "healthcare careers"
+      ],
+      "cluster": "mentor / network",
+      "_source": "Repeated comment demand ('how to get a mentor?', 'I don't know anyone in that health field') while Ashley's own mentor video sits at only 362 views \u2014 demand far exceeds supply",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "How do you get a mentor when you don't know anyone in the field?",
+          "display": [
+            "How do you get a mentor",
+            "when you don't know",
+            "anyone in the field?"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Stop asking people to be your mentor. They say no.",
+          "display": [
+            "Stop asking people",
+            "to be your mentor.",
+            "They say no."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Ask one specific question. Specific questions get answered.",
+          "display": [
+            "Ask one specific question.",
+            "Specific questions",
+            "actually get answered."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "One answered question becomes a relationship. That's the trick.",
+          "display": [
+            "One answered question",
+            "becomes a relationship.",
+            "That's the whole trick."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Free scorecard at the H C A daily dot com.",
+          "display": [
+            "Free scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ],
+      "_retention": "trimmed to the 20-25s window; original read long (30s+)"
+    },
+    {
+      "id": "short012",
+      "title": "Clinical Background? You're Closer Than You Think #Shorts",
+      "tags": [
+        "nursing",
+        "radiology",
+        "healthcare administration",
+        "clinical to admin",
+        "career change"
+      ],
+      "cluster": "clinical crossover",
+      "_source": "Repeated comment demand from people ALREADY inside healthcare: radiologist ('never studied finance HR marketing', 8 likes), MD graduate, medical assistant (4 likes)",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "You're clinical. Can you cross into administration? Yes.",
+          "display": [
+            "You're clinical.",
+            "Can you cross into admin?",
+            "Yes."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "And you're closer than you think.",
+          "display": [
+            "And you're closer",
+            "than you think."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "You already know the floor. New grads spend years learning that.",
+          "display": [
+            "You already know the floor.",
+            "New grads spend years",
+            "learning that."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "What you're missing is the money half. Work RVUs, days in A R.",
+          "display": [
+            "What you're missing",
+            "is the money half:",
+            "wRVUs \u00b7 days in A/R"
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Free 90-second scorecard at the H C A daily dot com.",
+          "display": [
+            "Free 90-second scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ],
+      "_retention": "trimmed to the 20-25s window; original read long (30s+)"
+    },
+    {
+      "id": "short013",
+      "title": "Why Your Applications Go Nowhere #Shorts",
+      "tags": [
+        "job search",
+        "resume",
+        "healthcare administration",
+        "job application",
+        "career advice"
+      ],
+      "cluster": "applying for jobs",
+      "_source": "Direct request, second-most-liked comment in the set (18 likes): 'Would love to see more content on better ways to apply for jobs!'",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "You're applying and hearing nothing back. Here's why.",
+          "display": [
+            "You're applying",
+            "and hearing nothing back.",
+            "Here's why."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Your resume lists duties. They're scanning for numbers.",
+          "display": [
+            "Your resume lists duties.",
+            "They're scanning for numbers."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Three metrics change the room. Work RVUs, days in A R, no-show rate.",
+          "display": [
+            "Three metrics change the room:",
+            "wRVUs \u00b7 days in A/R \u00b7 no-show rate"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "No number in your first line? You're screened out.",
+          "display": [
+            "No number in your first line?",
+            "You're screened out."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Free 90-second scorecard at the H C A daily dot com.",
+          "display": [
+            "Free 90-second scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ],
+      "_retention": "trimmed to the 20-25s window; original read long (30s+)"
     }
   ],
   "_reserved_for_ashley": {

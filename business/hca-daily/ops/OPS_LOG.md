@@ -69,3 +69,11 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
     - FAIL · page /navigator · HTTP 402, 1594b
     - FAIL · page /coach · HTTP 402, 1554b
 - **2026-09-18 20:46 UTC** | `COMMENT-REPLY` | replied to 6 (failed 0); types {'story': 1, 'opinion': 5}
+- **2026-09-18 20:56 UTC** | `SHORT-BUILD` | short007: synthesizing voiceover (74 words)
+- **2026-09-18 20:56 UTC** | `SHORT-BUILD` | short007: audio=34.70s  wps=0.4690
+- **2026-09-18 20:57 UTC** | `SHORT-BUILD` | short007: built 19 frames -> 34.70s  838KB
+- **2026-09-18 20:57 UTC** | `SHORT-BUILD` | short007: queued as ready (auto_publish=True) -> https://youtube.com/shorts/... after publish
+- **2026-09-18 20:57 UTC** | `SHORT-BUILD` | short007: synthesizing voiceover (39 words)
+- **2026-09-18 20:58 UTC** | `SHORT-BUILD` | short007: audio=20.66s  wps=0.5298
+- **2026-09-18 20:58 UTC** | `SHORT-BUILD` | short007: built 12 frames -> 20.66s  473KB
+- **2026-09-18 20:58 UTC** | `SHORT-BUILD` | short007: queued as ready (auto_publish=True) -> https://youtube.com/shorts/... after publish

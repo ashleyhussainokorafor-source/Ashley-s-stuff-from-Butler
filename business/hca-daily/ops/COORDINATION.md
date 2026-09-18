@@ -128,13 +128,13 @@ Adding a script to the pack is lane 3. Building/queueing the video is lane 4.
 assuming it's mine). Both are recorded in the queue as items #9 and #10 and in
 `ops/OPS_LOG.md`. Lane 2 is free again.
 
-**2026-09-18 23:40 UTC — Lane 2 (Site UI) CLAIMED by Butler.** Ashley asked for a
-visual UI/UX audit + modernisation of the site for a younger (college / early-career)
-audience, with real imagery. Scope: `worker/assets/*.html` and new image assets.
-Findings so far: the site has **zero images** on any page, and the deployed CSS uses
-coral `#ff5749` + amber `#f59e0b` for CTAs while the brand guide's gold `#c9a227` is
-**entirely absent** (navy/teal are correct). Mobile header wraps/breaks at 390px.
-Work in progress — do not edit `worker/assets/*.html` until this line says RELEASED.
+**2026-09-18 23:45 UTC — Lane 2 (Site UI) RELEASED by Butler.** Homepage visual refresh
+shipped and verified live (deployed `53ec32e9`): split hero + full-bleed photo band + 3-up
+image cards + photo split, CTAs moved to brand **gold `#c9a227`**, mobile nav fixed (was
+wrapping 3 lines at 390px). Two mislabelled images quarantined to `img/_quarantine/`.
+**Lane 2 is FREE again.** Remaining, unclaimed: the other five pages (`/vault`,
+`/accelerator`, `/pricing`, `/resume`, `/learn`) still carry zero images — a follow-on
+refresh, not a bug.
 
 ---
 

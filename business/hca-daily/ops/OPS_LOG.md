@@ -145,6 +145,28 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
   Two in-session errors corrected here: an earlier claim of "2 real leads arrived today" was
   wrong, and the `lead:2026-09-18T17:20:50` entry that vanished from the admin list was an
   audit test that was cleaned up — not a lost customer.
+- **2026-09-18 23:45 UTC** | `SHIPPED` | **Homepage visual refresh — site had ZERO images on
+  every page.** (Lane 2, Butler.) Audit: 0 `<img>` tags sitewide; deployed CSS used coral
+  `#ff5749` + amber `#f59e0b` for CTAs while the brand guide's gold `#c9a227` appeared
+  nowhere; nav wrapped onto 3 lines at 390px. Changes: split hero (text + student photo),
+  full-bleed photo band, 3-up image cards on the "why this exists" story, photo split on the
+  daily loop; **CTAs moved to brand gold**; `hide-sm` drops the secondary nav link so the bar
+  fits one line on mobile; hero copy rewritten for early-career ("Walk in already speaking
+  their language"). Verified live: 6 images resolve 200/`image/webp`, homepage carries 6
+  `<img>`, gold rule present, nav single-line at 390px. Deployed `53ec32e9`.
+  **Still bare: `/vault`, `/accelerator`, `/pricing`, `/resume`, `/learn`** — homepage only.
+- **2026-09-18 23:45 UTC** | `FIXED` | **Two images in the new library were mislabelled** and
+  are now quarantined to `img/_quarantine/` with a reason file: `happy-black-man-university`
+  (photo is a white man with glasses — the Pexels description itself says "cheerful young man
+  with blonde hair") and `east-asian-student-brickwall` (photo shows a white woman). The
+  library's own `CREDITS.md` flagged that no vision model was available to check demographics;
+  vision was available this session, so all 19 were inspected via a contact sheet. The other
+  17 check out. **Quarantined files return 404 on the live site** (verified), so they cannot
+  be referenced by accident.
+- **2026-09-18 23:45 UTC** | `NOTE` | **Wasted spend, disclosed.** Butler generated 9 images
+  via OpenRouter (~$0.35) before noticing the Pexels library already existed at `img/` from
+  23:33. The stock set is better (real people, licensed, credited), so the AI set is retained
+  only as spare. Lesson: check the assets directory before generating.
 - **2026-09-18 23:18 UTC** | `NOTE` | **Protocol deviation, disclosed.** Butler edited
   `worker/assets/scorecard.html` and ran `wrangler deploy` before claiming Lane 2 and without
   taking the deploy lock. Lanes 1/2/5 were free and the deploy landed clean, so nothing

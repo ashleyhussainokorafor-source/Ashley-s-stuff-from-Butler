@@ -1,20 +1,11 @@
 {
-  "checked_at": "2026-09-18T22:34:04.988138+00:00",
-  "verdict": "FAIL",
-  "run": 10,
+  "checked_at": "2026-09-18T23:04:12.720275+00:00",
+  "verdict": "OK",
+  "run": 12,
   "leads": 2,
   "sales_count": 0,
   "revenue_usd": 0.0,
-  "failing": [
-    {
-      "check": "page /navigator",
-      "detail": "HTTP 402, 1594b"
-    },
-    {
-      "check": "page /coach",
-      "detail": "HTTP 402, 1554b"
-    }
-  ],
+  "failing": [],
   "unknown": [],
   "checks": [
     {
@@ -30,7 +21,7 @@
     {
       "name": "page /pricing",
       "status": "OK",
-      "detail": "HTTP 200 10627b"
+      "detail": "HTTP 200 11375b"
     },
     {
       "name": "page /vault",
@@ -68,14 +59,49 @@
       "detail": "HTTP 200 4445b"
     },
     {
-      "name": "page /navigator",
-      "status": "FAIL",
-      "detail": "HTTP 402, 1594b"
+      "name": "page /resume",
+      "status": "OK",
+      "detail": "HTTP 200 7372b"
     },
     {
-      "name": "page /coach",
-      "status": "FAIL",
-      "detail": "HTTP 402, 1554b"
+      "name": "gate /app",
+      "status": "OK",
+      "detail": "402 gated"
+    },
+    {
+      "name": "gate /navigator",
+      "status": "OK",
+      "detail": "402 gated"
+    },
+    {
+      "name": "gate /navigator.html",
+      "status": "OK",
+      "detail": "402 gated"
+    },
+    {
+      "name": "gate /coach",
+      "status": "OK",
+      "detail": "402 gated"
+    },
+    {
+      "name": "gate /coach.html",
+      "status": "OK",
+      "detail": "402 gated"
+    },
+    {
+      "name": "gate /interview",
+      "status": "OK",
+      "detail": "402 gated"
+    },
+    {
+      "name": "gate /simulator",
+      "status": "OK",
+      "detail": "402 gated"
+    },
+    {
+      "name": "gate /chat",
+      "status": "OK",
+      "detail": "402 gated"
     },
     {
       "name": "locked /vault.pdf",
@@ -115,7 +141,7 @@
     {
       "name": "drip",
       "status": "OK",
-      "detail": "last write 1.6h ago"
+      "detail": "last write 2.1h ago"
     },
     {
       "name": "stripe charges",

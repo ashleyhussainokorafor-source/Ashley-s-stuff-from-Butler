@@ -84,7 +84,7 @@ A blocked agent that explains itself beats two agents overwriting each other.
 | 3 | Re-engagement video for the 6,190 dormant subs | growth | NOT STARTED |
 | 4 | Write the 7 research-backed Shorts scripts (pack runs dry Sept 22) | growth | **DONE** — pack extended to Sept 29; trimmed to the 20-25s retention window |
 | 5 | Reach BOTH audiences: clinical (nurses/radiology/MD) and non-clinical | growth | NOT STARTED |
-| 6 | Direct outreach to HCA programs/universities (this-month revenue) | growth | NOT STARTED |
+| 6 | Direct outreach to HCA programs/universities (this-month revenue) | growth | IN PROGRESS — **pilot 10 sent + verified** 23:12; 91 verified targets; crons live (12/day at 14:00, reply watch 4h). See `outreach/OUTREACH_PLAN.md` |
 | 7 | Push to GitHub regularly; teach the house rule to all bots | both | IN PROGRESS |
 | 8 | Finish the remaining ~54 video CTA upgrades | platform | AUTOMATED — runs 3am daily |
 

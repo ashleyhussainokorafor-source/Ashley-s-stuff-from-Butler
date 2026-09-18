@@ -89,3 +89,36 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
 - **2026-09-18 22:34 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=2 sales=0 revenue=$0.00
     - FAIL · page /navigator · HTTP 402, 1594b
     - FAIL · page /coach · HTTP 402, 1554b
+- **2026-09-18 22:59 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+
+- **2026-09-18 23:05 UTC** | `FIXED` | Watchdog false alarm: it was flagging `/navigator` and
+  `/coach` as FAIL for returning HTTP 402. 402 is the CORRECT answer — both are paid and sit
+  behind the access cookie. The check now expects 402 on all 8 gated entry paths
+  (`/app`, `/navigator`, `/coach`, `/interview`, `/simulator`, `/chat`, and the raw
+  `.html` paths) and treats a 200 there as a CRITICAL leak, which is the failure that once
+  served the whole paid app for free. One false alert went out at 21:28 UTC; the
+  rate-limiter correctly suppressed the repeats. Now: `OK | pages=11/11 gates=8/8
+  paywall=4/4 leads=2 sales=0 revenue=$0.00`.
+- **2026-09-18 23:05 UTC** | `BUILT` | Outreach engine for queue item #6 (direct outreach to
+  HCA programs): `automation/scripts/hca_outreach_send.py` — 12/day plain-text emails from
+  Ashley's own Gmail, per-university UTM, one follow-up at 5 days only, hard suppression list,
+  never emails the same address twice, dry-run by default. Verified with a 2-contact preview
+  harness (test targets removed afterwards). Target research running in parallel.
+- **2026-09-18 23:04 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-18 23:09 UTC** | `OUTREACH` | sent 10 program-outreach email(s); 79 still queued
+- **2026-09-18 23:11 UTC** | `OUTREACH-REPLY` | 1 program contact(s) replied
+
+- **2026-09-18 23:12 UTC** | `OUTREACH-PILOT` | Sent the first 10 program-outreach emails
+  (graduate MHA/MHSA directors: UAB, Michigan, VCU, Iowa, Minnesota, Columbia, Pitt,
+  GWU, Penn State, South Carolina). Verified independently via the Gmail API: all 10 present
+  in Sent with the intended recipients and subjects; **0 bounces**; 0 opt-outs so far.
+  Target list: 91 verified contacts (75 named individuals, 16 generic inboxes) across
+  graduate, undergraduate and HBCU/community-college programs. Every address carries the
+  page it was found on; I spot-checked 9 source URLs myself and 8 showed the address verbatim
+  on the cited page. One (UMKC) 404'd and could not be re-verified, so it was **dropped**
+  rather than sent. Two crons armed: 12 emails/day at 14:00 UTC, and a reply watch every 4h.
+- **2026-09-18 23:12 UTC** | `FIXED` | Outreach subject-line bug: program names rendered as
+  "your MHSA (MHSA) students" (Michigan). The shortener now takes the form before any
+  parenthesis and normalises long program names. Also: an out-of-office autoresponse was
+  being counted as a reply — the reply watch now filters auto-replies so our own numbers
+  can't flatter themselves.

@@ -1,0 +1,116 @@
+{
+  "contacts": {
+    "jcjennings@uab.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "University of Alabama at Birmingham (UAB)",
+      "program": "M.S. in Health Administration (MHSA)",
+      "contact_name": "J'Aime Jennings",
+      "contact_role": "Director / Academic Lead, Residential MSHA",
+      "email_type": "named",
+      "source_url": "https://www.uab.edu/shp/hsa/graduate/residential-msha",
+      "subject": "For your M.S. in Health Administration (MHSA) students \u2014 free r\u00e9sum\u00e9-gap scorecard",
+      "auto_reply_seen": "Automatic reply: For your M.S. in Health Administration (MHSA) students \u2014 free r\u00e9sum\u00e9-gap scorecard"
+    },
+    "dancharl@umich.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "University of Michigan",
+      "program": "MHSA (Master of Health Services Administration)",
+      "contact_name": "Charlita Daniels",
+      "contact_role": "Academic Program Manager, Health Management & Policy",
+      "email_type": "named",
+      "source_url": "https://sph.umich.edu/admissions/contact.html",
+      "subject": "For your MHSA (MHSA) students \u2014 free r\u00e9sum\u00e9-gap scorecard"
+    },
+    "mchughj3@vcu.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "Virginia Commonwealth University (VCU)",
+      "program": "MHA / MSHA",
+      "contact_name": "John P. McHugh",
+      "contact_role": "MHA & MSHA Program Director",
+      "email_type": "named",
+      "source_url": "https://ha.chp.vcu.edu/team/",
+      "subject": "For your MHA / MSHA students \u2014 free r\u00e9sum\u00e9-gap scorecard"
+    },
+    "karen-hammar@uiowa.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "University of Iowa",
+      "program": "MHA",
+      "contact_name": "Karen Hammar",
+      "contact_role": "Director, MHA Program; Clinical Assistant Professor",
+      "email_type": "named",
+      "source_url": "https://www.public-health.uiowa.edu/mha-how-to-apply/",
+      "subject": "A free tool for your health administration students"
+    },
+    "sehgal@umn.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "University of Minnesota",
+      "program": "MHA",
+      "contact_name": "Neil Sehgal",
+      "contact_role": "MHA Program Director; Wegmiller Professor of Healthcare Administration",
+      "email_type": "named",
+      "source_url": "https://directory.sph.umn.edu/bio/sph-a-z/neil-sehgal",
+      "subject": "A free tool for your health administration students"
+    },
+    "sra18@cumc.columbia.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "Columbia University",
+      "program": "MHA",
+      "contact_name": "Susan Amlani",
+      "contact_role": "Director, MHA & Executive Programs",
+      "email_type": "named",
+      "source_url": "https://www.publichealth.columbia.edu/academics/departments/health-policy-management/contact-us",
+      "subject": "For your MHA students \u2014 free r\u00e9sum\u00e9-gap scorecard"
+    },
+    "kevinbroom@pitt.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "University of Pittsburgh",
+      "program": "MHA",
+      "contact_name": "Kevin Broom",
+      "contact_role": "Director, MHA and MHA/MBA Programs; Vice Chair for Education",
+      "email_type": "named",
+      "source_url": "https://www.publichealth.pitt.edu/hpm/degree-programs/master-health-administration-mha",
+      "subject": "For your MHA students \u2014 free r\u00e9sum\u00e9-gap scorecard"
+    },
+    "zjurdi@mailbox.sc.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "University of South Carolina (Arnold School)",
+      "program": "MHA",
+      "contact_name": "Zahi Jurdi",
+      "contact_role": "MHA Program Director",
+      "email_type": "named",
+      "source_url": "https://www.sc.edu/study/colleges_schools/public_health/admissions/graduate_applicants/contact_us/index.php",
+      "subject": "A free tool for your health administration students"
+    },
+    "keithbenson@phhp.ufl.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "University of Florida",
+      "program": "MHA",
+      "contact_name": "Keith Benson",
+      "contact_role": "MHA Program Director; Clinical Professor",
+      "email_type": "named",
+      "source_url": "https://phhp.ufl.edu/about/departments/health-services-research-management-and-policy/faculty/",
+      "subject": "Free 90-second scorecard for your MHA students"
+    },
+    "cms324@psu.edu": {
+      "status": "sent",
+      "sent_at": "2026-09-18T23:09:49.104357+00:00",
+      "org": "Pennsylvania State University (Penn State)",
+      "program": "MHA (residential & online)",
+      "contact_name": "Colette Rodger",
+      "contact_role": "MHA Programs Manager",
+      "email_type": "named",
+      "source_url": "https://hhd.psu.edu/hpa/graduate/contact",
+      "subject": "Free 90-second scorecard for your MHA (residential & online) students"
+    }
+  },
+  "sent_total": 10
+}

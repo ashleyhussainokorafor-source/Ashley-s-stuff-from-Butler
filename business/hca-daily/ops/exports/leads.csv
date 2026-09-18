@@ -1,0 +1,9 @@
+email,record_type,name,captured_at,source,campaign,country,overall_score,streak,xp,freezes,user_id,raw_key
+t@t.com,user,Test,2026-09-13T18:53:46.844Z,,,,62,1,,,337,user:337
+v@t.com,user,V,2026-09-13T18:54:39.782Z,,,,58,0,,,visualtest-1789325679,user:visualtest-1789325679
+v@t.com,user,V,2026-09-13T18:55:59.275Z,,,,58,0,,,visualtest-1789325759,user:visualtest-1789325759
+ashleyhussainokorafor@gmail.com,lead,,2026-09-13T19:05:36.234Z,scorecard,,,47,,,,,lead:2026-09-13T19:05:36.234Z:ed01ae04-23d4-4cd7-8b2c-37be655923bf
+ashleyhussainokorafor@gmail.com,user,,2026-09-13T19:05:36.583Z,,,,47,0,,,63913233-229e-402e-ad4b-c7c0ac469ac2,user:63913233-229e-402e-ad4b-c7c0ac469ac2
+s@t.com,user,Demo,2026-09-13T21:48:30.937Z,,,,64,0,,,show-1789336110,user:show-1789336110
+p@t.com,user,Phase3,2026-09-13T22:19:21.907Z,,,,60,1,22,1,phase3-1789337961,user:phase3-1789337961
+nnamdiokorafor@gmail.com,lead,Nnamdi,2026-09-18T20:44:40.170Z,scorecard,,DE,0,,,,,lead:2026-09-18T20:44:40.170Z:6232838f-6dd9-4b0b-9750-91db7c9a5c6b

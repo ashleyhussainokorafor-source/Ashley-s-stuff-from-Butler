@@ -118,7 +118,8 @@ SEQUENCE = [
      "Vault is.\n\nHere's the honest bottom line: the Vault is $27 — one "
      "time, for 156 answers. If it doesn't help you in the room, email me "
      "within 30 days and I refund you in full.\n\nThe difference between the "
-     "the one who wings it is typically the job itself — an offer worth "
+     "candidate who walks in prepared and the one who wings it is typically "
+     "the job itself — an offer that can be worth "
      "$10k–$30k more in year one.\n\nGet the Vault: {vault}\n\nEither way — "
      "good luck in that next room.\n\n— Ashley\n\n---\nReply STOP to opt out."),
 ]
@@ -219,7 +220,10 @@ def main():
         else:
             top, weak = "your strongest area", "your biggest gap"
 
-        has_score = bool(lead.get("overall"))
+        # NOTE: `bool(0)` is False, so a genuine score of 0 was being treated as
+        # "no score" and those leads got the playbook email instead of their
+        # results. Distinguish "absent" (None, playbook-only lead) from 0.
+        has_score = lead.get("overall") is not None
 
         for day, hours, subject, body in SEQUENCE:
             if day in done:

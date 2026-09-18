@@ -63,9 +63,14 @@ PAGES = {
     "/path": 3000,
     "/practice": 3000,
     "/league": 2000,
-    "/navigator": 3000,
-    "/coach": 5000,
+    "/resume": 3000,
 }
+
+# Gated app entry points. These are PAID (Navigator/Coach sit behind a 30-day
+# access cookie), so 402 IS the correct answer and 200 is a LEAK — the exact
+# mistake that once served the whole paid app for free at /coach.html.
+GATED = ["/app", "/navigator", "/navigator.html", "/coach", "/coach.html",
+         "/interview", "/simulator", "/chat"]
 
 # Paid artifacts that must stay locked.
 LOCKED = ["/vault.pdf", "/accelerator.pdf", "/vault/download", "/accelerator/download"]
@@ -167,6 +172,23 @@ def main():
     if bad_pages:
         alerts.append("🔴 SITE BROKEN — " + "; ".join(bad_pages[:6]))
 
+    # --- 1b. gated app entry points (200 here = paid app given away) -----
+    open_gates = []
+    for path in GATED:
+        code, _ = curl_code(SITE + path)
+        if code is None:
+            checks.append((f"gate {path}", "UNKNOWN", "unreachable"))
+        elif code == 200:
+            checks.append((f"gate {path}", "FAIL", "HTTP 200 — OPEN, paid app leaks"))
+            open_gates.append(path)
+        elif code == 402:
+            checks.append((f"gate {path}", "OK", "402 gated"))
+        else:
+            checks.append((f"gate {path}", "UNKNOWN", f"HTTP {code}"))
+    if open_gates:
+        alerts.append("🔴 PAID APP OPEN — these entry points are serving the paid "
+                      "Navigator/Coach for free: " + ", ".join(open_gates))
+
     # --- 2. paywall integrity (a leak here is lost revenue) --------------
     leaked = []
     for path in LOCKED:
@@ -252,20 +274,25 @@ def main():
     failing = [n for n, s, _ in checks if s == "FAIL"]
     loud = []
     for a in alerts:
-        key = a[:60]
+        # Key on the alert's headline only — the detail (byte counts, page lists)
+        # changes between runs and must not defeat the rate-limit.
+        key = a.split("—")[0].strip()[:48]
         last = st.setdefault("last_alert", {}).get(key, 0)
         recovered = failing == [] and key not in st.get("failing_keys", [])
         if key.startswith("🟢") or key.startswith("💰") or recovered or time.time() - last > REALERT_AFTER:
             loud.append(a)
             st["last_alert"][key] = time.time()
-    st["failing_keys"] = [a[:60] for a in alerts if a.startswith("🔴") or a.startswith("🟠")]
+    st["failing_keys"] = [c for c in (a.split("—")[0].strip()[:48] for a in alerts)
+                          if c.startswith("🔴") or c.startswith("🟠")]
 
     # --- log -------------------------------------------------------------
     os.makedirs(OPS_DIR, exist_ok=True)
     fails = [c for c in checks if c[1] == "FAIL"]
     unknowns = [c for c in checks if c[1] == "UNKNOWN"]
     verdict = "OK" if not fails and not unknowns else ("FAIL" if fails else "PARTIAL")
-    summary = (f"pages={len(PAGES)-len([c for c in checks if c[0].startswith('page') and c[1]!='OK'])}/{len(PAGES)}"
+    pages_ok = len([c for c in checks if c[0].startswith("page ") and c[1] == "OK"])
+    gates_ok = len([c for c in checks if c[0].startswith("gate ") and c[1] == "OK"])
+    summary = (f"pages={pages_ok}/{len(PAGES)} gates={gates_ok}/{len(GATED)}"
                f" paywall={len(LOCKED)-len(leaked)}/{len(LOCKED)}"
                f" leads={leads if leads is not None else '?'}"
                f" {sales_line or 'sales=?'}")

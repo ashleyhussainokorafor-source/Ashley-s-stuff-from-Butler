@@ -17,6 +17,81 @@ active (claimed within the last 60 minutes), **stop and tell the user** — do n
 
 ---
 
+# How we work together
+
+Two agents share this project: **Butler** (platform lead) and the **hcadaily bot** (growth
+lead). The split exists because our failure mode is not incompetence — it is two agents
+independently doing the same work, or one silently undoing the other's.
+
+## Roles
+
+**Butler — Platform Lead.** Everything that ships and takes money:
+worker code (`worker/src/index.ts`, `wrangler.jsonc`), site UI/assets, Stripe,
+deploys, cron infrastructure, and cross-project repo concerns.
+*Butler owns the blast radius.*
+
+**hcadaily bot — Growth Lead.** Everything that brings people in:
+audience research, content and script packs, the Shorts pipeline, YouTube comment
+replies and descriptions, outreach, and landing-page copy.
+*Growth owns the volume.*
+
+## The seam, and how to cross it
+
+Growth work must never edit worker code directly, and platform work must not rewrite
+content. When you need the other side:
+
+- **Growth needs a site/product change** → write it in the Queue below as
+  `[platform]` and tell Ashley. Butler implements it.
+- **Platform needs copy or content** → write it as `[growth]`. Do not write the copy
+  yourself as a side quest.
+- **Genuinely shared file** → take the mechanical lock (see below), change it, verify,
+  release. Never both at once.
+
+## The rhythm
+
+1. **Claim** your lane *and* your queue item before starting.
+2. **Do** the work — smallest correct change.
+3. **Verify** against the live system, never against your own script's log.
+4. **Publish** (`scripts/publish_to_github.sh`) so the other agent can see it.
+   Unpushed work is invisible and is the root cause of duplicated work.
+5. **Release** your lane and mark the queue item done.
+
+## Definition of done
+
+A task is done when the live system proves it, and this file says so. Not when the
+script printed success. Not when the commit landed. **Verified, published, and written
+down** — all three.
+
+## Escalation — ask Ashley, do not guess
+
+- Another agent holds your lock or lane and is active.
+- The change would spend money, change a price, or alter what a customer receives.
+- You disagree with the other agent's approach.
+- You are about to overwrite someone's uncommitted work.
+
+A blocked agent that explains itself beats two agents overwriting each other.
+
+---
+
+## Work queue — claim before you start, one owner per line
+
+**Ashley's asks in flight.** Pull from here; do not invent parallel work.
+
+| # | Item | Owner | Status |
+|---|---|---|---|
+| 1 | Reply to every YouTube comment with a relevance-matched link | growth | IN PROGRESS — engine live, 6 posted, cron every 4h (~476 to go, quota-bound) |
+| 2 | No-experience offers (products for people with zero healthcare background) | growth | NOT STARTED |
+| 3 | Re-engagement video for the 6,190 dormant subs | growth | NOT STARTED |
+| 4 | Write the 7 research-backed Shorts scripts (pack runs dry Sept 22) | growth | NOT STARTED |
+| 5 | Reach BOTH audiences: clinical (nurses/radiology/MD) and non-clinical | growth | NOT STARTED |
+| 6 | Direct outreach to HCA programs/universities (this-month revenue) | growth | NOT STARTED |
+| 7 | Push to GitHub regularly; teach the house rule to all bots | both | IN PROGRESS |
+| 8 | Finish the remaining ~54 video CTA upgrades | platform | AUTOMATED — runs 3am daily |
+
+**Blocked on Ashley:** none.
+
+---
+
 ## Lanes
 
 | # | Lane | Files you own in this lane |

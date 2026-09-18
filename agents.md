@@ -15,8 +15,13 @@ by luck rather than design — one bad write takes down a live paid product.
 **Three rules, no exceptions:**
 
 1. **Before editing anything under `business/hca-daily/`, read
-   `business/hca-daily/ops/COORDINATION.md` and claim a lane.** One lane, one owner.
-   If your lane is claimed by someone active, stop and tell the user instead of racing.
+   `business/hca-daily/ops/COORDINATION.md` — it holds the roles, the lane table, the
+   work queue, and the mechanical deploy lock.** One lane, one owner, one queue item at
+   a time. If your lane is claimed by someone active, stop and tell the user instead of
+   racing. **The two agents on this project: Butler = platform lead** (worker code, UI,
+   Stripe, deploys, cron infra) and the **hcadaily bot = growth lead** (research,
+   content, Shorts, YouTube, outreach). Stay on your side of the seam; queue a request
+   for the other side rather than reaching across.
 2. **Verify against the live system, never a script's own log.** A script once printed
    both "✅ PUBLISHED" and `privacyStatus=unlisted` about the same video.
 3. **Push your work, or no other agent can see it.** Unpushed local work is invisible.

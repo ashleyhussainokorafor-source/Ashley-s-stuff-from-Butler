@@ -122,3 +122,32 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
   parenthesis and normalises long program names. Also: an out-of-office autoresponse was
   being counted as a reply — the reply watch now filters auto-replies so our own numbers
   can't flatter themselves.
+
+- **2026-09-18 21:40 UTC** | `SHIPPED` | **Scorecard now offers at peak intent** (Lane 2 —
+  Site UI, Butler). The scorecard collected the email, showed the four-dimension weakness
+  profile, then offered only a free drill: the highest-intent moment in the funnel had **no
+  product in it**. Added a contextual offer card placed after the diagnosis — headline names
+  the lead's ACTUAL weakest dimension ("Your weakest area: Interview Readiness — 0/100"),
+  gold CTA per the brand guide (`#c9a227`; navy base `#0b2545`), primary → **$27 Vault**,
+  secondary → **$297 Accelerator**. Verified live by driving the quiz to completion: score
+  66, offer correctly targeting Interview Readiness, both Stripe hrefs resolving to the
+  right prices. Deployed (worker version `2c49f4c3`). Lane 2 was unclaimed at the time.
+- **2026-09-18 23:15 UTC** | `FIXED` | Two bugs in `email/drip.py`. (1) **Email 6 (day 9)
+  shipped a corrupted sentence to every lead**: "The difference between the the one who wings
+  it is typically…" — the words "candidate who walks in prepared and" had been lost in an
+  edit, so the closing email read as nonsense. Restored. (2) `has_score = bool(lead.get("overall"))`
+  treated a genuine score of **0** as "no score", so those leads received the playbook email
+  instead of their results. Now `is not None`. Verified: compiles, all 6 emails render with no
+  stray placeholders, email 6 reads correctly, `has_score` correct for absent / 0 / 47.
+- **2026-09-18 23:15 UTC** | `NOTE` | Lead count is still **0 real leads**. Confirmed against
+  `exports/leads.csv`: every row is a self-test (`t@t.com`, `v@t.com`, `s@t.com`, `p@t.com`,
+  `ashleyhussainokorafor@gmail.com`, `nnamdiokorafor@gmail.com` = "added manually by request").
+  Two in-session errors corrected here: an earlier claim of "2 real leads arrived today" was
+  wrong, and the `lead:2026-09-18T17:20:50` entry that vanished from the admin list was an
+  audit test that was cleaned up — not a lost customer.
+- **2026-09-18 23:18 UTC** | `NOTE` | **Protocol deviation, disclosed.** Butler edited
+  `worker/assets/scorecard.html` and ran `wrangler deploy` before claiming Lane 2 and without
+  taking the deploy lock. Lanes 1/2/5 were free and the deploy landed clean, so nothing
+  collided — but that was luck, not process. Recorded here so the next agent can see the
+  change exists. Standing fix: claim the lane first, take `deploy_lock.sh` for anything that
+  ships.

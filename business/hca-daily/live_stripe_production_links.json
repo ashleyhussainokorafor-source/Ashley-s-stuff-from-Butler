@@ -1,32 +1,50 @@
 {
+  "_verified": "2026-09-18 against the live Stripe API using the restricted key. Only the two links below are ACTIVE.",
+  "_note": "The previous version of this file claimed the $279 Accelerator link was 'retired'. It was not — it was still live and taking payment until 2026-09-18, when it was actually switched off.",
   "HCA Interview Answer Vault": {
     "payment_link": "https://buy.stripe.com/fZufZi70H1eAaaFgrIgMw04",
+    "stripe_payment_link_id": "plink_1UEI8yLxRw5x7PaclgmBGlpq",
     "price": "$27.00",
-    "type": "one-time"
-  },
-  "HCA Career Navigator (Monthly)": {
-    "product_id": "prod_VDDMUM7pwqL4aG",
-    "price_id": "price_1UCmwALxRw5x7PacwMCWqOYF",
-    "payment_link": "https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00"
-  },
-  "HCA Career Navigator (Annual)": {
-    "product_id": "prod_VDDMl6rdQ2hiF1",
-    "price_id": "price_1UCmwBLxRw5x7Pac7UPmWiJn",
-    "payment_link": "https://buy.stripe.com/8x228s3OvbTe1E9a3kgMw01"
-  },
-  "HCA Interview Coach (Single Session)": {
-    "product_id": "prod_VDDM5zQpio3vJg",
-    "price_id": "price_1UCmwCLxRw5x7PacgMiFzkdY",
-    "payment_link": "https://buy.stripe.com/9B66oI98PbTeaaF8ZggMw02"
-  },
-  "HCA Interview Coach (3-Session Prep Pack)": {
-    "product_id": "prod_VDDMGN6W4HcJDs",
-    "price_id": "price_1UCmwELxRw5x7PacgkVSxvI7",
-    "payment_link": "https://buy.stripe.com/9B6bJ2fxd8H2gz3b7ogMw03"
+    "type": "one-time",
+    "status": "active",
+    "used_by": "thehcadaily.com/vault, /pricing, and every YouTube video description"
   },
   "HCA Career Accelerator": {
-    "payment_link": "https://buy.stripe.com/00w4gAbgX1eAdmRejAgMw05",
-    "price": "79.00",
-    "type": "one-time"
+    "payment_link": "https://buy.stripe.com/9B63cwdp53mIdmR8ZggMw06",
+    "stripe_payment_link_id": "plink_1UGQBNLxRw5x7PacpnekEYiy",
+    "price": "$297.00",
+    "type": "one-time",
+    "status": "active",
+    "used_by": "thehcadaily.com/accelerator, /pricing, and every YouTube video description"
+  },
+  "RETIRED_2026-09-18": {
+    "reason": "These sold products that are now free inside the app, or carried superseded prices. Verified that no live page on thehcadaily.com referenced any of them before switching them off. Reversible in the Stripe dashboard.",
+    "links": {
+      "HCA Career Accelerator (old $279 price)": {
+        "payment_link": "https://buy.stripe.com/00w4gAbgX1eAdmRejAgMw05",
+        "stripe_payment_link_id": "plink_1UFHNoLxRw5x7PacE6h432zr",
+        "old_price": "$279.00"
+      },
+      "HCA Interview Coach (Single Session)": {
+        "payment_link": "https://buy.stripe.com/9B66oI98PbTeaaF8ZggMw02",
+        "stripe_payment_link_id": "plink_1UCmwDLxRw5x7PacYBnRDHv7",
+        "old_price": "$19.00"
+      },
+      "HCA Interview Coach (3-Session Prep Pack)": {
+        "payment_link": "https://buy.stripe.com/9B6bJ2fxd8H2gz3b7ogMw03",
+        "stripe_payment_link_id": "plink_1UCmwELxRw5x7PacgbQnGZOK",
+        "old_price": "$49.00"
+      },
+      "HCA Career Navigator (Annual)": {
+        "payment_link": "https://buy.stripe.com/8x228s3OvbTe1E9a3kgMw01",
+        "stripe_payment_link_id": "plink_1UCmwCLxRw5x7PacJmqhXDo7",
+        "old_price": "$199.00/year"
+      },
+      "HCA Career Navigator (Monthly)": {
+        "payment_link": "https://buy.stripe.com/5kQ8wQacT4qM4QlfnEgMw00",
+        "stripe_payment_link_id": "plink_1UCmwBLxRw5x7PacPS3Y7Cqk",
+        "old_price": "$29.00/month"
+      }
+    }
   }
 }

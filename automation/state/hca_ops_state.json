@@ -1,0 +1,14 @@
+{
+  "failing": {},
+  "last_alert": {
+    "\ud83d\udd34 SITE BROKEN \u2014 /navigator (HTTP 402, 1594b); /coach (HTTP 4": 1789759738.3124528
+  },
+  "leads": 1,
+  "run": 6,
+  "charges": [],
+  "lifetime_cents": 0,
+  "sales_count": 0,
+  "failing_keys": [
+    "\ud83d\udd34 SITE BROKEN \u2014 /navigator (HTTP 402, 1594b); /coach (HTTP 4"
+  ]
+}

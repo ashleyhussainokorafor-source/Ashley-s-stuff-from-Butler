@@ -1,0 +1,23 @@
+# The HCA Daily — repo-local ignores
+# This directory is the root of the standalone hca-daily repo.
+
+# Secrets — never commit
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*.pem
+*token*.json
+client_secret*.json
+.gdrive/
+service-account*.json
+
+# Wrangler / build state
+.wrangler/
+node_modules/
+dist/
+out/
+
+# Local scratch
+*.log
+/tmp/

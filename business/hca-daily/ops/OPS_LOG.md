@@ -59,3 +59,13 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
 - **2026-09-18 18:35 UTC** | `SHORT-BUILD` | short006: built 19 frames -> 29.42s  713KB
 - **2026-09-18 18:35 UTC** | `SHORT-BUILD` | short006: queued as ready (auto_publish=True) -> https://youtube.com/shorts/... after publish
 - **2026-09-18 18:57 UTC** | `OK` | pages=12/12 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-18 19:28 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=1 sales=0 revenue=$0.00
+    - FAIL · page /navigator · HTTP 402, 1594b
+    - FAIL · page /coach · HTTP 402, 1554b
+- **2026-09-18 19:59 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=1 sales=0 revenue=$0.00
+    - FAIL · page /navigator · HTTP 402, 1594b
+    - FAIL · page /coach · HTTP 402, 1554b
+- **2026-09-18 20:30 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=1 sales=0 revenue=$0.00
+    - FAIL · page /navigator · HTTP 402, 1594b
+    - FAIL · page /coach · HTTP 402, 1554b
+- **2026-09-18 20:46 UTC** | `COMMENT-REPLY` | replied to 6 (failed 0); types {'story': 1, 'opinion': 5}

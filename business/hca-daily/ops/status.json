@@ -1,11 +1,20 @@
 {
-  "checked_at": "2026-09-18T18:57:54.704993+00:00",
-  "verdict": "OK",
-  "run": 3,
-  "leads": 2,
+  "checked_at": "2026-09-18T20:30:55.970395+00:00",
+  "verdict": "FAIL",
+  "run": 6,
+  "leads": 1,
   "sales_count": 0,
   "revenue_usd": 0.0,
-  "failing": [],
+  "failing": [
+    {
+      "check": "page /navigator",
+      "detail": "HTTP 402, 1594b"
+    },
+    {
+      "check": "page /coach",
+      "detail": "HTTP 402, 1554b"
+    }
+  ],
   "unknown": [],
   "checks": [
     {
@@ -21,7 +30,7 @@
     {
       "name": "page /pricing",
       "status": "OK",
-      "detail": "HTTP 200 8313b"
+      "detail": "HTTP 200 10627b"
     },
     {
       "name": "page /vault",
@@ -60,13 +69,13 @@
     },
     {
       "name": "page /navigator",
-      "status": "OK",
-      "detail": "HTTP 200 7070b"
+      "status": "FAIL",
+      "detail": "HTTP 402, 1594b"
     },
     {
       "name": "page /coach",
-      "status": "OK",
-      "detail": "HTTP 200 9685b"
+      "status": "FAIL",
+      "detail": "HTTP 402, 1554b"
     },
     {
       "name": "locked /vault.pdf",
@@ -101,12 +110,12 @@
     {
       "name": "leads",
       "status": "OK",
-      "detail": "2 total"
+      "detail": "1 total"
     },
     {
       "name": "drip",
       "status": "OK",
-      "detail": "last write 1.2h ago"
+      "detail": "last write 0.7h ago"
     },
     {
       "name": "stripe charges",

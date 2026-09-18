@@ -39,7 +39,10 @@ Adding a script to the pack is lane 3. Building/queueing the video is lane 4.
 
 | Lane | Agent | Claimed (UTC) | Doing | Status |
 |---|---|---|---|---|
-| — | — | — | *nothing currently claimed* | — |
+| 3 (Content) | hcadaily bot | 2026-09-18 19:30 | Comment-reply engine, no-experience offers, re-engagement video | ACTIVE |
+| 4 (Shorts) | hcadaily bot | 2026-09-18 19:30 | Comment replies (YouTube API) + script pack expansion | ACTIVE |
+
+**Lanes 1 (worker), 2 (UI) and 5 (payments) are FREE.** If you need them, claim them above.
 
 ---
 
@@ -111,3 +114,29 @@ secrets and state that belong to one bot only.
 Do not race it. Either switch to a lane nobody holds, or write your finding to this file
 and tell the user. A blocked agent that explains itself is worth far more than two agents
 overwriting each other's work.
+
+---
+
+## Mechanical lock (use it for production changes)
+
+The lane table above is honour-system. For anything that ships or spends money, also take
+the real lock so two agents physically cannot deploy at once:
+
+```bash
+bash /data/scripts/deploy_lock.sh acquire <scope> <your-agent-name>
+bash /data/scripts/deploy_lock.sh status
+bash /data/scripts/deploy_lock.sh release <scope> <your-agent-name>
+```
+
+Suggested scopes: `worker/src/index.ts`, `stripe`, `kv`, `youtube`, `cron`.
+
+- `acquire` **exits 1** if another agent holds the scope and claimed it under 60 minutes ago.
+  If that happens: stop and ask Ashley who should proceed. Do not overwrite.
+- A lock older than 60 minutes is treated as abandoned (owner died) — `acquire` will warn
+  and take it over. Say so out loud so the previous owner isn't surprised.
+- `release` refuses if you aren't the holder.
+- Locks live in `ops/locks/` and are gitignored-local; they are not a source of truth for
+  anything except "someone is mid-flight right now."
+
+**Hold the lock only for the duration of the change.** Acquire → change → verify → release.
+A lock left held blocks every other agent on that scope.

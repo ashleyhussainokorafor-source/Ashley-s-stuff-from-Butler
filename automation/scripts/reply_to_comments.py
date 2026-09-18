@@ -42,6 +42,22 @@ LOG = "/data/business/hca-daily/ops/OPS_LOG.md"
 TOKEN = "/data/youtube_token.json"
 
 QUOTA_SAFE_BATCH = 170
+# Replies posted per run. Deliberately SMALL: YouTube's spam systems react to a
+# channel suddenly posting hundreds of replies, and a burst is also just worse
+# behaviour. We post a few, often, and keep up going forward.
+DEFAULT_BATCH = 3
+# Hard ceiling per calendar day across all runs, so a misconfigured schedule
+# cannot turn into a burst either.
+# Lowered from 120/day on 2026-09-18: 479 comments were eligible, so 120/day
+# cleared the whole backlog in four days — a burst, which is the exact thing
+# this cap exists to prevent. 12/day is a steady habit that costs ~10 minutes
+# a day instead of a multi-hour dump.
+DAILY_CAP = 12
+
+# Reply priority: answer real questions before thanking people for compliments.
+# Sorting by likes alone meant a "thank you!" with 4 likes outranked a genuine
+# career question with none.
+_KIND_PRIORITY = {"question": 0, "help": 1, "story": 2, "opinion": 3, "praise": 4}
 SITE = "https://thehcadaily.com"
 
 VIDEOS = {
@@ -139,13 +155,16 @@ TOPICS = [
     ("mentor_network", [r"\bmentor", r"\bnetwork(ing)?\b", r"\bno one in the (field|industry)\b",
                         r"\bconnect with (people|someone|professionals)\b"]),
     ("interview", [r"\binterview", r"\btell me about yourself\b", r"\bstar method\b"]),
+    ("jobs_with_degree", [r"\bwhat jobs\b", r"\bwhich jobs\b", r"\bwhat (kind of )?(jobs|work|roles?|positions?)\b",
+                          r"\bjob options\b", r"\bcareer options\b", r"\bwhat can i do with\b",
+                          r"\bafter (the|my) degree\b", r"\bafter (i )?graduat",
+                          r"\bjob titles?\b", r"\bentry[ -]level (jobs?|roles?|positions?)\b",
+                          r"\bwhat (roles|positions)\b"]),
     ("resume_job", [r"\bresume\b", r"\bcv\b", r"\bapplying for\b", r"\bjob (search|market|hunt)\b",
                     r"\bget (a )?(job|hired)\b", r"\bfind a job\b", r"\bland a job\b",
                     r"\bentry[ -]level\b", r"\bfoot in the door\b", r"\bhard to get a job\b"]),
-    ("jobs_with_degree", [r"\bwhat jobs\b", r"\bwhich jobs\b", r"\bwhat (kind of )?(jobs|work|roles?|positions?)\b",
-                          r"\bjob options\b", r"\bcareer options\b", r"\bwhat can i do with\b",
-                          r"\bafter (the|my) degree\b", r"\bafter (i )?graduat"]),
-    ("mha_mba", [r"\bmha vs mba\b", r"\bmba (vs|or) mha\b", r"\bshould i get an mba\b"]),
+    ("mha_mba", [r"\bmha vs mba\b", r"\bmba (vs|or) mha\b", r"\bshould i get an mba\b",
+                 r"\bmha\b.{0,20}\bmba\b", r"\bmba\b.{0,20}\bmha\b"]),
     ("mph", [r"\bmph\b", r"\bmaster'?s in public health\b"]),
     ("mha", [r"\bmha\b", r"\bmaster'?s in healthcare admin", r"\bmasters in healthcare"]),
     ("business_degree", [r"\bbusiness (degree|admin|major)\b", r"\bstudying business\b", r"\bbba\b"]),
@@ -191,8 +210,63 @@ RESOURCE = {
     "overseas":         (["Kd6rv1a_qXI"], None),
     "mpa":              (["FPp4Avmu_aI"], None),
 }
-VAULT = (f"the Interview Answer Vault has 156 real questions with the exact answer "
+VAULT = (f"The Interview Answer Vault has 156 real questions with the exact answer "
          f"scripts if you want the deeper version — {SITE}/vault")
+
+# The actual answer, given directly in the reply. Pointing at a video is helpful;
+# answering the question is what makes the channel worth following. Only ever
+# states things Ashley already teaches — never invent a number or a claim here.
+SUBSTANCE = {
+    "jobs_with_degree":
+        "The short answer: three doors take people without experience — operations "
+        "(coordinator, then manager), revenue cycle (analyst roles, and they hire faster "
+        "than most), and compliance/quality, which almost nobody applies for.",
+    "zero_exp":
+        "Get the entry role before the degree, not after. Patient access, scheduling, "
+        "revenue cycle, or an administrative fellowship are the usual ways in.",
+    "too_late":
+        "The order is what matters: entry role first, credential second. Your previous "
+        "career is the thing that distinguishes you from a new grad, not a liability.",
+    "interview":
+        "Three metrics carry most answers: wRVUs, days in A/R, and no-show rate. Bring "
+        "one of those into your first answer and the room changes.",
+    "resume_job":
+        "First fix: put a number in your first line. Duties get skimmed, metrics get "
+        "read — and the screening happens in seconds.",
+    "mgmt_vs_admin":
+        "Management runs the operation — staffing, flow, the floor. Administration runs "
+        "the business — contracts, payers, policy, money. Most postings want both.",
+    "mentor_network":
+        "Don't ask someone to be your mentor — that gets a no. Ask one specific "
+        "question. An answered question is what turns into a relationship.",
+    "nurse_clinical":
+        "You already know the floor, which is the half new grads can't fake. What's "
+        "missing is the money half: wRVUs, days in A/R, labor variance.",
+    "day_in_life":
+        "Strip it back and the job is three things: staffing, flow, and money. Most of "
+        "the stress lives in the first one.",
+    "business_degree":
+        "A business degree says you understand money. It says nothing about the clinic — "
+        "and healthcare hires on healthcare language.",
+    "mph":
+        "MPH leans population and policy; the admin track leans operations and money. "
+        "Which one you pick should follow the job you want, not the other way round.",
+    "mha":
+        "The MHA is worth it when it's attached to a role you already have, or one "
+        "you're actively targeting. It's a weaker signal on its own.",
+    "mha_mba":
+        "MHA gets you the title, MBA gets you the budget. If you want to run a "
+        "department, MHA. If you want to run a P&L, MBA.",
+    "degree_choice":
+        "The degree matters less than what you attach to it. Any of them can work — "
+        "what doesn't work is graduating with no operational exposure.",
+    "insurance":
+        "Health insurance is one of the most overlooked entry points — payers hire "
+        "steadily and the terminology transfers straight into provider-side roles.",
+    "coding":
+        "Coding is a genuine entry door, but it's a different career track from "
+        "administration. Worth knowing before you commit to it.",
+}
 
 
 def classify(text):
@@ -203,24 +277,26 @@ def classify(text):
     return None
 
 
-# --------------------------------------------------------------- reply copy
-Q_OPEN = ["Great question.", "Really good question.", "This comes up a lot.",
-          "Good question — and a common one.", "I get asked this a lot."]
-Q_CLOSE = ["Hope that helps!", "Good luck with it.", "Wishing you the best.",
-           "Happy to help."]
-STORY_OPEN = ["Thanks for sharing this.", "Appreciate you sharing your experience.",
-              "This is a really useful perspective.", "Love hearing this."]
-OPINION_OPEN = ["Solid point.", "Good perspective.", "You're right about this.",
-                "Really good point."]
-PRAISE_OPEN = ["Thank you so much!", "This made my day — thank you.", "So glad it helped!",
-               "Thank you, that means a lot."]
-PRAISE_CLOSE = ["Best of luck with everything.", "Wishing you the best with your studies.",
-                "Rooting for you.", "Keep going — you've got this."]
-
-
 def build_reply(kind, topic, text):
     vids, product = RESOURCE.get(topic, (None, None))
     vid = random.choice(vids) if vids else None
+
+    # Feedback about the videos themselves (audio, pacing, captions, thumbnails)
+    # is not a career question and must not get a topical reply. "Solid point,
+    # thanks for adding this" to "please get rid of the background music" reads
+    # as a bot ignoring a real viewer. Acknowledge the specific thing, say what
+    # we will do about it, then stop.
+    complaint = match_complaint(text)
+    if complaint:
+        ack, action = COMPLAINTS[complaint]
+        # The ack follows an opener, so it must start a sentence.
+        ack = ack[0].upper() + ack[1:] if ack else ack
+        # If they raised a real problem, say plainly whether we can fix it.
+        if complaint == "music":
+            return (f"{random.choice(COMPLAINT_OPEN)} {ack} You're not the first to say it — "
+                    f"I'm turning the music down under the voice on the new uploads, and I'll "
+                    f"re-cut the older ones as I get to them. {action}").strip()
+        return (f"{random.choice(COMPLAINT_OPEN)} {ack} {action}").strip()
 
     if kind == "praise":
         out = f"{random.choice(PRAISE_OPEN)} {random.choice(PRAISE_CLOSE)}"
@@ -233,19 +309,89 @@ def build_reply(kind, topic, text):
     if kind in ("story", "opinion"):
         open_ = random.choice(STORY_OPEN if kind == "story" else OPINION_OPEN)
         if vid:
-            return (f'{open_} For anyone reading who\'s in the same spot, I covered this in '
+            # Speak to the commenter, not past them to "anyone reading".
+            return (f'{open_} If you want the longer version of this, it\'s in '
                     f'"{VIDEOS[vid]}": {yt(vid)}')
-        return f"{open_} Thanks for adding this to the conversation."
+        return f"{open_} {random.choice(STORY_CLOSE)}"
 
-    # question / help -> actually answer with a pointer
-    parts = [random.choice(Q_OPEN),
-             f'I actually made a video on this — "{VIDEOS[vid]}": {yt(vid)}' if vid
-             else f"I'd say start with the free scorecard — it'll tell you where you stand: {SITE}/scorecard"]
+    # question / help -> answer it first, then point at the deeper version
+    parts = [random.choice(Q_OPEN)]
+    if topic in SUBSTANCE:
+        parts.append(SUBSTANCE[topic])
+    if vid:
+        parts.append(f'I go deeper on this one here — "{VIDEOS[vid]}": {yt(vid)}')
+    else:
+        parts.append(f"The free scorecard will tell you where you actually "
+                     f"stand: {SITE}/scorecard")
     if product == "vault":
         parts.append(VAULT)
     else:
         parts.append(random.choice(Q_CLOSE))
     return " ".join(parts)
+
+
+# --------------------------------------------------------------- reply copy
+Q_OPEN = ["Great question.", "Really good question.", "This comes up a lot.",
+          "Good question — and a common one.", "I get asked this a lot.",
+          "Glad you asked this.", "This is the question I wish more people asked."]
+Q_CLOSE = ["Hope that helps!", "Good luck with it.", "Wishing you the best.",
+           "Happy to help.", "Come back if it's still unclear."]
+STORY_OPEN = ["Thanks for sharing this.", "Appreciate you sharing your experience.",
+              "This is a really useful perspective.", "Love hearing this.",
+              "Thank you for putting this here — it's genuinely useful to read.",
+              "This is worth reading twice."]
+STORY_CLOSE = ["Thanks for adding this to the conversation.",
+               "Glad it's not just me who sees it this way.",
+               "Your experience is the useful part here."]
+OPINION_OPEN = ["Solid point.", "Good perspective.", "You're right about this.",
+                "Really good point.", "You're onto something here.",
+                "That matches what I see too.", "Fair point."]
+
+# ---------------------------------------------------- complaints / feedback
+# Separate from questions: these are about the videos, and the reply has to
+# engage with the specific complaint instead of pivoting to a career answer.
+COMPLAINTS = {
+    "music":     ("the background music is a fair thing to flag.",
+                  "Appreciate you saying so — a lot of people just leave."),
+    "audio":     ("that's a fair call on the audio.",
+                  "Thanks for flagging it."),
+    "pacing":    ("fair — I do go at it quickly in places.",
+                  "I'll slow that section down when I re-cut it."),
+    "captions":  ("you're right that captions should be there.",
+                  "Auto-captions are on, but I'll clean them up on the older ones."),
+    "thumbnail": ("fair point on the thumbnail.",
+                  "That one's getting redone."),
+    "length":    ("fair — some of these run long.",
+                  "I'll cut a shorter version."),
+    "volume":    ("that's a fair note on the levels.",
+                  "I'll normalise the audio on the next batch."),
+}
+COMPLAINT_OPEN = ["Thanks for flagging this.", "Appreciated — and noted.",
+                  "Thanks for the honest note.", "Noted, and thank you.",
+                  "Fair enough.", "Thanks for saying it plainly."]
+_COMPLAINT_PATTERNS = [
+    ("music",     r"\b(background music|bg music|back ground music|music in the background|"
+                  r"turn.*music|music.*distract|loud music|remove.*music)\b"),
+    ("audio",     r"\b(audio quality|bad audio|can'?t hear|hard to hear|poor sound|echo)\b"),
+    ("pacing",    r"\b(too fast|slow down|speak faster|too slow|rushed)\b"),
+    ("captions",  r"\b(caption|subtitle|no captions|cc)\b"),
+    ("thumbnail", r"\b(thumbnail|clickbait title|misleading title)\b"),
+    ("length",    r"\b(too long|too short|video is long|shorter video)\b"),
+    ("volume",    r"\b(volume|too quiet|louder|turn.*up)\b"),
+]
+
+
+def match_complaint(text):
+    """Return the complaint category, or None. Only fires on clear feedback."""
+    t = (text or "").lower()
+    for cat, pat in _COMPLAINT_PATTERNS:
+        if re.search(pat, t, re.I):
+            return cat
+    return None
+PRAISE_OPEN = ["Thank you so much!", "This made my day — thank you.", "So glad it helped!",
+               "Thank you, that means a lot."]
+PRAISE_CLOSE = ["Best of luck with everything.", "Wishing you the best with your studies.",
+                "Rooting for you.", "Keep going — you've got this."]
 
 
 SPAM = ["check out my channel", "sub4sub", "sub 4 sub", "free followers", "http://",
@@ -276,6 +422,7 @@ def main():
     done = set(state["replied"])
 
     cands = []
+    skipped_weak = 0
     for r in rows:
         if r["ownerReplied"] or r["commentId"] in done or is_spam(r["text"]):
             continue
@@ -294,13 +441,36 @@ def main():
             continue
         if args.topic and topic != args.topic:
             continue
+        # Do not post a non-answer. When a direct question has no substantive
+        # material behind it, the old code fell back to "the free scorecard will
+        # tell you where you actually stand" — which is not an answer to
+        # "which is better, management or administration?" and reads as a bot.
+        # Silence is better than a public non-answer; these wait until we have
+        # real substance for the topic.
+        if kind in ("question", "help") and topic in (None, "general"):
+            skipped_weak += 1
+            continue
         cands.append((r, kind, topic))
 
-    cands.sort(key=lambda c: -c[0]["likes"])
-    limit = args.limit or (15 if args.dry_run else QUOTA_SAFE_BATCH)
+    # Questions first, then help, then stories/opinions, then thanks. Within a
+    # tier, most-liked first. A 4-like "thank you" should never outrank an
+    # unanswered career question.
+    cands.sort(key=lambda c: (_KIND_PRIORITY.get(c[1], 9), -c[0]["likes"]))
+
+    # Respect the daily ceiling across runs.
+    today = time.strftime("%Y-%m-%d")
+    used_today = state.get("daily", {}).get(today, 0)
+    remaining_today = max(0, DAILY_CAP - used_today)
+    if remaining_today == 0:
+        print(f"daily cap reached ({used_today}/{DAILY_CAP} today) — nothing to do")
+        return 0
+
+    limit = args.limit or (15 if args.dry_run else DEFAULT_BATCH)
+    limit = min(limit, remaining_today)
     batch = cands[:limit]
 
-    print(f"cached {len(rows)} | eligible {len(cands)} | this run {len(batch)}")
+    print(f"cached {len(rows)} | eligible {len(cands)} | this run {len(batch)}"
+          f" | deferred (no real answer yet) {skipped_weak}")
     print("by type  :", dict(Counter(k for _, k, _ in batch)))
     print("by topic :", dict(Counter(t for _, _, t in batch)))
     print()
@@ -325,6 +495,7 @@ def main():
             state["replied"][r["commentId"]] = {
                 "kind": kind, "topic": topic, "videoId": r["videoId"],
                 "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+            state.setdefault("daily", {})[today] = state["daily"].get(today, 0) + 1
             posted += 1
             if posted % 10 == 0:
                 json.dump(state, open(STATE, "w"), indent=1)
@@ -336,7 +507,8 @@ def main():
                 break
             failed += 1
             print(f"  ! {r['commentId']}: {m[:80]}")
-        time.sleep(1.2)
+        # Human-paced: a metronomic 1s gap across dozens of replies is a tell.
+        time.sleep(random.uniform(4.0, 11.0))
 
     json.dump(state, open(STATE, "w"), indent=1)
     try:

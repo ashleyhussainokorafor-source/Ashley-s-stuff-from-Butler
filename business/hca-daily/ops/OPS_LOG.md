@@ -77,3 +77,6 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
 - **2026-09-18 20:58 UTC** | `SHORT-BUILD` | short007: audio=20.66s  wps=0.5298
 - **2026-09-18 20:58 UTC** | `SHORT-BUILD` | short007: built 12 frames -> 20.66s  473KB
 - **2026-09-18 20:58 UTC** | `SHORT-BUILD` | short007: queued as ready (auto_publish=True) -> https://youtube.com/shorts/... after publish
+- **2026-09-18 21:01 UTC** | `FAIL` | pages=10/12 paywall=4/4 leads=2 sales=0 revenue=$0.00
+    - FAIL · page /navigator · HTTP 402, 1594b
+    - FAIL · page /coach · HTTP 402, 1554b

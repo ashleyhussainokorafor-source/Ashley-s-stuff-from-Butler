@@ -1,8 +1,8 @@
 {
-  "checked_at": "2026-09-18T20:30:55.970395+00:00",
+  "checked_at": "2026-09-18T21:01:56.373150+00:00",
   "verdict": "FAIL",
-  "run": 6,
-  "leads": 1,
+  "run": 7,
+  "leads": 2,
   "sales_count": 0,
   "revenue_usd": 0.0,
   "failing": [
@@ -110,12 +110,12 @@
     {
       "name": "leads",
       "status": "OK",
-      "detail": "1 total"
+      "detail": "2 total"
     },
     {
       "name": "drip",
       "status": "OK",
-      "detail": "last write 0.7h ago"
+      "detail": "last write 0.0h ago"
     },
     {
       "name": "stripe charges",

@@ -78,3 +78,6 @@ request_dump_*.json
 gateway.lock
 gateway.pid
 gateway_state.json
+
+# Key rotation backups (contain live keys)
+.openrouter-key-backup-*.txt

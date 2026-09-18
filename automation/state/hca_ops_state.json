@@ -1,14 +1,16 @@
 {
   "failing": {},
   "last_alert": {
-    "\ud83d\udd34 SITE BROKEN \u2014 /navigator (HTTP 402, 1594b); /coach (HTTP 4": 1789759738.3124528
+    "\ud83d\udd34 SITE BROKEN \u2014 /navigator (HTTP 402, 1594b); /coach (HTTP 4": 1789759738.3124528,
+    "\ud83d\udfe2 NEW LEAD \u2014 captured 2026-09-18T20": 1789765319.1787462
   },
-  "leads": 1,
-  "run": 6,
+  "leads": 2,
+  "run": 7,
   "charges": [],
   "lifetime_cents": 0,
   "sales_count": 0,
   "failing_keys": [
     "\ud83d\udd34 SITE BROKEN \u2014 /navigator (HTTP 402, 1594b); /coach (HTTP 4"
-  ]
+  ],
+  "lead_alerted": true
 }

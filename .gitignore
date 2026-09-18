@@ -44,6 +44,17 @@ temp/
 *.zip
 *.tar.gz
 
+# --- Licensed stock imagery: metadata yes, binaries no -------------------
+# The photos in business/hca-daily/worker/assets/img/ come from Pexels under the
+# Pexels License. Serving them on our own website is the licensed use; publishing
+# unaltered copies into a PUBLIC repo is redistribution, which that licence does
+# not grant. Keep CREDITS.md and manifest.json in version control (so the licence
+# trail and the source URLs are auditable) and keep the image files out.
+business/hca-daily/worker/assets/img/*.jpg
+business/hca-daily/worker/assets/img/*.jpeg
+business/hca-daily/worker/assets/img/*.png
+business/hca-daily/worker/assets/img/*.webp
+
 # Hermes / local
 *.session
 *.session-journal

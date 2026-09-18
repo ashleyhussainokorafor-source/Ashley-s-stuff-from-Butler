@@ -89,6 +89,7 @@ A blocked agent that explains itself beats two agents overwriting each other.
 | 8 | Finish the remaining ~54 video CTA upgrades | platform | AUTOMATED — runs 3am daily |
 | 9 | Scorecard must offer at peak intent (it collected the email, diagnosed the gap, then sold nothing) | platform (Butler) | **DONE** — contextual offer card on `worker/assets/scorecard.html`, targets the lead's own weakest dimension, gold CTA → $27 Vault + $297 Accelerator. Verified live, deployed `2c49f4c3` |
 | 10 | Drip copy + logic bugs (`email/drip.py`) | platform (Butler) | **DONE** — Email 6 corrupted sentence restored; score-of-0 no longer mistaken for "no score". Uncommitted at time of writing |
+| 11 | `[platform]` **Modernise the site UI/UX for a younger audience** — real student photography on every page, rewrite the jargon hero, settle on ONE palette, real mobile nav + sticky mobile CTA, shared stylesheet. Audit + spec: `design/UI_UX_AUDIT.md` (current score **5.3/10**). Licensed image library + `CREDITS.md` land in `worker/assets/img/`. | platform | QUEUED — spec delivered 2026-09-18 |
 
 **Blocked on Ashley:** none.
 
@@ -126,6 +127,14 @@ Adding a script to the pack is lane 3. Building/queueing the video is lane 4.
 `2c49f4c3`. Also touched `email/drip.py` (not in the lane table — flagging rather than
 assuming it's mine). Both are recorded in the queue as items #9 and #10 and in
 `ops/OPS_LOG.md`. Lane 2 is free again.
+
+**2026-09-18 23:40 UTC — Lane 2 (Site UI) CLAIMED by Butler.** Ashley asked for a
+visual UI/UX audit + modernisation of the site for a younger (college / early-career)
+audience, with real imagery. Scope: `worker/assets/*.html` and new image assets.
+Findings so far: the site has **zero images** on any page, and the deployed CSS uses
+coral `#ff5749` + amber `#f59e0b` for CTAs while the brand guide's gold `#c9a227` is
+**entirely absent** (navy/teal are correct). Mobile header wraps/breaks at 390px.
+Work in progress — do not edit `worker/assets/*.html` until this line says RELEASED.
 
 ---
 

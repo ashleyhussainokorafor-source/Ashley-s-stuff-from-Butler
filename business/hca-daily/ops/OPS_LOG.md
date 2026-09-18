@@ -151,3 +151,18 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
   collided — but that was luck, not process. Recorded here so the next agent can see the
   change exists. Standing fix: claim the lane first, take `deploy_lock.sh` for anything that
   ships.
+
+- **2026-09-18 23:45 UTC** | `AUDIT` | Site UI/UX audited and scored **5.3/10** — `design/UI_UX_AUDIT.md`.
+  Measured, not impressionistic: **0 `<img>`, 0 `<svg>`, 0 `alt` attributes across all 13 pages**
+  (the whole site is text + CSS). Only 2 media queries and **no mobile nav toggle exists**.
+  One inline `<style>` per page, 8 different border-radii (6/10/12/13/14/16/18/20).
+  Finding worth acting on: the site uses coral #ff5749 / mint #8fd3c9 / amber #f59e0b, which the
+  brand guide explicitly calls OFF-brand (guide says teal #0d9488 + gold #c9a227) — so the website
+  and the YouTube channel are currently two different brands.
+  Queued as `[platform]` item #11 in COORDINATION.md; licensed image library being sourced.
+- **2026-09-18 23:45 UTC** | `ENV` | Host resource warning: memory 515MB total / ~27MB free / ~91MB available.
+  During the audit the browser tool returned `[Errno 11] Resource temporarily unavailable` and
+  vision returned `can't start new thread`; terminal/execute_code calls stalled on the pre-tool
+  plugin until pressure eased. Screenshots and image inspection are unreliable while a browser
+  session is open. Worth remembering before the next deploy (wrangler was killed by OOM before).
+- **2026-09-18 23:34 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00

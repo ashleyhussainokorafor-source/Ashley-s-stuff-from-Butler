@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0b2545}
+  .slide{width:1080px;height:1920px;position:absolute;top:0;left:0;overflow:hidden;
+         font-family:'DejaVu Sans','Liberation Sans','Noto Sans','Inter',system-ui,sans-serif}
+  /* ---- brand palette (ONLY these) ----
+     navy #0b2545 / navy2 #13315c | teal #0d9488 / teal2 #0f766e | gold #c9a227 | ink #f7f9fb(as warm bg) */
+  /* ---- SAFE ZONES: all content sits between y=380 and y=1450 ---- */
+
+  /* slide backgrounds: navy gradient base */
+  .bg-navy{background:radial-gradient(140% 120% at 50% 8%, #13315c 0%, #0b2545 62%, #0b2545 100%)}
+  .stage{position:absolute;left:54px;right:54px;top:400px;height:1030px;display:flex;
+         flex-direction:column;justify-content:center;align-items:center;text-align:center}
+
+  /* top-left miniature wordmark — sits OUTSIDE the critical text, small, safe (y~470) */
+  .mark{position:absolute;left:54px;top:470px;font-size:30px;font-weight:800;color:#0d9488;letter-spacing:2px}
+  .mark b{color:#ffffff}
+
+  .kicker{font-size:38px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:#0d9488;margin-bottom:34px}
+  .kickerg{font-size:38px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:#c9a227;margin-bottom:34px}
+
+  h1.big{font-size:150px;line-height:1.02;font-weight:900;color:#ffffff;letter-spacing:-3px}
+  h1{font-size:108px;line-height:1.1;font-weight:900;color:#ffffff;letter-spacing:-2px}
+  .teal{color:#0d9488}.gold{color:#c9a227}.dim{color:#dfe7f2}.white{color:#ffffff}
+  .sub{font-size:52px;line-height:1.30;color:#dfe7f2;font-weight:600;margin-top:44px}
+  .sub2{font-size:56px;line-height:1.30;color:#dfe7f2;font-weight:700;margin-top:44px}
+
+  /* CTA slide */
+  .cta-pill{display:inline-block;background:#c9a227;color:#0b2545;font-size:54px;font-weight:900;
+            padding:30px 56px;border-radius:40px;box-shadow:0 16px 44px rgba(201,162,39,.35);
+            letter-spacing:.5px;margin-top:30px}
+  .domain{font-size:92px;font-weight:900;color:#ffffff;letter-spacing:-1px;margin-top:26px}
+  .domain .dot{color:#c9a227}
+  .sig{font-size:44px;font-weight:700;color:#c9a227;margin-top:34px;letter-spacing:1px}
+  .vault-note{font-size:36px;color:#0f766e;font-weight:600;margin-top:20px}
+
+  /* kinetic reveal targets — start hidden; JS sets opacity by data-reveal (0-indexed global word id) */
+  [data-reveal]{opacity:0}
+</style></head>
+<body>
+
+  <!-- SLIDE 1 — HOOK: question answered -->
+  <div class="slide bg-navy" id="s1">
+    <div class="mark">HCA<b>DAILY</b></div>
+    <div class="stage">
+      <div class="kicker" data-reveal="0">The question nobody asks you</div>
+      <h1 class="big" data-reveal="0">MHA or <span class="gold">MBA?</span></h1>
+      <h1 class="gold" data-reveal="3">You're asking the<br><span class="white">WRONG</span> question.</h1>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 — the answer starts -->
+  <div class="slide bg-navy" id="s2">
+    <div class="mark">HCA<b>DAILY</b></div>
+    <div class="stage">
+      <div class="kickerg" data-reveal="8">Here's the real split</div>
+      <h1>MHA <span class="teal">→</span> the <span class="gold">TITLE</span></h1>
+      <h1 data-reveal="13">MBA <span class="teal">→</span> the <span class="gold">BUDGET</span></h1>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — how hiring managers read them -->
+  <div class="slide bg-navy" id="s3">
+    <div class="mark">HCA<b>DAILY</b></div>
+    <div class="stage">
+      <div class="kicker" data-reveal="18">How hiring managers read it</div>
+      <h1 class="sub2" data-reveal="18">MHA <span class="teal">=</span> &ldquo;knows the <span class="gold">clinic</span>&rdquo;</h1>
+      <h1 class="sub2" data-reveal="26">MBA <span class="teal">=</span> &ldquo;knows the <span class="gold">money</span>&rdquo;</h1>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — the decision rule -->
+  <div class="slide bg-navy" id="s4">
+    <div class="mark">HCA<b>DAILY</b></div>
+    <div class="stage">
+      <div class="kickerg" data-reveal="33">The decision rule</div>
+      <h1 data-reveal="33">Run a <span class="white">department</span> <span class="teal">→</span> <span class="gold">MHA</span></h1>
+      <h1 data-reveal="40">Run the <span class="white">P&amp;L</span> <span class="teal">→</span> <span class="gold">MBA</span></h1>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 — the twist -->
+  <div class="slide bg-navy" id="s5">
+    <div class="mark">HCA<b>DAILY</b></div>
+    <div class="stage">
+      <div class="kicker" data-reveal="49">Here's the part nobody mentions</div>
+      <h1 data-reveal="49">Most postings want <span class="gold">BOTH</span></h1>
+      <h1 data-reveal="54"><span class="teal">Nobody</span> tells you that.</h1>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 — CTA (one call to action) -->
+  <div class="slide bg-navy" id="s6">
+    <div class="mark">HCA<b>DAILY</b></div>
+    <div class="stage">
+      <div class="kickerg" data-reveal="58">Free &middot; 90 seconds</div>
+      <h1 data-reveal="66">Which one are <span class="gold">you</span> missing?</h1>
+      <div class="cta-pill" data-reveal="66">Take the scorecard</div>
+      <div class="domain" data-reveal="66">thehcadaily<span class="dot">.</span>com</div>
+      <div class="sig" data-reveal="69">Dr. Ashley, DBA</div>
+    </div>
+  </div>
+
+</body></html>

@@ -1,0 +1,117 @@
+{
+  "checked_at": "2026-09-18T18:57:54.704993+00:00",
+  "verdict": "OK",
+  "run": 3,
+  "leads": 2,
+  "sales_count": 0,
+  "revenue_usd": 0.0,
+  "failing": [],
+  "unknown": [],
+  "checks": [
+    {
+      "name": "page /",
+      "status": "OK",
+      "detail": "HTTP 200 17974b"
+    },
+    {
+      "name": "page /scorecard",
+      "status": "OK",
+      "detail": "HTTP 200 25732b"
+    },
+    {
+      "name": "page /pricing",
+      "status": "OK",
+      "detail": "HTTP 200 8313b"
+    },
+    {
+      "name": "page /vault",
+      "status": "OK",
+      "detail": "HTTP 200 11476b"
+    },
+    {
+      "name": "page /accelerator",
+      "status": "OK",
+      "detail": "HTTP 200 7615b"
+    },
+    {
+      "name": "page /playbook",
+      "status": "OK",
+      "detail": "HTTP 200 18413b"
+    },
+    {
+      "name": "page /learn",
+      "status": "OK",
+      "detail": "HTTP 200 18847b"
+    },
+    {
+      "name": "page /path",
+      "status": "OK",
+      "detail": "HTTP 200 6352b"
+    },
+    {
+      "name": "page /practice",
+      "status": "OK",
+      "detail": "HTTP 200 7142b"
+    },
+    {
+      "name": "page /league",
+      "status": "OK",
+      "detail": "HTTP 200 4445b"
+    },
+    {
+      "name": "page /navigator",
+      "status": "OK",
+      "detail": "HTTP 200 7070b"
+    },
+    {
+      "name": "page /coach",
+      "status": "OK",
+      "detail": "HTTP 200 9685b"
+    },
+    {
+      "name": "locked /vault.pdf",
+      "status": "OK",
+      "detail": "403"
+    },
+    {
+      "name": "locked /accelerator.pdf",
+      "status": "OK",
+      "detail": "403"
+    },
+    {
+      "name": "locked /vault/download",
+      "status": "OK",
+      "detail": "403"
+    },
+    {
+      "name": "locked /accelerator/download",
+      "status": "OK",
+      "detail": "403"
+    },
+    {
+      "name": "checkout Interview Answer Vault",
+      "status": "OK",
+      "detail": "active $27"
+    },
+    {
+      "name": "checkout Career Accelerator",
+      "status": "OK",
+      "detail": "active $297"
+    },
+    {
+      "name": "leads",
+      "status": "OK",
+      "detail": "2 total"
+    },
+    {
+      "name": "drip",
+      "status": "OK",
+      "detail": "last write 1.2h ago"
+    },
+    {
+      "name": "stripe charges",
+      "status": "OK",
+      "detail": "sales=0 revenue=$0.00"
+    }
+  ]
+}

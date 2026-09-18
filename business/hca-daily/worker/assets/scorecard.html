@@ -130,6 +130,26 @@
       <ol id="fixes" class="space-y-4"></ol>
     </div>
 
+    <!-- Contextual offer — placed at peak intent (post-quiz, post-email, post-diagnosis).
+         Brand palette: navy base, teal signal, GOLD = the CTA colour. -->
+    <div id="offerCard" class="rounded-2xl p-6 sm:p-8 mb-6 no-print"
+         style="border:2px solid #c9a227;background:linear-gradient(160deg,#0b2545,#13315c)">
+      <p style="color:#c9a227;letter-spacing:3px;text-transform:uppercase;font-size:12px;font-weight:800;margin-bottom:10px">
+        The shortcut for your lowest score
+      </p>
+      <h3 id="offerHeadline" class="font-extrabold text-xl mb-2" style="color:#fff"></h3>
+      <p id="offerBody" class="text-sm mb-5" style="color:#c2cfe0"></p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a id="offerPrimary" href="https://buy.stripe.com/fZufZi70H1eAaaFgrIgMw04"
+           class="px-6 py-3.5 rounded-xl font-extrabold text-center transition-all"
+           style="background:#c9a227;color:#0b2545">Get the Interview Answer Vault — $27 →</a>
+        <a id="offerSecondary" href="https://buy.stripe.com/9B63cwdp53mIdmR8ZggMw06"
+           class="px-6 py-3.5 rounded-xl font-bold text-center transition-all"
+           style="border:1px solid rgba(201,162,39,.55);color:#fff">Or go all-in — Accelerator $297 →</a>
+      </div>
+      <p class="text-xs mt-4" style="color:#8ca2bd">Instant access · lifetime · 30-day guarantee · no calls</p>
+    </div>
+
     <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8 mb-6 no-print">
       <h3 class="font-extrabold text-lg mb-2">Your path starts now.</h3>
       <p class="text-slate-300 mb-5">
@@ -424,6 +444,23 @@ function renderResults() {
       </div>`;
     ol.appendChild(li);
   });
+
+  // Contextual offer: target the WEAKEST dimension (ranked[0]) — the exact gap
+  // the paid products close. Copy is personalised so it reads as a diagnosis
+  // follow-up, not a banner ad.
+  const weakestKey = ranked[0];
+  const weakestLabel = DIMENSIONS[weakestKey].label;
+  const weakestScore = Math.round(dimScores[weakestKey]);
+  const offerHeadline = $("offerHeadline");
+  const offerBody = $("offerBody");
+  if (offerHeadline && offerBody) {
+    offerHeadline.textContent = `Your weakest area: ${weakestLabel} — ${weakestScore}/100.`;
+    offerBody.textContent =
+      "That is the gap between \u201cI have done this\u201d and \u201chere is the number.\u201d " +
+      "The Interview Answer Vault is the answer key behind every drill: 156 real interview " +
+      "questions with complete scripts, searchable by question type. Five minutes a day and " +
+      "you stop improvising in the room. $27, lifetime access.";
+  }
 
   show("results");
   return { overall, dimScores };

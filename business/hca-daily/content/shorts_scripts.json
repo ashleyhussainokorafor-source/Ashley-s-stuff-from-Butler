@@ -1,0 +1,322 @@
+{
+  "_notes": "Source of truth for the faceless Shorts factory. Ported from content/shorts_script_pack_v1.md. Each segment = one slide. 'vo' is what gets SPOKEN (write numbers/metrics the way a human says them); 'display' is what appears ON SCREEN (muted-readable, progressive reveal). Order matters. Script 1 (MHA vs MBA) is already produced as short001.",
+  "_spec": "15-25s target. Frame 1 = pattern interrupt, no greeting/logo/intro. Navy base, teal signal, gold CTA. Exactly one CTA at the end. Never invent a statistic.",
+  "scripts": [
+    {
+      "id": "short002",
+      "title": "Do You Actually Need a Clinical Background? #Shorts",
+      "tags": [
+        "healthcare administration",
+        "healthcare management",
+        "nursing",
+        "career change",
+        "healthcare careers"
+      ],
+      "cluster": "clinical background",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "Do you need to be a nurse to run a hospital? No. But you need this.",
+          "display": [
+            "Do you need to be a nurse",
+            "to run a hospital?",
+            "No. But you need THIS."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "About half of healthcare admin leaders came up clinical. The other half came up operational.",
+          "display": [
+            "Half came up clinical.",
+            "Half came up operational."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Clinical hires know the floor. Operational hires know the numbers: work RVUs, days in A R, no-show rate.",
+          "display": [
+            "Clinical hires know the floor.",
+            "Operational hires know the numbers:",
+            "wRVUs \u00b7 days in A/R \u00b7 no-show rate"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Nobody gets promoted for knowing one. They get promoted for translating between them.",
+          "display": [
+            "Nobody gets promoted",
+            "for knowing one.",
+            "They get promoted for",
+            "translating between them."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Which half are you missing? Free 90-second scorecard at the H C A daily dot com.",
+          "display": [
+            "Which half are you missing?",
+            "Free 90-second scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "short003",
+      "title": "Your Interview Is Decided in 4 Minutes #Shorts",
+      "tags": [
+        "interview tips",
+        "healthcare administration",
+        "job interview",
+        "healthcare careers",
+        "career advice"
+      ],
+      "cluster": "interview screening",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "Your interview is decided in the first four minutes.",
+          "display": [
+            "Your interview is decided",
+            "in the first 4 minutes."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Tell me about yourself isn't small talk. It's the screen.",
+          "display": [
+            "\"Tell me about yourself\"",
+            "isn't small talk.",
+            "It's the screen."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Candidates answer with personality. Hires answer with numbers.",
+          "display": [
+            "Candidates answer",
+            "with personality.",
+            "Hires answer with numbers."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Three metrics change the room: work RVUs, days in A R, no-show rate.",
+          "display": [
+            "Three metrics change the room:",
+            "wRVUs \u00b7 days in A/R \u00b7 no-show rate"
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Free 90-second scorecard at the H C A daily dot com.",
+          "display": [
+            "Free 90-second scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "short004",
+      "title": "Hospital Admin vs Healthcare Admin \u2014 Not the Same Job #Shorts",
+      "tags": [
+        "hospital administration",
+        "healthcare administration",
+        "healthcare management",
+        "career advice",
+        "healthcare careers"
+      ],
+      "cluster": "hospital vs healthcare admin",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "Hospital administration versus healthcare administration. Same job? No. And hiring managers can tell.",
+          "display": [
+            "Same job?",
+            "No.",
+            "And hiring managers can tell."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Hospital administration means one facility. Budgets, staffing, throughput.",
+          "display": [
+            "Hospital administration",
+            "= one facility.",
+            "Budgets, staffing, throughput."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Healthcare administration means the system. Payers, contracts, population health.",
+          "display": [
+            "Healthcare administration",
+            "= the system.",
+            "Payers, contracts, population health."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Applying for one with the other's resume is why you're getting screened out.",
+          "display": [
+            "Applying for one with",
+            "the other's resume",
+            "is why you're getting",
+            "screened out."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Free scorecard at the H C A daily dot com.",
+          "display": [
+            "Free scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "short005",
+      "title": "What Does a Healthcare Administrator Actually Do All Day? #Shorts",
+      "tags": [
+        "healthcare administration",
+        "healthcare management",
+        "day in the life",
+        "healthcare careers",
+        "career advice"
+      ],
+      "cluster": "day in the life",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "What does a healthcare administrator actually do all day?",
+          "display": [
+            "What does a healthcare",
+            "administrator",
+            "ACTUALLY do?"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Not paperwork. Three things: staffing, flow, and money.",
+          "display": [
+            "Not paperwork.",
+            "Three things:",
+            "staffing \u00b7 flow \u00b7 money"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Staffing: who's on the floor and are the ratios legal.",
+          "display": [
+            "Staffing:",
+            "who's on the floor,",
+            "and are the ratios legal?"
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Flow: how many patients move through and where they jam.",
+          "display": [
+            "Flow:",
+            "how many patients move through,",
+            "and where they jam."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Money: work RVUs in, labor variance out.",
+          "display": [
+            "Money:",
+            "wRVUs in,",
+            "labor variance out."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "If that sounds like your week, free scorecard at the H C A daily dot com.",
+          "display": [
+            "If that sounds like your week",
+            "Free scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "short006",
+      "title": "Studying Business? Get an MHA #Shorts",
+      "tags": [
+        "MHA",
+        "healthcare administration",
+        "business degree",
+        "healthcare careers",
+        "career advice"
+      ],
+      "cluster": "business degree -> MHA",
+      "_source": "Ashley's proven topic: 'Studying Business? Get an MHA' (10,770 views). Ashley picked this 2026-09-18.",
+      "segments": [
+        {
+          "slide": "hook",
+          "vo": "Studying business? Then nobody in healthcare knows what to do with you yet.",
+          "display": [
+            "Studying business?",
+            "Then nobody in healthcare",
+            "knows what to do",
+            "with you yet."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "A business degree says you understand money. It says nothing about the clinic.",
+          "display": [
+            "A business degree says",
+            "you understand money.",
+            "It says nothing",
+            "about the clinic."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Healthcare hires on healthcare language. An M H A gives you that language.",
+          "display": [
+            "Healthcare hires on",
+            "healthcare language.",
+            "An MHA gives you",
+            "that language."
+          ]
+        },
+        {
+          "slide": "beat",
+          "vo": "Same coursework. Different vocabulary. And the vocabulary is the job.",
+          "display": [
+            "Same coursework.",
+            "Different vocabulary.",
+            "The vocabulary IS the job."
+          ]
+        },
+        {
+          "slide": "cta",
+          "vo": "Thinking about the M H A? Free 90-second scorecard at the H C A daily dot com.",
+          "display": [
+            "Thinking about the MHA?",
+            "Free 90-second scorecard",
+            "thehcadaily.com/scorecard",
+            "Dr. Ashley, DBA"
+          ]
+        }
+      ]
+    }
+  ],
+  "_reserved_for_ashley": {
+    "topics": [
+      "How I Got a Healthcare Administration Job (13,137 views)"
+    ],
+    "why": "Ashley will record this one herself. Do NOT add it to scripts[] \u2014 the factory would build a faceless version she doesn't want."
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "_notes": "The queue IS the state for the Shorts pipeline. auto_publish=true is STANDING APPROVAL from Ashley (2026-09-18): faceless automated Shorts publish automatically. Set it back to false only if she asks. Idempotent: a post with a videoId is never uploaded twice.",
+  "auto_publish": true,
+  "posts": [
+    {
+      "id": "short001",
+      "title": "MHA or MBA? You're Asking the Wrong Question #Shorts",
+      "topic": "MHA vs MBA decision question (Script 1 of the evidence pack)",
+      "file": "/data/business/hca-daily/redesign/short/short001/hca-short001.mp4",
+      "videoId": "HHAiukzmPs8",
+      "status": "published",
+      "publishAt": "2026-09-18T18:01:28.113906+00:00",
+      "uploadedAt": "2026-09-18T17:59:40Z",
+      "verified": {
+        "privacyStatus": "unlisted",
+        "categoryId": "27",
+        "duration": "PT38S",
+        "checkedVia": "videos().list"
+      },
+      "tags": [
+        "healthcare administration",
+        "healthcare management",
+        "MHA",
+        "MBA",
+        "career advice"
+      ],
+      "publishedAt": "2026-09-18T18:19:59.535591+00:00"
+    },
+    {
+      "id": "short002",
+      "title": "Do You Actually Need a Clinical Background? #Shorts",
+      "file": "/data/business/hca-daily/shorts/builds/short002/hca-short002.mp4",
+      "videoId": "1Z7nOlwj0QA",
+      "status": "published",
+      "publishAt": "2026-09-18T18:24:43.662263+00:00",
+      "tags": [
+        "healthcare administration",
+        "healthcare management",
+        "nursing",
+        "career change",
+        "healthcare careers"
+      ],
+      "built": {
+        "frames": 16,
+        "duration": 32.14
+      },
+      "uploadedAt": "2026-09-18T18:24:56.226652+00:00"
+    },
+    {
+      "id": "short003",
+      "title": "Your Interview Is Decided in 4 Minutes #Shorts",
+      "file": "/data/business/hca-daily/shorts/builds/short003/hca-short003.mp4",
+      "videoId": null,
+      "status": "ready",
+      "publishAt": "2026-09-19T15:00:00+00:00",
+      "tags": [
+        "interview tips",
+        "healthcare administration",
+        "job interview",
+        "healthcare careers",
+        "career advice"
+      ],
+      "built": {
+        "frames": 13,
+        "duration": 22.32
+      }
+    },
+    {
+      "id": "short004",
+      "title": "Hospital Admin vs Healthcare Admin \u2014 Not the Same Job #Shorts",
+      "file": "/data/business/hca-daily/shorts/builds/short004/hca-short004.mp4",
+      "videoId": null,
+      "status": "ready",
+      "publishAt": "2026-09-20T15:00:00+00:00",
+      "tags": [
+        "hospital administration",
+        "healthcare administration",
+        "healthcare management",
+        "career advice",
+        "healthcare careers"
+      ],
+      "built": {
+        "frames": 16,
+        "duration": 28.87
+      }
+    },
+    {
+      "id": "short005",
+      "title": "What Does a Healthcare Administrator Actually Do All Day? #Shorts",
+      "file": "/data/business/hca-daily/shorts/builds/short005/hca-short005.mp4",
+      "videoId": null,
+      "status": "ready",
+      "publishAt": "2026-09-21T15:00:00+00:00",
+      "tags": [
+        "healthcare administration",
+        "healthcare management",
+        "day in the life",
+        "healthcare careers",
+        "career advice"
+      ],
+      "built": {
+        "frames": 19,
+        "duration": 24.74
+      }
+    },
+    {
+      "id": "short006",
+      "title": "Studying Business? Get an MHA #Shorts",
+      "file": "/data/business/hca-daily/shorts/builds/short006/hca-short006.mp4",
+      "videoId": null,
+      "status": "ready",
+      "publishAt": "2026-09-22T15:00:00+00:00",
+      "tags": [
+        "MHA",
+        "healthcare administration",
+        "business degree",
+        "healthcare careers",
+        "career advice"
+      ],
+      "built": {
+        "frames": 19,
+        "duration": 29.42
+      }
+    }
+  ]
+}

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HCA Interview Coach — Live Executive Mock Simulation</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/md.js"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: {
       slate: { 50:'#f8fafc',100:'#eef3f8',200:'#dce5ef',300:'#c5d2e2',400:'#a8b8ce',500:'#8ba0bd',600:'#5b7294',700:'#3d5b88',800:'#24466f',900:'#13315c',950:'#0b2545' },
@@ -121,7 +122,7 @@
       if (!text) return;
       userInput.value = '';
 
-      chatBox.innerHTML += `<div class="flex justify-end"><div class="max-w-[85%] p-4 rounded-2xl bg-teal-600/90 text-white text-sm leading-relaxed">${text.replace(/\n/g, '<br>')}</div></div>`;
+      chatBox.innerHTML += `<div class="flex justify-end"><div class="max-w-[85%] p-4 rounded-2xl bg-teal-600/90 text-white text-sm leading-relaxed">${escapeHtml(text).replace(/\n/g, '<br>')}</div></div>`;
       chatBox.scrollTop = chatBox.scrollHeight;
 
       history.push({ role: 'user', content: text });
@@ -149,7 +150,7 @@
         const reply = data.reply || "Error connecting to simulation engine.";
         history.push({ role: 'assistant', content: reply });
 
-        chatBox.innerHTML += `<div class="flex justify-start"><div class="max-w-[90%] p-5 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200 text-sm leading-relaxed whitespace-pre-wrap">${reply}</div></div>`;
+        chatBox.innerHTML += `<div class="flex justify-start"><div class="max-w-[90%] p-5 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200 text-sm leading-relaxed">${renderMarkdown(reply)}</div></div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
       } catch (err) {
         document.getElementById(loadingId).remove();

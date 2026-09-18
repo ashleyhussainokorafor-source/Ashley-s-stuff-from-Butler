@@ -27,7 +27,7 @@ from email.mime.text import MIMEText
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
-WORKER = "https://hca-daily.empathycollection.workers.dev"
+WORKER = "https://thehcadaily.com"
 TOKEN_PATH = "/data/google_token.json"
 DEV_VARS = "/data/business/hca-daily/worker/.dev.vars"
 STATE_FILE = "/data/business/hca-daily/email/drip_state.json"

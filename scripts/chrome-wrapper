@@ -1,0 +1,40 @@
+#!/bin/bash
+# Chrome launcher wrapper for Hermes/agent-browser.
+#
+# WHY THIS EXISTS
+# ---------------
+# Playwright's bundled Chromium on this host is missing 10 system libs
+# (libnspr4, libnss3, libnssutil3, libsmime3, libatk-1.0, libatk-bridge-2.0,
+#  libatspi, libcups, ...). There is no sudo/apt, so the libs were extracted
+# from Debian .deb files into the `fixlibs` directory instead.
+#
+# Hermes cannot simply export LD_LIBRARY_PATH globally because:
+#   1. LD_LIBRARY_PATH is on Hermes's env DENYLIST (loader-injection vector), and
+#   2. fixlibs also ships libglib/libX11/libcups/etc. which would SHADOW the
+#      system copies for python/ffmpeg/git and could break them.
+#
+# So we scope the library path to Chrome ONLY. Point Hermes at this wrapper via:
+#     AGENT_BROWSER_EXECUTABLE_PATH=/data/scripts/chrome-wrapper
+#
+# This wrapper is transparent: it sets LD_LIBRARY_PATH for its own process tree
+# and then exec's the real Chromium with any arguments Hermes passed.
+set -euo pipefail
+
+CHROME="${HCA_CHROME_BIN:-}"
+if [ -z "$CHROME" ]; then
+  CHROME=$(ls -d /data/.cache/ms-playwright/chromium-*/chrome-linux64/chrome 2>/dev/null | tail -1)
+fi
+if [ -z "$CHROME" ] || [ ! -x "$CHROME" ]; then
+  echo "chrome-wrapper: no executable Chromium found" >&2
+  exit 127
+fi
+
+FIXLIBS=/data/.cache/ms-playwright/fixlibs/extracted/usr/lib/x86_64-linux-gnu
+if [ -d "$FIXLIBS" ]; then
+  export LD_LIBRARY_PATH="$FIXLIBS${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+fi
+
+# Headless containers have no dbus / audio / GPU; silence the noisy failures.
+export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-disabled:}"
+
+exec "$CHROME" "$@"

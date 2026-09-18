@@ -24,6 +24,11 @@ __pycache__/
 *.egg-info/
 .venv/
 
+# Regenerable Shorts render artifacts (frames + rendered mp4). The QUEUE is the
+# state of record (business/hca-daily/shorts/queue.json); these can be rebuilt
+# by hca_short_factory.py, so they do not belong in version control.
+business/hca-daily/shorts/builds/
+
 # Node
 node_modules/
 
@@ -58,3 +63,18 @@ wrangler.toml.local
 .wrangler/
 node_modules/
 dist/
+.stripe.env
+
+# --- Agent profile data must never be published -------------------------
+# /data is the repo root, so profiles/ sits inside it. It contains session
+# databases, request dumps (with live API keys in Authorization headers),
+# caches, gateway locks and vendored site-packages. None of it belongs in
+# a public repo.
+profiles/
+request_dump_*.json
+**/request_dump_*.json
+*.db-wal
+*.db-shm
+gateway.lock
+gateway.pid
+gateway_state.json

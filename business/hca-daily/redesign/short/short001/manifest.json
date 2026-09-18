@@ -1,0 +1,97 @@
+{
+ "audio_dur": 37.1825,
+ "wps": 0.5164236111111111,
+ "frames": [
+  {
+   "id": "frame01",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame01.png",
+   "dur": 1.5493,
+   "slide": "s1",
+   "bound": 3
+  },
+  {
+   "id": "frame02",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame02.png",
+   "dur": 2.5821,
+   "slide": "s1",
+   "bound": 8
+  },
+  {
+   "id": "frame03",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame03.png",
+   "dur": 2.5821,
+   "slide": "s2",
+   "bound": 13
+  },
+  {
+   "id": "frame04",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame04.png",
+   "dur": 2.5821,
+   "slide": "s2",
+   "bound": 18
+  },
+  {
+   "id": "frame05",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame05.png",
+   "dur": 4.1314,
+   "slide": "s3",
+   "bound": 26
+  },
+  {
+   "id": "frame06",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame06.png",
+   "dur": 3.615,
+   "slide": "s3",
+   "bound": 33
+  },
+  {
+   "id": "frame07",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame07.png",
+   "dur": 3.615,
+   "slide": "s4",
+   "bound": 40
+  },
+  {
+   "id": "frame08",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame08.png",
+   "dur": 4.6478,
+   "slide": "s4",
+   "bound": 49
+  },
+  {
+   "id": "frame09",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame09.png",
+   "dur": 2.5821,
+   "slide": "s5",
+   "bound": 54
+  },
+  {
+   "id": "frame10",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame10.png",
+   "dur": 2.0657,
+   "slide": "s5",
+   "bound": 58
+  },
+  {
+   "id": "frame11",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame11.png",
+   "dur": 4.1314,
+   "slide": "s6",
+   "bound": 66
+  },
+  {
+   "id": "frame12",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame12.png",
+   "dur": 1.5493,
+   "slide": "s6",
+   "bound": 69
+  },
+  {
+   "id": "frame13",
+   "file": "/data/business/hca-daily/redesign/short/short001/frame13.png",
+   "dur": 1.5493,
+   "slide": "s6",
+   "bound": 72
+  }
+ ]
+}

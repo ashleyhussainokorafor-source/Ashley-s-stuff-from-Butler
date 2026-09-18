@@ -1,0 +1,27 @@
+ffconcat version 1.0
+file 'frame01.png'
+duration 1.5493
+file 'frame02.png'
+duration 2.5821
+file 'frame03.png'
+duration 2.5821
+file 'frame04.png'
+duration 2.5821
+file 'frame05.png'
+duration 4.1314
+file 'frame06.png'
+duration 3.6150
+file 'frame07.png'
+duration 3.6150
+file 'frame08.png'
+duration 4.6478
+file 'frame09.png'
+duration 2.5821
+file 'frame10.png'
+duration 2.0657
+file 'frame11.png'
+duration 4.1314
+file 'frame12.png'
+duration 1.5493
+file 'frame13.png'
+duration 1.5493

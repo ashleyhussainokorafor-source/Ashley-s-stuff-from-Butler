@@ -226,3 +226,6 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
   `loading="lazy"` and simply do not render in a below-the-fold full-page capture. Confirmed by
   reading the HTML (3 `<img>` tags present) and by curl (all 200). Do not report missing images
   from a screenshot alone.
+- **2026-09-19 00:34 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 01:04 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 01:12 UTC** | `COMMENT-REPLY` | replied to 2 (failed 0); types {'question': 2}

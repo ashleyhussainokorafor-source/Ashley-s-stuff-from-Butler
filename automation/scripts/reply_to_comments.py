@@ -495,7 +495,13 @@ def main():
             state["replied"][r["commentId"]] = {
                 "kind": kind, "topic": topic, "videoId": r["videoId"],
                 "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
-            state.setdefault("daily", {})[today] = state["daily"].get(today, 0) + 1
+            # NOTE: read the counter into a local FIRST. Writing this as
+            # `state.setdefault("daily", {})[today] = state["daily"].get(today, 0) + 1`
+            # crashes with KeyError, because Python evaluates the right-hand side
+            # before the assignment target — so state["daily"] is read before
+            # setdefault has created it.
+            daily = state.setdefault("daily", {})
+            daily[today] = daily.get(today, 0) + 1
             posted += 1
             if posted % 10 == 0:
                 json.dump(state, open(STATE, "w"), indent=1)

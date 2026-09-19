@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-09-19T00:04:27.637102+00:00",
+  "checked_at": "2026-09-19T01:04:42.900996+00:00",
   "verdict": "OK",
-  "run": 14,
+  "run": 16,
   "leads": 2,
   "sales_count": 0,
   "revenue_usd": 0.0,
@@ -21,17 +21,17 @@
     {
       "name": "page /pricing",
       "status": "OK",
-      "detail": "HTTP 200 11375b"
+      "detail": "HTTP 200 13069b"
     },
     {
       "name": "page /vault",
       "status": "OK",
-      "detail": "HTTP 200 11476b"
+      "detail": "HTTP 200 13686b"
     },
     {
       "name": "page /accelerator",
       "status": "OK",
-      "detail": "HTTP 200 7615b"
+      "detail": "HTTP 200 9810b"
     },
     {
       "name": "page /playbook",
@@ -61,7 +61,7 @@
     {
       "name": "page /resume",
       "status": "OK",
-      "detail": "HTTP 200 7372b"
+      "detail": "HTTP 200 9525b"
     },
     {
       "name": "gate /app",
@@ -141,7 +141,7 @@
     {
       "name": "drip",
       "status": "OK",
-      "detail": "last write 3.1h ago"
+      "detail": "last write 4.1h ago"
     },
     {
       "name": "stripe charges",

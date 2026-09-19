@@ -35,6 +35,21 @@
    "topic": "mentor_network",
    "videoId": "_2oxkikIX5c",
    "at": "2026-09-18T20:46:11Z"
+  },
+  "UgwUjm63zkKoKUoY-Jl4AaABAg": {
+   "kind": "question",
+   "topic": "zero_exp",
+   "videoId": "_2oxkikIX5c",
+   "at": "2026-09-19T01:12:22Z"
+  },
+  "UgzBm6T5leiKO3hM3rB4AaABAg": {
+   "kind": "question",
+   "topic": "jobs_with_degree",
+   "videoId": "_2oxkikIX5c",
+   "at": "2026-09-19T01:12:32Z"
   }
+ },
+ "daily": {
+  "2026-09-19": 2
  }
 }

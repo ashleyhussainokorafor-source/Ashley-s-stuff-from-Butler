@@ -235,3 +235,9 @@ ffmpeg — never a real-time screen recording (it will OOM this box).
 - **Not verified:** nothing is deployed, and the reference build's media is not the
   `cb-*` set. Do not ship it blind — either port the copy into Butler's file, or point the
   reference build at the `cb-*` assets and re-verify images and video resolve before deploy.
+- **Stale media paths in the parked build:** it points at `/video/brief-loop.mp4` and
+  `/img/study-focus-800.webp`. The `video/` directory has been **deleted** — it held 23MB of
+  my own orphaned render frames sitting inside the deploy path, and the video it was for is
+  superseded by Butler's `cb-drill-loop.mp4`. Repoint the parked build at
+  `/img/cb-drill-loop.mp4` and the `cb-*` stills before using it, and re-verify each path
+  returns 200 after deploy.

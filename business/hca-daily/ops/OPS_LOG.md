@@ -275,3 +275,13 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
   delivered to `design/campus-brief/CAMPUS_BRIEF_SPEC.md` for Butler to port.
   Rule recorded: check file mtimes in an asset directory, not the age of a claim, before
   entering a lane.
+
+- **2026-09-19 15:58 UTC** | `CLEANUP` | Removed 23MB of orphaned render frames from the
+  deploy path. My stopped hero-video subagent had created `worker/assets/video/` with 300 PNG
+  frames plus `story.html`/`shoot.py`. Three reasons to delete rather than keep: it was my
+  mess, Butler's video pipeline writes to `/tmp/cbvideo` and their shipped video is
+  `/img/cb-drill-loop.mp4`, and anything under `worker/assets/` is uploaded on the next
+  `wrangler deploy` — 23MB of frames would ride along for nothing. Verified afterwards that
+  all 20 `cb-*` assets are intact and `/img/cb-drill-loop.mp4` is present and being refined
+  (rewritten 15:55). Lesson: an agent's scratch output must never land in the asset directory
+  that gets deployed.

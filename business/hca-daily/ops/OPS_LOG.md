@@ -265,3 +265,13 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
 - **2026-09-19 14:38 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
 - **2026-09-19 15:08 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
 - **2026-09-19 15:38 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+
+- **2026-09-19 15:55 UTC** | `COLLISION` | Two agents built the Campus Brief homepage at once.
+  Butler holds `worker/assets/index.html` and produced the Campus Brief media (`cb-*` images
+  15:47, `cb-drill-loop.mp4` 15:48, `video/` frames 15:52). Their claim was 15 hours old, which
+  read as abandoned; their file activity proved otherwise. I stopped my duplicate hero-video
+  subagent, parked my build in `design/campus-brief/`, **reverted index.html to the committed
+  version** and released the lock. No deploy. Spec + microcopy + image brief + storyboard
+  delivered to `design/campus-brief/CAMPUS_BRIEF_SPEC.md` for Butler to port.
+  Rule recorded: check file mtimes in an asset directory, not the age of a claim, before
+  entering a lane.

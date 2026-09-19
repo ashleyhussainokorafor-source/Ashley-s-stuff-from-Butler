@@ -1,0 +1,58 @@
+Contacts analysis — wix-main
+source file: /data/cache/documents/doc_fb707c75dc45_contacts.csv
+
+rows parsed          : 494
+rows with an email   : 493
+rows without an email: 1
+
+SUBSCRIBER STATUS (who you may legally email):
+    351  Never subscribed
+    131  Subscribed
+     11  Unsubscribed
+
+SOURCE:
+    295  Site Members
+    127  Contact Import
+     50  Form Submission
+     20  Chat Form Submission
+      1  Other
+
+JOINED BY YEAR:
+  2021: 1
+  2022: 143
+  2023: 280
+  2024: 8
+  2025: 56
+  2026: 5
+
+WARM PROSPECTS (wrote in, on-topic, not spam): 15
+  2022-12-28  Caitlin Burge
+      Hey Professor Ashley! I’ve been watching your videos on YouTube and I’m hoping you can help me with my question. I have a MBA and a bachelors in Biology. I have a few years of experience in the cleric
+  2023-01-10  Barbara
+      Hi, I was contacting you to see if you had any tips on finding an internship or a job that offers training in Healthcare administration. I am currently perusing my masters in business administration a
+  2023-01-12  THOMAS HANSON MENYEAH
+      Hi professor Ashley My name is Thomas Menyeah. I watched your youtube on the 5 things " I wish I knew This Before" It moves me because I am right in the middle of it. I graduated on Jan. 4, 2023, with
+  2023-02-13  Pauline Twilhaarennik
+      I am an undergraduate student, studying healthcare administration with Athabasca University and have found your approach relatable and easy to understand. I've referred to you in essays more than once
+  2023-02-27  Yazhini Chidambaram
+      Hello Prof. Ashley! I received my MHA in 2019. I wasn't able to find a healthcare administration job that would sponsor my visa then, so I started working as an IT analyst. I am now a project manager 
+  2023-03-21  fnu sudhir
+      I am about to finish my masters in healthcare administration please help me finding suitable path to make my carrier grow.
+  2023-03-30  George Fereg
+      Hi Professor Ashley! I hope everything is going well! I’m reaching out as I’m planning on starting graduate school this Fall and am considering the University of Alabama at Birmingham’s MSHA-MBA dual 
+  2023-04-18  Divya
+      Hi there, I have graduated in Jan 2018 in MHA and I have no experience since then. Dint know what to pick since it's so broad as a field. Need your suggestion as what to do next, Im so lost and confus
+  2023-04-21  Erica
+      Hi, I have a bachelors degree in healthcare administration. Looking for recommendation on where to start
+  2023-05-23  Atta Boateng
+      Hello, My name is Atta Boateng. I'm a current 2nd year medical student. I'll be graduating with my MHA this August. What entry jobs will you recommend with little supervisory experience? Sincerely, At
+  2023-07-07  Amber Price
+      Is there any way you can answer some questions about your line of work? I'm in school for Healthcare Management Technology/ administration. Master of Healthcare Administration (MHA) 1. What is your fa
+  2023-08-16  Jennifer
+      I found your YouTube channel when searching for information about healthcare administration. I think you for your time and wisdom.
+  2023-10-03  Troy Plummer
+      Hello. I just finished my masters degree for Healthcare Management on October 27th. I just finished my bachelor's degree in Healthcare Administration. I work at northwell health in valley stream ny. H
+  2023-10-26  Sruthimol Baby
+      Hello, I am currently pursuing BSC hons microbiology. And I want to work in hospital sector. But I am not inclined towards the clinical side. And am hoping to pursue MHA But while looking for universi
+  2023-11-12  Rae’keisha Knight
+      Hello Ashley, I’ve already graduated for health administration with my bachelors degree and was wondering do you feel that I should go for my masters? I’ve already worked in healthcare I’m now a refer

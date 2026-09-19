@@ -109,36 +109,107 @@ function accessCookie(product: string, token: string): string {
   return `${name}=${encodeURIComponent(token)}; Path=/; Max-Age=${ACCESS_COOKIE_MAX_AGE}; HttpOnly; Secure; SameSite=Lax`;
 }
 
-/** Paywall shown to anyone without a valid access cookie. */
+/**
+ * Headshot for the author block. Drop a file at worker/assets/ashley.jpg and set
+ * this to "/ashley.jpg" — the block stays hidden while it is empty, so nothing
+ * renders a broken image.
+ */
+const AUTHOR_PHOTO = "";
+const AUTHOR_NAME = "Dr. Ashley Hussain-Okorafor, DBA";
+const AUTHOR_LINE =
+  "Former university lecturer in healthcare administration (CSUSB, 6 years) — " +
+  "the professor who taught the people who get hired.";
+
+/** Sales copy per product. The paywall is the only page most visitors ever see. */
+const SALES: Record<string, { headline: string; sub: string; bullets: string[]; price: string; note: string }> = {
+  navigator: {
+    headline: "The Career Navigator",
+    sub: "Your résumé keeps getting screened out. This tells you exactly what to change — and in what order.",
+    bullets: [
+      "Turns your scorecard into a week-by-week plan, not generic advice",
+      "Rewrites your résumé bullets in the metric language hiring managers actually scan for",
+      "Names the roles you genuinely qualify for — including the ones you'd never think to search",
+      "Salary context, so you negotiate from a number instead of a hope",
+      "Ask it anything, any time. It already knows your scorecard and your history.",
+    ],
+    price: "$29 <small>/month</small> &nbsp;·&nbsp; $199 <small>/year</small>",
+    note: "Cancel anytime. You keep access until the end of the period you paid for.",
+  },
+  coach: {
+    headline: "The Interview Coach",
+    sub: "Practice the interview before it decides your career.",
+    bullets: [
+      "Runs a live executive-level mock interview for your exact target role",
+      "Scores every answer against the four-pillar rubric — STAR precision, operational acumen, physician alignment, executive presence",
+      "Hands you the rewritten answer, not just a score",
+      "Drills the questions you're most likely to face, until the numbers come out naturally",
+    ],
+    price: "$19 <small>one session</small> &nbsp;·&nbsp; $49 <small>three sessions</small>",
+    note: "Unlocks in your browser immediately after checkout.",
+  },
+};
+
+/** Sales page shown to anyone without a valid access cookie. */
 function paywallPage(product: string, reason: string): string {
   const spec = APP_FOR_PRODUCT[product] ?? { label: product, asset: "/" };
   const link = PAYMENT_LINK_FOR_PRODUCT[product] ?? "/pricing";
-  const blurb =
-    product === "navigator"
-      ? "The Career Navigator is the AI advisor that turns your scorecard into a week-by-week move plan — resume rewrites, target roles, and the exact language hiring managers respond to."
-      : "The Interview Coach runs a live executive mock interview, scores your answers against the HCA competency framework, and hands you the rewrites.";
+  const copy = SALES[product] ?? {
+    headline: spec.label,
+    sub: "This is a paid product.",
+    bullets: [],
+    price: "",
+    note: "",
+  };
+  const bullets = copy.bullets.map((b) => `<li>${b}</li>`).join("");
+  const photo = AUTHOR_PHOTO
+    ? `<img class="face" src="${AUTHOR_PHOTO}" alt="${AUTHOR_NAME}">`
+    : "";
+
   return `<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${spec.label} — The HCA Daily</title>
+<title>${copy.headline} — The HCA Daily</title>
+<meta name="description" content="${copy.sub.replace(/"/g, "&quot;")}">
 <style>
- body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-      background:#0b1120;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:24px}
- .card{max-width:560px;background:#111c33;border:1px solid #1e293b;border-radius:20px;padding:40px;text-align:center}
- .lock{font-size:40px;margin-bottom:8px}
- h1{font-size:26px;margin:0 0 12px;color:#fff}
- p{color:#94a3b8;line-height:1.6;margin:0 0 24px}
- .cta{display:inline-block;background:#14b8a6;color:#04231f;font-weight:700;text-decoration:none;
-      padding:16px 32px;border-radius:14px;font-size:16px}
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{background:#0b1120;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      line-height:1.65;padding:40px 20px}
+ .wrap{max-width:660px;margin:0 auto}
+ .kicker{color:#c9a227;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;font-size:12px;margin-bottom:14px}
+ h1{font-size:33px;color:#fff;letter-spacing:-0.5px;margin-bottom:14px;line-height:1.2}
+ .sub{color:#94a3b8;font-size:18px;margin-bottom:28px}
+ .card{background:#111c33;border:1px solid #1e293b;border-radius:20px;padding:32px}
+ ul{list-style:none;margin:0 0 26px}
+ li{padding-left:30px;position:relative;margin-bottom:13px;color:#cbd5e1}
+ li:before{content:"✓";position:absolute;left:0;top:0;color:#14b8a6;font-weight:800}
+ .price{font-size:30px;font-weight:800;color:#fff;margin-bottom:6px}
+ .price small{font-size:15px;font-weight:600;color:#94a3b8}
+ .note{color:#64748b;font-size:14px;margin-bottom:22px}
+ .cta{display:block;text-align:center;background:#14b8a6;color:#04231f;font-weight:800;font-size:18px;
+      text-decoration:none;padding:18px 32px;border-radius:14px}
  .cta:hover{background:#2dd4bf}
- .alt{display:block;margin-top:16px;color:#64748b;font-size:13px;text-decoration:none}
- .why{margin-top:24px;padding-top:20px;border-top:1px solid #1e293b;color:#64748b;font-size:13px}
-</style></head><body><div class="card">
-<div class="lock">🔒</div>
-<h1>${spec.label} is a paid product</h1>
-<p>${blurb}</p>
-<a class="cta" href="${link}">Get ${spec.label} →</a>
-<a class="alt" href="/scorecard">Or take the free scorecard first</a>
-<div class="why">${reason}</div>
+ .alt{display:block;text-align:center;margin-top:16px;color:#64748b;font-size:14px;text-decoration:none}
+ .alt:hover{color:#94a3b8}
+ .author{display:flex;gap:16px;align-items:center;margin-top:30px;padding-top:24px;border-top:1px solid #1e293b}
+ .face{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 64px}
+ .author .who{color:#94a3b8;font-size:14px}
+ .author .nm{color:#e2e8f0;font-weight:700;font-size:15px}
+ .why{margin-top:22px;color:#475569;font-size:12px}
+</style></head><body>
+<div class="wrap">
+  <div class="kicker">${spec.label}</div>
+  <h1>${copy.headline}</h1>
+  <p class="sub">${copy.sub}</p>
+  <div class="card">
+    <ul>${bullets}</ul>
+    <div class="price">${copy.price}</div>
+    <p class="note">${copy.note}</p>
+    <a class="cta" href="${link}">Get ${spec.label} →</a>
+    <a class="alt" href="/scorecard">Not ready? Take the free 90-second scorecard first</a>
+    <div class="author">${photo}
+      <div><div class="nm">${AUTHOR_NAME}</div><div class="who">${AUTHOR_LINE}</div></div>
+    </div>
+  </div>
+  <div class="why">${reason}</div>
 </div></body></html>`;
 }
 

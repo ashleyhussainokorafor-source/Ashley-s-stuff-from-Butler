@@ -58,7 +58,7 @@ cmd = [
     "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
     "-f", "concat", "-safe", "0", "-i", lst,
     "-vf", "fps=30,scale=1200:860,zoompan=z='min(zoom+0.00035,1.035)':d=1:"
-           "x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1200x860,fade=t=in:st=0:d=0.5,format=yuv420p",
+           "x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1200x860,format=yuv420p",
     "-t", "10", "-an",
     "-c:v", "libx264", "-preset", "slow", "-crf", "20",
     "-movflags", "+faststart", "-pix_fmt", "yuv420p",

@@ -285,3 +285,32 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
   all 20 `cb-*` assets are intact and `/img/cb-drill-loop.mp4` is present and being refined
   (rewritten 15:55). Lesson: an agent's scratch output must never land in the asset directory
   that gets deployed.
+
+- **2026-09-19 16:20 UTC** | `SHIPPED` | **Campus Brief homepage is LIVE** (Lane 2, Butler).
+  Merged build: the spec and microcopy from `design/campus-brief/CAMPUS_BRIEF_SPEC.md`
+  (hcadaily bot) with the media built here — `cb-drill-loop.mp4` re-rendered to the spec's
+  **1080×1350 (4:5), 30fps, 10.0s, no audio track, 208KB**, and a poster still of the 6–9s
+  insight moment. Loop seam verified numerically: frame 0 and frame 299 both measure 247.5
+  mean luma, i.e. it loops invisibly. Six `cb-*` stills placed per the spec's table.
+  The **founder strip now uses a real headshot** (`ashley.jpg`, added by another agent) —
+  replacing the monogram placeholder I had flagged as a gap.
+  Verified live: 11/11 routes 200, all 9 media files 200, and every banned pattern absent
+  (heroForm, email field, "game-changer", scarcity language, gold/coral buttons) = 0.
+- **2026-09-19 16:20 UTC** | `FIXED` | **Two real defects found and fixed in the hero video.**
+  (1) A `fade=t=in` on the loop left the hero showing a *dark frame* on load — for an
+  autoplaying hero that reads as broken. Removed; first-frame luma is now 247 (light).
+  (2) The app card had **no fixed height, so it grew as the answer chips and insight panel
+  appeared** — visible layout shift mid-video. Added `min-height` so the card is constant.
+  Both were caught by looking at the rendered output, not by the build script's exit code.
+- **2026-09-19 16:20 UTC** | `NOTE` | **Deliberate accessibility divergence from the spec.**
+  The spec names `--teal #2A9D8F` as the primary action colour, but white text on it measures
+  ~3.6:1 — under WCAG AA (4.5:1) at button label sizes. Buttons and inline links therefore
+  use `--teal-dk #1F7A6F` (~5.0:1, passes). The brighter teal is kept for non-text accents
+  (borders, progress bars, icon tints). Flagging it because it deviates from a spec another
+  agent wrote — happy to revert if the lighter teal is the intent.
+- **2026-09-19 16:20 UTC** | `NOTE` | **Collision post-mortem, from Butler's side.** I deployed
+  at 15:55 while the reverted `index.html` was in the tree, which pushed the *pre*-Campus-Brief
+  homepage live for ~25 minutes and took the new design down. Root cause is shared: my lane
+  claim was 15 hours old and read as abandoned, and I did not check file mtimes in the asset
+  directory before deploying. Adopting the rule the other agent recorded — **check mtimes, not
+  claim age, and re-read the tree immediately before `wrangler deploy`.**

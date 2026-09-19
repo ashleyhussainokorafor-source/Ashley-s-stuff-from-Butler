@@ -38,6 +38,9 @@ from email.mime.text import MIMEText
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
+sys.path.insert(0, "/data/business/hca-daily/email")
+import mailer  # noqa: E402  shared SMTP-first sender; see mailer.py
+
 TOKEN_PATH = "/data/google_token.json"
 OUT_DIR = "/data/business/hca-daily/outreach"
 TRACKER = os.path.join(OUT_DIR, "tracker.json")
@@ -96,12 +99,10 @@ def slugify(s):
 
 
 def gmail_service():
-    tok = json.load(open(TOKEN_PATH))
-    creds = Credentials(
-        token=tok.get("token"), refresh_token=tok.get("refresh_token"),
-        token_uri=tok.get("token_uri"), client_id=tok.get("client_id"),
-        client_secret=tok.get("client_secret"), scopes=tok.get("scopes"))
-    return build("gmail", "v1", credentials=creds)
+    """Deprecated — send() now uses mailer.py (SMTP-first). Kept as a stub so the
+    existing call site does not break. The Gmail-API token dies every 7 days
+    while the OAuth app is in Testing mode."""
+    return None
 
 
 def load_targets():
@@ -188,13 +189,15 @@ def render(target, template="first"):
 
 
 def send(svc, to, subject, body):
-    msg = MIMEText(body)
-    msg["from"] = f"{FROM_NAME} <{FROM_EMAIL}>"
-    msg["to"] = to
-    msg["subject"] = subject
-    svc.users().messages().send(
-        userId="me",
-        body={"raw": base64.urlsafe_b64encode(msg.as_bytes()).decode()}).execute()
+    """Route through the shared mailer (SMTP-first).
+
+    The Gmail-API path here is what killed the first outreach batch: 10 sent,
+    then 12 failed with invalid_grant when the OAuth refresh token hit its
+    7-day expiry. SMTP with an app password has no such expiry.
+    """
+    ok, detail = mailer.send(to, subject, body, from_name=FROM_NAME)
+    if not ok:
+        raise RuntimeError(detail)
 
 
 def log(line):
@@ -243,6 +246,13 @@ def main():
         # program director is a hot lead — it must surface the same day, not sit
         # in Ashley's inbox unnoticed.
         svc = gmail_service()
+        if svc is None:
+            # SMTP is send-only. Reading replies still needs OAuth (or IMAP with
+            # the same app password). Say so plainly rather than throwing a
+            # TypeError on None.
+            return ("⚠️ Reply tracking needs Gmail API access, which is currently "
+                    "revoked. Sending works via SMTP; reading replies does not. "
+                    "Re-authorise OAuth or add IMAP (see email/mailer.py).")
         res = svc.users().messages().list(userId="me", q="in:inbox newer_than:14d",
                                           maxResults=120).execute()
         new_replies = []

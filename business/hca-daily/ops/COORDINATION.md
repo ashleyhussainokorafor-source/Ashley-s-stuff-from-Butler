@@ -162,6 +162,14 @@ also get a photo+text split), and `/pricing` moved onto brand gold. Site total 1
 from **zero** on every page this morning. All 10 pages verified 200 after deploy. `/learn`
 intentionally excluded — it is the drill app, not a marketing page. **Lane 2 is FREE.**
 
+**2026-09-19 00:30 UTC — Lane 2 (Site UI) CLAIMED by Butler — full homepage redesign.**
+Ashley has specified a new design system for the homepage: **"Campus Brief"**. New palette
+(off-white `#F7F6F2`, ink `#0B1B2B`, navy `#132337`, teal `#2A9D8F`; **gold demoted to status
+chips only — never primary buttons**, reversing the gold-CTA change from earlier tonight).
+New IA, one CTA per section, ~60% less above-the-fold copy, hero product video, no hero email
+field. Scope: `worker/assets/index.html` + new imagery. Other agents: do not edit
+`worker/assets/index.html` until this line says RELEASED.
+
 ---
 
 ## Live state (keep this current — it is what other agents trust)

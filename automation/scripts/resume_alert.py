@@ -22,6 +22,9 @@ from email.mime.text import MIMEText
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
+sys.path.insert(0, "/data/business/hca-daily/email")
+import mailer  # noqa: E402  (shared SMTP-first sender; see mailer.py)
+
 CF_ENV = "/data/.cloudflare.env"
 ACCT = "7331f696a15eee3fe7bf94f41376f7b8"
 NS = "048d56b2542343939b4822283e77888b"
@@ -63,22 +66,17 @@ def kv_get(name):
         return None
 
 
-def gmail():
-    tok = json.load(open(TOKEN))
-    creds = Credentials(
-        token=tok.get("token"), refresh_token=tok.get("refresh_token"),
-        token_uri=tok.get("token_uri"), client_id=tok.get("client_id"),
-        client_secret=tok.get("client_secret"), scopes=tok.get("scopes"))
-    return build("gmail", "v1", credentials=creds)
+def send(subject, body):
+    """Send via the shared mailer (SMTP if configured, Gmail API otherwise).
 
-
-def send(svc, subject, body):
-    msg = MIMEText(body, "plain", "utf-8")
-    msg["to"] = TO
-    msg["from"] = FROM
-    msg["subject"] = subject
-    raw = base64.urlsafe_b64encode(msg.as_bytes()).decode()
-    svc.users().messages().send(userId="me", body={"raw": raw}).execute()
+    Uses mailer.py rather than a local Gmail-API call because the API path dies
+    every 7 days while the OAuth app is in Testing mode — and this is the alert
+    that tells Ashley a $147 order arrived. It must not be the fragile one.
+    """
+    ok, detail = mailer.send(TO, subject, body, from_name=None)
+    if not ok:
+        raise RuntimeError(f"send failed: {detail}")
+    return detail
 
 
 def main():
@@ -87,7 +85,7 @@ def main():
     args = ap.parse_args()
 
     if args.test:
-        send(gmail(), "[TEST] Résumé intake alert is wired up",
+        send("[TEST] Résumé intake alert is wired up",
              "This is a test. A real alert will contain the buyer's résumé.")
         print("test email sent")
         return 0
@@ -100,7 +98,6 @@ def main():
     if not new:
         return 0   # silent no-op
 
-    svc = gmail()
     for name in new:
         rec = kv_get(name)
         if not rec:
@@ -121,7 +118,7 @@ def main():
             "",
             "Due back within 3 business days. One revision included.",
         ])
-        send(svc, f"RÉSUMÉ ORDER — {rec.get('name') or rec.get('email')}", body)
+        send(f"RÉSUMÉ ORDER — {rec.get('name') or rec.get('email')}", body)
         notified.add(name)
         state["notified"] = sorted(notified)
         json.dump(state, open(STATE, "w"), indent=1)

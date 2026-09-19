@@ -27,6 +27,8 @@ from email.mime.text import MIMEText
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
+import mailer  # shared SMTP-first sender in this directory; see mailer.py
+
 WORKER = "https://thehcadaily.com"
 TOKEN_PATH = "/data/google_token.json"
 DEV_VARS = "/data/business/hca-daily/worker/.dev.vars"
@@ -157,21 +159,19 @@ def save_state(state):
 
 
 def gmail_service():
-    tok = json.load(open(TOKEN_PATH))
-    creds = Credentials(
-        token=tok.get("token"), refresh_token=tok.get("refresh_token"),
-        token_uri=tok.get("token_uri"), client_id=tok.get("client_id"),
-        client_secret=tok.get("client_secret"), scopes=tok.get("scopes"))
-    return build("gmail", "v1", credentials=creds)
+    """Deprecated, kept so existing call sites don't break.
+
+    Sending now routes through mailer.py (SMTP-first). The Gmail-API path died
+    every 7 days because the OAuth app is in Testing mode, which silently broke
+    this drip.
+    """
+    return None
 
 
 def send_email(svc, to, subject, body):
-    msg = MIMEText(body)
-    msg["from"] = f'{FROM_NAME} <{FROM_EMAIL}>'
-    msg["to"] = to
-    msg["subject"] = subject
-    raw = base64.urlsafe_b64encode(msg.as_bytes()).decode()
-    svc.users().messages().send(userId="me", body={"raw": raw}).execute()
+    ok, detail = mailer.send(to, subject, body, from_name=FROM_NAME)
+    if not ok:
+        raise RuntimeError(f"send failed: {detail}")
 
 
 def lead_name(lead):

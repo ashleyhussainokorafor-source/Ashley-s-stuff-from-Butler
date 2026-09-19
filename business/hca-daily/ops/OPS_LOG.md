@@ -167,6 +167,19 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
   via OpenRouter (~$0.35) before noticing the Pexels library already existed at `img/` from
   23:33. The stock set is better (real people, licensed, credited), so the AI set is retained
   only as spare. Lesson: check the assets directory before generating.
+- **2026-09-19 00:20 UTC** | `SHIPPED` | **Imagery rolled out to the remaining pages** (Lane 2,
+  Butler; Ashley approved). Before: 0 `<img>` on all five. After: `/vault` 2, `/accelerator` 2,
+  `/resume` 2, `/pricing` 1 — each gets a full-bleed photo band under its hero plus (on the
+  three money pages) a photo+text split before the buy section. **Site total is now 13 images.**
+  Also fixed `/pricing`, the last page still on off-brand coral CTAs — logo accent, "MOST
+  POPULAR" card and buttons are now brand gold `#c9a227`; coral CTA count went 5 → 0.
+  Injected CSS is deliberately **self-contained** (literal brand hexes + `hca-*` namespace)
+  because each page carries its own bespoke vars (`--navy-2` vs `--navy2`, `--bg` vs `--off`).
+  Verified live: all 10 pages still 200 (no regressions), images resolve, gold present.
+- **2026-09-19 00:20 UTC** | `NOTE` | **`/learn` deliberately left alone.** It is the working
+  drill app, not a marketing page: coral there signals streak/XP state and the page is
+  functional UI behind a gate. Adding decorative photos to a tool students use daily would
+  hurt more than help. Flagging the decision rather than leaving it looking like an oversight.
 - **2026-09-18 23:18 UTC** | `NOTE` | **Protocol deviation, disclosed.** Butler edited
   `worker/assets/scorecard.html` and ran `wrangler deploy` before claiming Lane 2 and without
   taking the deploy lock. Lanes 1/2/5 were free and the deploy landed clean, so nothing
@@ -188,3 +201,28 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
   plugin until pressure eased. Screenshots and image inspection are unreliable while a browser
   session is open. Worth remembering before the next deploy (wrangler was killed by OOM before).
 - **2026-09-18 23:34 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 00:04 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+
+- **2026-09-19 00:05 UTC** | `VERIFIED` | Homepage visual refresh is LIVE (Butler, deploy `53ec32e9`)
+  and it is a real improvement: split hero with a student photo, headline rewritten from the
+  jargon version to "Walk in already speaking their language.", gold CTAs, full-bleed photo band,
+  3-up image cards, mobile nav fixed (it was wrapping to 3 lines at 390px). I confirmed all 6
+  homepage images return **200** and the page is 25KB. Lane 2 was claimed by Butler at 23:55 UTC
+  for the remaining five pages, so I did not touch `worker/assets`.
+- **2026-09-19 00:05 UTC** | `DEFECT` | **2 of the 19 images I sourced were mislabelled.**
+  `happy-black-man-university` is a white man with blonde hair; `east-asian-student-brickwall`
+  is a white woman. Butler caught both and quarantined them to `img/_quarantine/`. Cause: no
+  vision model on this box, so the files were named from Pexels' own descriptions rather than
+  from looking at the pixels. The other 17 carry the same unverified risk. Lesson recorded:
+  never name or place a stock photo by its source description — check the pixels first.
+- **2026-09-19 00:05 UTC** | `DEFECT` | **8 images have no licence record.** `clinical-team`,
+  `collab-laptop`, `grad-celebrate`, `hero-wide`, `offer-moment`, `phone-student`,
+  `portrait-confident`, `study-focus` exist on disk (hero-wide.webp is live in the homepage hero)
+  but are in neither `CREDITS.md` nor `manifest.json`. Stock photography on a commercial site
+  needs a source + licence trail. Flagged to Butler in `COORDINATION.md` — not edited by me,
+  `worker/assets` is lane 2.
+- **2026-09-19 00:05 UTC** | `NOTE` | False alarm avoided: a full-page screenshot showed the
+  3-up "Nobody teaches you the words" cards as empty boxes. They are not broken — the images are
+  `loading="lazy"` and simply do not render in a below-the-fold full-page capture. Confirmed by
+  reading the HTML (3 `<img>` tags present) and by curl (all 200). Do not report missing images
+  from a screenshot alone.

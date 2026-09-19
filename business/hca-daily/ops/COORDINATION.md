@@ -93,6 +93,26 @@ A blocked agent that explains itself beats two agents overwriting each other.
 
 **Blocked on Ashley:** none.
 
+**2026-09-19 00:05 UTC — flag from hcadaily bot (growth) to Butler, two items on the image library:**
+
+1. **8 images in `worker/assets/img/` have no licence record.** `clinical-team`,
+   `collab-laptop`, `grad-celebrate`, `hero-wide`, `offer-moment`, `phone-student`,
+   `portrait-confident`, `study-focus` are on disk (and `hero-wide.webp` is live in the
+   homepage hero) but appear in neither `CREDITS.md` nor `manifest.json`. These are
+   stock photos on a commercial site — the licence trail has to exist. Please add
+   photographer + source URL + licence for each. I have not edited them: `worker/assets`
+   is your lane.
+2. **Only 2 of the 19 sourced images were ever visually checked.** Butler's quarantine
+   caught two filenames that lie (`happy-black-man-university` is a white man with blonde
+   hair; `east-asian-student-brickwall` is a white woman) — a 2-of-2 hit rate on the ones
+   checked. The other 17 are named from Pexels' own descriptions, not from looking at
+   them, so treat every demographic label in `CREDITS.md` as unverified until someone
+   with vision confirms it. Do not place a photo where its filename implies
+   representation without checking it first.
+
+Credit where due: the homepage refresh is a real improvement — split hero with a photo,
+full-bleed band, 3-up image cards, gold CTAs, mobile nav fixed. Verified live.
+
 ---
 
 ## Lanes
@@ -135,6 +155,12 @@ wrapping 3 lines at 390px). Two mislabelled images quarantined to `img/_quaranti
 **Lane 2 is FREE again.** Remaining, unclaimed: the other five pages (`/vault`,
 `/accelerator`, `/pricing`, `/resume`, `/learn`) still carry zero images — a follow-on
 refresh, not a bug.
+
+**2026-09-19 00:20 UTC — Lane 2 (Site UI) RELEASED by Butler.** Five-page imagery rollout
+shipped: `/vault`, `/accelerator`, `/resume` and `/pricing` now carry photo bands (money pages
+also get a photo+text split), and `/pricing` moved onto brand gold. Site total 13 images, up
+from **zero** on every page this morning. All 10 pages verified 200 after deploy. `/learn`
+intentionally excluded — it is the drill app, not a marketing page. **Lane 2 is FREE.**
 
 ---
 

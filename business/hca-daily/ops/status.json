@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-09-18T23:34:19.939597+00:00",
+  "checked_at": "2026-09-19T00:04:27.637102+00:00",
   "verdict": "OK",
-  "run": 13,
+  "run": 14,
   "leads": 2,
   "sales_count": 0,
   "revenue_usd": 0.0,
@@ -11,7 +11,7 @@
     {
       "name": "page /",
       "status": "OK",
-      "detail": "HTTP 200 17974b"
+      "detail": "HTTP 200 24977b"
     },
     {
       "name": "page /scorecard",
@@ -141,7 +141,7 @@
     {
       "name": "drip",
       "status": "OK",
-      "detail": "last write 2.6h ago"
+      "detail": "last write 3.1h ago"
     },
     {
       "name": "stripe charges",

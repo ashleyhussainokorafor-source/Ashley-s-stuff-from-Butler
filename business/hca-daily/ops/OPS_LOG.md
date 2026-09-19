@@ -229,3 +229,38 @@ FAIL = something that costs money is broken. UNKNOWN = could not measure.
 - **2026-09-19 00:34 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
 - **2026-09-19 01:04 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
 - **2026-09-19 01:12 UTC** | `COMMENT-REPLY` | replied to 2 (failed 0); types {'question': 2}
+- **2026-09-19 01:34 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 02:04 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 02:35 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 03:05 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 03:07 UTC** | `COMMENT-REPLY` | replied to 3 (failed 0); types {'question': 3}
+- **2026-09-19 03:35 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 04:05 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 04:35 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 05:05 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 05:08 UTC** | `COMMENT-REPLY` | replied to 3 (failed 0); types {'question': 3}
+- **2026-09-19 05:35 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 06:06 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 06:36 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 07:06 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 07:10 UTC** | `COMMENT-REPLY` | replied to 3 (failed 0); types {'question': 3}
+- **2026-09-19 07:36 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 08:06 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 08:36 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 09:06 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 09:11 UTC** | `COMMENT-REPLY` | replied to 1 (failed 0); types {'question': 1}
+- **2026-09-19 09:37 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 10:07 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 10:37 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 11:07 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 11:37 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 12:07 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 12:37 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 13:07 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 13:38 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 14:00 UTC** | `SHORT-BUILD` | short008: synthesizing voiceover (55 words)
+- **2026-09-19 14:00 UTC** | `OUTREACH` | sent 0 program-outreach email(s); 67 still queued
+- **2026-09-19 14:00 UTC** | `SHORT-BUILD` | short008: audio=21.22s  wps=0.3857
+- **2026-09-19 14:08 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 14:38 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00
+- **2026-09-19 15:08 UTC** | `OK` | pages=11/11 gates=8/8 paywall=4/4 leads=2 sales=0 revenue=$0.00

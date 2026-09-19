@@ -110,6 +110,66 @@
       "email_type": "named",
       "source_url": "https://hhd.psu.edu/hpa/graduate/contact",
       "subject": "Free 90-second scorecard for your MHA (residential & online) students"
+    },
+    "mallowp@xavier.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "Xavier University"
+    },
+    "cjohnson517@gsu.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "Georgia State University"
+    },
+    "westerman@tamu.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "Texas A&M University"
+    },
+    "nlu@govst.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "Governors State University"
+    },
+    "armstro5@uwm.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "University of Wisconsin-Milwaukee"
+    },
+    "rbonar12@gwu.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "George Washington University"
+    },
+    "richeric@musc.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "Medical University of South Carolina (MUSC)"
+    },
+    "mmceache@aum.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "Auburn University at Montgomery (AUM)"
+    },
+    "steven.szydlowski@scranton.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "University of Scranton"
+    },
+    "soumitra.bhuyan@rutgers.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "Rutgers University (Bloustein School)"
+    },
+    "reid.oetjen@ucf.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "University of Central Florida (UCF)"
+    },
+    "owenssi@missouri.edu": {
+      "status": "error",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+      "org": "University of Missouri"
     }
   },
   "sent_total": 10

@@ -47,9 +47,69 @@
    "topic": "jobs_with_degree",
    "videoId": "_2oxkikIX5c",
    "at": "2026-09-19T01:12:32Z"
+  },
+  "UgwADEeLZkErAXGYB_N4AaABAg": {
+   "kind": "question",
+   "topic": "interview",
+   "videoId": "_2oxkikIX5c",
+   "at": "2026-09-19T03:06:43Z"
+  },
+  "UgxYRXpi67MPhFw3YbF4AaABAg": {
+   "kind": "question",
+   "topic": "mgmt_vs_admin",
+   "videoId": "u7yaSUU3cHE",
+   "at": "2026-09-19T03:06:50Z"
+  },
+  "UgwFDrODsx4PAiEewJF4AaABAg": {
+   "kind": "question",
+   "topic": "nurse_clinical",
+   "videoId": "_2oxkikIX5c",
+   "at": "2026-09-19T03:06:58Z"
+  },
+  "Ugzj27-VmZtPfw6QJgJ4AaABAg": {
+   "kind": "question",
+   "topic": "jobs_with_degree",
+   "videoId": "FPp4Avmu_aI",
+   "at": "2026-09-19T05:08:16Z"
+  },
+  "UgzPmRHEWEvUWq-B5oF4AaABAg": {
+   "kind": "question",
+   "topic": "mgmt_vs_admin",
+   "videoId": "u7yaSUU3cHE",
+   "at": "2026-09-19T05:08:22Z"
+  },
+  "UgwBwt2zbC7GuUk75LZ4AaABAg": {
+   "kind": "question",
+   "topic": "business_degree",
+   "videoId": "_2oxkikIX5c",
+   "at": "2026-09-19T05:08:33Z"
+  },
+  "UgxLxmr6jcfHMyTnjY54AaABAg": {
+   "kind": "question",
+   "topic": "mentor_network",
+   "videoId": "_2oxkikIX5c",
+   "at": "2026-09-19T07:09:56Z"
+  },
+  "UgxZs89fvn2hTlQKVtl4AaABAg": {
+   "kind": "question",
+   "topic": "resume_job",
+   "videoId": "2cz7ZaU9umA",
+   "at": "2026-09-19T07:10:07Z"
+  },
+  "Ugwcqg9QsDk7g3F60NR4AaABAg": {
+   "kind": "question",
+   "topic": "mha",
+   "videoId": "8tagUtXCMwU",
+   "at": "2026-09-19T07:10:16Z"
+  },
+  "UgxzgjRfIZ1FNTU-6g94AaABAg": {
+   "kind": "question",
+   "topic": "mgmt_vs_admin",
+   "videoId": "8tagUtXCMwU",
+   "at": "2026-09-19T09:11:27Z"
   }
  },
  "daily": {
-  "2026-09-19": 2
+  "2026-09-19": 12
  }
 }

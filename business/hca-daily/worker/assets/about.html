@@ -3,69 +3,128 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About — The HCA Daily</title>
-<meta name="description" content="The HCA Daily is built by Dr. Ashley Hussain-Okorafor, DBA — healthcare administration educator and the voice behind @professorashley.">
+<title>About — Dr. Ashley Hussain-Okorafor, DBA | The HCA Daily</title>
+<meta name="description" content="Dr. Ashley Hussain-Okorafor, DBA taught healthcare administration at CSUSB for six years and mentored 500+ students. The HCA Daily exists because they kept graduating without knowing what the degree was for.">
 <meta name="theme-color" content="#0b2545">
 <link rel="canonical" href="https://thehcadaily.com/about">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{ --navy:#0b2545; --navy2:#13315c; --coral:#ff5749; --teal:#0d9488; --off:#faf9f6;
-    --ink:#14181f; --muted:#5b6572; --line:#e6e3dd }
+  :root{ --navy:#0b2545; --navy2:#13315c; --teal:#0d9488; --teal2:#0f766e;
+    --gold:#c9a227; --ink:#14181f; --muted:#5b6572; --line:#e6e3dd; --off:#faf9f6 }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--off);line-height:1.7;font-size:17px}
-  h1,h2{font-family:'Sora',sans-serif;color:var(--navy);line-height:1.2}
-  .container{max-width:720px;margin:0 auto;padding:0 22px}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--off);line-height:1.75;font-size:17px}
+  h1,h2,h3{font-family:'Sora',sans-serif;color:var(--navy);line-height:1.2;letter-spacing:-.3px}
+  .container{max-width:760px;margin:0 auto;padding:0 22px}
   nav{background:var(--navy);padding:14px 22px}
   .logo{font-family:'Sora',sans-serif;font-weight:800;color:#fff;font-size:17px;text-decoration:none}
-  .logo span{color:var(--coral)}
-  header{background:linear-gradient(168deg,#0b2545,#13315c 65%,#0e3a5c);color:#fff;padding:54px 0}
-  header h1{color:#fff;font-size:36px;margin-bottom:12px;letter-spacing:-.6px}
-  header p{color:#c2cfe0}
-  main{padding:44px 0 60px}
-  h2{font-size:23px;margin:32px 0 10px}
-  p{margin:12px 0;color:#2b3440}
-  .btn{display:inline-block;background:var(--coral);color:#fff;font-weight:700;font-size:16px;padding:15px 30px;border-radius:13px;text-decoration:none;margin-top:20px;box-shadow:0 10px 24px rgba(255,87,73,.26)}
-  .quote{border-left:4px solid var(--coral);padding:4px 0 4px 20px;margin:24px 0;font-style:italic;color:var(--navy2)}
-  footer{background:var(--navy);color:#8ca2bd;padding:34px 0;font-size:13.5px}
-  footer a{color:#c2cfe0;text-decoration:none}
+  .logo span{color:var(--gold)}
+
+  header{background:linear-gradient(168deg,#0b2545,#13315c 65%,#0e3a5c);color:#fff;padding:46px 0 54px}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:center}
+  @media(max-width:680px){.hero{grid-template-columns:1fr;gap:26px}}
+  .hero h1{color:#fff;font-size:35px;margin-bottom:16px}
+  .hero p{color:#c2cfe0;font-size:18px}
+  .hero img{width:100%;border-radius:16px;display:block;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .byline{margin-top:22px;color:var(--gold);font-weight:700;letter-spacing:.4px;font-size:15px}
+
+  main{padding:8px 0 64px}
+  h2{font-size:25px;margin:44px 0 14px}
+  h2:first-child{margin-top:0}
+  p{margin:14px 0;color:#2b3440}
+  a{color:var(--teal2);font-weight:600}
+  .lede{font-size:19px;color:#2b3440}
+
+  .quote{border-left:4px solid var(--gold);padding:6px 0 6px 22px;margin:28px 0;
+         font-style:italic;color:var(--navy2);font-size:18px}
+
+  .split{display:grid;grid-template-columns:1fr .8fr;gap:32px;align-items:center;margin:34px 0}
+  @media(max-width:680px){.split{grid-template-columns:1fr;gap:22px}}
+  .split img{width:100%;border-radius:14px;display:block}
+
+  .creds{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 30px;margin:34px 0;
+         box-shadow:0 12px 34px rgba(11,37,69,.05)}
+  .creds h3{font-size:17px;margin-bottom:14px}
+  .creds ul{list-style:none}
+  .creds li{padding-left:26px;position:relative;margin-bottom:11px;color:#2b3440;font-size:15.5px}
+  .creds li:before{content:"—";position:absolute;left:0;top:0;color:var(--teal);font-weight:800}
+  .creds .yr{color:var(--muted);font-size:14px}
+
+  .btn{display:inline-block;background:var(--gold);color:#1a1400;font-weight:800;font-size:17px;
+       padding:16px 32px;border-radius:13px;text-decoration:none;margin-top:26px;
+       box-shadow:0 10px 24px rgba(201,162,39,.3)}
+  .btn:hover{transform:translateY(-2px)}
+
+  footer{background:var(--navy);color:#8ca2bd;padding:34px 0;font-size:13.5px;margin-top:20px}
+  footer a{color:#c2cfe0;text-decoration:none;font-weight:400}
+  footer .logo{color:#fff}
 </style>
 </head>
 <body>
 <nav><div class="container"><a class="logo" href="/">The HCA <span>Daily</span></a></div></nav>
 
 <header>
-  <div class="container">
-    <h1>About The HCA Daily</h1>
-    <p>Built by an educator and hiring-side administrator, for the people trying to get hired.</p>
+  <div class="container hero">
+    <div>
+      <h1>I taught this subject for six years. Then I watched my students graduate without knowing what their degree was for.</h1>
+      <p>That question — <em>"but what job does this actually get me?"</em> — is the reason this site exists.</p>
+      <div class="byline">Dr. Ashley Hussain-Okorafor, DBA</div>
+    </div>
+    <img src="/ashley-about.jpg" alt="Dr. Ashley Hussain-Okorafor, DBA" width="1000" height="750">
   </div>
 </header>
 
 <main>
   <div class="container">
-    <p><strong>The HCA Daily</strong> exists for one reason: healthcare administration is a field where qualified people get passed over for roles they could do — not because they lack experience, but because they don't speak the language a hiring executive is listening for.</p>
 
-    <p>Most preparation material teaches you to answer questions. Very little of it teaches you to <em>think</em> the way the person across the table thinks — in wRVUs, days in A/R, denial rates, no-show rates, and cost per case.</p>
+    <h2>The pattern I couldn't unsee</h2>
+    <p class="lede">From 2016 to 2022 I was a full-time lecturer in healthcare administration at California State University, San Bernardino. Over those six years I taught healthcare delivery systems, operations, and organizational theory to more than 500 undergraduates, and I mentored a large share of them one-to-one on careers and graduate school.</p>
+    <p>Every single semester, the same thing happened. They'd do the work. They'd pass. They'd walk out with the degree — and then ask me the question they should never have had to ask: <strong>"What jobs can I actually get with this?"</strong></p>
+    <p>They weren't confused because they hadn't studied. They were confused because the coursework taught them the field and nobody taught them the <em>language the people doing the hiring were listening for</em>.</p>
 
-    <p>The HCA Daily closes that gap five minutes at a time. A short daily drill, a streak you don't want to break, and a skill path that moves you from "I'd improve productivity" to walking into the room quoting the numbers that decide offers.</p>
+    <div class="quote">"The candidates who get offers aren't the ones with the best résumés. They're the ones who sound like they already work there."</div>
 
-    <h2>Who's behind it</h2>
-    <p><strong>Dr. Ashley Hussain-Okorafor, DBA</strong> is a healthcare administration educator and the voice behind <a href="https://www.youtube.com/@professorashley" style="color:var(--teal);font-weight:600">@professorashley</a>, where more than 6,000 healthcare leaders have followed her guidance on breaking into and advancing in the field.</p>
+    <h2>I'd been on the other side of the table too</h2>
+    <p>Before and alongside teaching, I worked inside the system — as a Health Information Management specialist doing records audit and coding compliance, and in clinic operations and community health access work. So I knew what the job actually looks like when nobody's grading it.</p>
+    <p>My doctoral research looked at malpractice litigation involving nurses: how risk moves through a healthcare organization, and what administrative leadership can do about it before it reaches a courtroom. That work is where I learned to think in the numbers this field runs on — <strong>wRVUs, days in A/R, denial rates, no-show rates, cost per case</strong>.</p>
 
-    <div class="quote">"I've sat on both sides of the table. The candidates who get offers aren't the ones with the best résumés — they're the ones who sound like they already work there."</div>
+    <h2>What I built</h2>
+    <p>In 2022 I started The HCA Daily. The idea was deliberately small: instead of another course, a <strong>five-minute daily drill</strong> — a streak you don't want to break, in the vocabulary that decides offers.</p>
+    <p>That grew into the free <a href="/scorecard">90-second scorecard</a>, the daily practice path, the <a href="/vault">Interview Answer Vault</a>, and the AI tools that work through your actual situation with you. Along the way I started publishing on YouTube as <a href="https://www.youtube.com/@professorashley">@professorashley</a>, where thousands of healthcare leaders have followed along.</p>
 
-    <h2>How it works</h2>
-    <p>Start with the free 90-second scorecard. It measures you across the four dimensions healthcare leaders actually hire on and shows your three highest-leverage fixes. From there you get a daily drill, and the depth only when you want it.</p>
+    <div class="split">
+      <div>
+        <h3 style="font-size:19px;margin-bottom:10px">Why it's structured the way it is</h3>
+        <p>Most preparation material teaches you to <em>answer questions</em>. Very little of it teaches you to <em>think</em> the way the person across the table thinks.</p>
+        <p>So everything here is built around that gap — a short daily rep, a score that tells you where you actually stand, and depth only when you want it. Self-paced, automated, and it doesn't waste your time being motivational.</p>
+      </div>
+      <img src="/ashley-smile.jpg" alt="Dr. Ashley Hussain-Okorafor" width="620" height="827">
+    </div>
 
-    <p>Everything is self-paced and automated — this is a system, not a coaching calendar.</p>
+    <div class="creds">
+      <h3>Credentials and background</h3>
+      <ul>
+        <li><strong>Doctor of Business Administration</strong>, concentration in Health Administration <span class="yr">— California Intercontinental University</span></li>
+        <li><strong>Master of Science in Health Administration (MHA)</strong> <span class="yr">— West Coast University</span></li>
+        <li><strong>Bachelor of Science in Biology</strong>, pre-medical <span class="yr">— California State University, San Bernardino</span></li>
+        <li><strong>Six years full-time lecturer</strong> in healthcare administration, CSUSB <span class="yr">— 2016–2022</span></li>
+        <li><strong>Adjunct Professor</strong> (graduate healthcare management) and <strong>Director of Student Support Services</strong> <span class="yr">— Charisma University</span></li>
+        <li><strong>Invited presenter</strong>, International Conference of Education, Research and Innovation <span class="yr">— Seville, Spain</span></li>
+        <li><strong>Faculty advisor</strong>, Golden Key International Honour Society <span class="yr">— CSUSB chapter</span></li>
+        <li>Health Information Management and clinic operations experience <span class="yr">— Prime Healthcare, Desert Valley Hospital, Al-Shifa Clinic</span></li>
+      </ul>
+    </div>
 
-    <a class="btn" href="/scorecard">Take the free scorecard →</a>
+    <h2>Start where everyone should start</h2>
+    <p>Whatever brought you here, the honest first step is finding out where you actually stand. The scorecard takes ninety seconds, it's free, and it doesn't ask you to create an account. It measures you across the four things healthcare leaders hire on and shows you your three highest-leverage fixes.</p>
+    <a class="btn" href="/scorecard">Take the free 90-second scorecard →</a>
+
   </div>
 </main>
 
 <footer>
   <div class="container">
-    <a class="logo" href="/" style="font-family:'Sora',sans-serif;font-weight:800">The HCA <span style="color:var(--coral)">Daily</span></a>
+    <a class="logo" href="/">The HCA <span style="color:#c9a227">Daily</span></a>
     <p style="margin-top:10px"><a href="/pricing">Pricing</a> · <a href="/playbook">Free playbook</a> · <a href="/legal">Terms &amp; privacy</a></p>
   </div>
 </footer>

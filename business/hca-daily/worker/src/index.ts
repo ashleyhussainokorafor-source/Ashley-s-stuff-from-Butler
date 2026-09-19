@@ -114,7 +114,7 @@ function accessCookie(product: string, token: string): string {
  * this to "/ashley.jpg" — the block stays hidden while it is empty, so nothing
  * renders a broken image.
  */
-const AUTHOR_PHOTO = "";
+const AUTHOR_PHOTO = "/ashley.jpg";
 const AUTHOR_NAME = "Dr. Ashley Hussain-Okorafor, DBA";
 const AUTHOR_LINE =
   "Former university lecturer in healthcare administration (CSUSB, 6 years) — " +
